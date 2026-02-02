@@ -8,7 +8,6 @@ A modern, creative portfolio website showcasing my experiences, research project
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Language**: TypeScript
-- **Deployment**: Netlify or Vercel
 
 ## 📁 Project Structure
 

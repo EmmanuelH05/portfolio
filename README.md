@@ -38,10 +38,6 @@ portfolio/
 npm install
 ```
 
-2. Add your profile photo:
-   - Place your photo in `public/images/profile-photo.jpg`
-   - Update the image path in `src/components/Hero.tsx` if using a different format
-
 3. Run the development server:
 ```bash
 npm run dev
@@ -65,22 +61,6 @@ All personal information is stored in `src/lib/data.ts`. Update this file to cus
 - **Smooth Animations**: Framer Motion for page transitions and scroll animations
 - **Responsive**: Mobile-first design that works on all devices
 - **Performance**: Optimized with Next.js Image component and static generation
-
-## 🚢 Deployment
-
-### Deploy to Netlify
-
-1. Push your code to GitHub
-2. Connect your repository to Netlify
-3. Netlify will automatically detect Next.js and configure the build
-4. Your site will be live!
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Import your repository in Vercel
-3. Vercel will automatically detect Next.js
-4. Your site will be live!
 
 ## 📄 License
 

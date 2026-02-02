@@ -8,13 +8,17 @@ interface ExperienceTimelineProps {
   title: string;
 }
 
+function isWorkExperience(exp: WorkExperience | Volunteering): exp is WorkExperience {
+  return 'title' in exp;
+}
+
 export default function ExperienceTimeline({ experiences, title }: ExperienceTimelineProps) {
   return (
     <div className="space-y-12">
       <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-8">
         {title}
       </h2>
-      
+
       <div className="relative">
         {/* Timeline Line */}
         <div className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-300 to-accent-300" />
@@ -36,13 +40,14 @@ export default function ExperienceTimeline({ experiences, title }: ExperienceTim
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">
-                      {exp.title || (exp as Volunteering).role}
+                      {isWorkExperience(exp) ? exp.title : exp.role}
                     </h3>
                     <p className="text-lg text-primary-600 font-medium mt-1">
-                      {exp.company || (exp as Volunteering).organization}
+                      {isWorkExperience(exp) ? exp.company : exp.organization}
                     </p>
                     <p className="text-sm text-gray-500 mt-1">{exp.location}</p>
                   </div>
+
                   <span className="text-sm font-medium text-gray-600 mt-2 md:mt-0">
                     {exp.startDate} - {exp.endDate}
                   </span>

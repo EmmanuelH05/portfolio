@@ -18,7 +18,7 @@ export default function About() {
             About Me
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            I'm a passionate full-stack developer and research enthusiast currently pursuing a 
+            I&apos;m a passionate full-stack developer and research enthusiast currently pursuing a 
             B.A. in Computer Science and Linguistics at UCLA. I love exploring the intersection 
             of technology, graphics, and healthcare through innovative projects.
           </p>
@@ -91,14 +91,14 @@ export default function About() {
                 a unique interdisciplinary major in Computer Science and Linguistics at UCLA.
               </p>
               <p>
-                Through my research projects, I've had the opportunity to work on diverse problems—from 
+                Through my research projects, I&apos;ve had the opportunity to work on diverse problems—from 
                 photorealistic graphics rendering using physics-based simulations to healthcare applications 
                 in anesthesiology. Each project has taught me the importance of combining theoretical 
                 knowledge with practical implementation.
               </p>
               <p>
-                Currently, I'm working as a Full-Stack Developer at LA Blueprint, where I collaborate 
-                with a talented team to build platforms that make a real impact. I'm also deeply committed 
+                Currently, I&apos;m working as a Full-Stack Developer at LA Blueprint, where I collaborate 
+                with a talented team to build platforms that make a real impact. I&apos;m also deeply committed 
                 to giving back to communities through my volunteer work with School on Wheels and Rise the Fenua, 
                 helping students access educational resources and opportunities.
               </p>

@@ -80,10 +80,10 @@ export default function ContactForm() {
       >
         <div>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           <p className="text-lg text-gray-600">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
           </p>
         </div>
 

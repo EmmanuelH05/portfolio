@@ -43,8 +43,8 @@ export default function Projects() {
             Interested in Collaborating?
           </h2>
           <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-            I'm always open to discussing new research opportunities, innovative projects, 
-            or creative collaborations. Let's build something amazing together!
+            I&apos;m always open to discussing new research opportunities, innovative projects, 
+            or creative collaborations. Let&apos;s build something amazing together!
           </p>
           <a
             href="/contact"

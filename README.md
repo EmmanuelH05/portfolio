@@ -2,14 +2,14 @@
 
 A modern, creative portfolio website showcasing my experiences, research projects, and technical skills.
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 - **Framework**: Next.js 14+ (App Router)
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Language**: TypeScript
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 portfolio/
@@ -24,7 +24,7 @@ portfolio/
 └── ...
 ```
 
-## 🛠️ Getting Started
+##  Getting Started
 
 ### Prerequisites
 

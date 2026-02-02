@@ -54,18 +54,18 @@ All personal information is stored in `src/lib/data.ts`. Update this file to cus
 - Technical skills
 - Volunteering experience
 
-## 🎨 Design Features
+##  Design Features
 
 - **Creative Design**: Unique color scheme and typography
 - **Smooth Animations**: Framer Motion for page transitions and scroll animations
 - **Responsive**: Mobile-first design that works on all devices
 - **Performance**: Optimized with Next.js Image component and static generation
 
-## 📄 License
+##  License
 
 This project is open source and available for personal use.
 
-## 👤 Author
+##  Author
 
 **Emmanuel Hernandez**
 - Email: 05mannyhernandez@gmail.com

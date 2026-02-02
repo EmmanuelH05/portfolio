@@ -1,5 +1,6 @@
 'use client';
 
+// Portfolio home page
 import Hero from '@/components/Hero';
 import ProjectCard from '@/components/ProjectCard';
 import SkillsGrid from '@/components/SkillsGrid';

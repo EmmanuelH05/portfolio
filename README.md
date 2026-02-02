@@ -44,9 +44,8 @@ npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## 📝 Customization
+## Customization
 
-All personal information is stored in `src/lib/data.ts`. Update this file to customize:
 - Personal information (name, contact details)
 - Education history
 - Work experience

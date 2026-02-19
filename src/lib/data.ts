@@ -190,15 +190,15 @@ export const volunteering: Volunteering[] = [
 export const technicalSkills: TechnicalSkill[] = [
   {
     category: "Languages",
-    skills: ["C/C++", "Python", "Java"],
+    skills: ["C/C++", "Python", "Java", "TypeScript"],
   },
   {
     category: "Mobile/Web",
-    skills: ["React Native", "Node.js"],
+    skills: ["React", "Next.js", "React Native (Expo)", "Node.js", "Express.js", "TailwindCSS"],
   },
   {
     category: "Cloud/Storage",
-    skills: ["AWS S3", "Firebase"],
+    skills: ["AWS S3", "Firebase", "MongoDB Atlas", "Supabase", "Google Places API"],
   },
 ];
 

@@ -46,6 +46,14 @@ export interface TechnicalSkill {
   skills: string[];
 }
 
+export interface CurrentWorkItem {
+  title: string;
+  type: string;
+  description: string;
+  techStack: string[];
+  building: string[];
+}
+
 export const personalInfo: PersonalInfo = {
   name: "Emmanuel Hernandez",
   phone: "(949)-910-8604",
@@ -191,5 +199,48 @@ export const technicalSkills: TechnicalSkill[] = [
   {
     category: "Cloud/Storage",
     skills: ["AWS S3", "Firebase"],
+  },
+];
+
+export const currentWork: CurrentWorkItem[] = [
+  {
+    title: "DIDUC",
+    type: "Full-Stack Event Platform",
+    description:
+      "Building a scalable full-stack event management platform that allows users to create, discover, and manage events. Focused on clean architecture, role-based access control, and mobile-first performance.",
+    techStack: [
+      "MongoDB Atlas",
+      "Express.js",
+      "React Native (Expo)",
+      "TypeScript",
+      "Firebase (Auth + Firestore)",
+    ],
+    building: [
+      "Event creation & editing workflows",
+      "Role-based admin/user permissions",
+      "REST API structure",
+      "MongoDB schema optimization",
+      "Secure environment configuration",
+    ],
+  },
+  {
+    title: "SwipeBite",
+    type: "Personalized Restaurant Discovery App",
+    description:
+      "Developing a swipe-based food discovery app that personalizes restaurant recommendations based on user behavior. Focused on intelligent ranking algorithms, clean UX, and scalable backend integration.",
+    techStack: [
+      "React / Next.js",
+      "Supabase (Auth + Database)",
+      "Google Places API",
+      "TypeScript",
+      "TailwindCSS",
+    ],
+    building: [
+      "Personalization scoring algorithm",
+      "Dynamic restaurant ranking",
+      "Smart filtering (cuisine, price, distance)",
+      '"Why This Restaurant?" recommendation logic',
+      "Futuristic minimal UI system",
+    ],
   },
 ];

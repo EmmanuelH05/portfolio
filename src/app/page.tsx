@@ -3,8 +3,9 @@
 // Portfolio home page
 import Hero from '@/components/Hero';
 import ProjectCard from '@/components/ProjectCard';
+import CurrentWorkCard from '@/components/CurrentWorkCard';
 import SkillsGrid from '@/components/SkillsGrid';
-import { researchProjects } from '@/lib/data';
+import { researchProjects, currentWork } from '@/lib/data';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -46,6 +47,35 @@ export default function Home() {
             >
               View All Projects
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Currently Working On */}
+      <section className="py-20 bg-gray-50" aria-labelledby="current-work-heading">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2
+              id="current-work-heading"
+              className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4"
+            >
+              Currently Working On
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Active projects in development—focused on scalability, clean architecture, and user experience
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {currentWork.map((item, index) => (
+              <CurrentWorkCard key={item.title} item={item} index={index} />
+            ))}
           </div>
         </div>
       </section>

@@ -18,7 +18,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: `${personalInfo.name} - Portfolio`,
-  description: 'Full-Stack Developer & Research Enthusiast | Computer Science and Linguistics at UCLA',
+  description:
+    'B.A. Computer Science & Linguistics at UCLA | Full-stack and mobile developer (React Native, Next.js, Node, Firebase).',
   keywords: ['Emmanuel Hernandez', 'Full-Stack Developer', 'UCLA', 'Computer Science', 'Portfolio'],
 };
 

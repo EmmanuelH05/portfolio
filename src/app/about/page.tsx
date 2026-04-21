@@ -1,6 +1,6 @@
 'use client';
 
-import { education } from '@/lib/data';
+import { education, additionalResumeInfo } from '@/lib/data';
 import { motion } from 'framer-motion';
 
 export default function About() {
@@ -18,9 +18,10 @@ export default function About() {
             About Me
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            I&apos;m a passionate full-stack developer and research enthusiast currently pursuing a 
-            B.A. in Computer Science and Linguistics at UCLA. I love exploring the intersection 
-            of technology, graphics, and healthcare through innovative projects.
+            I&apos;m pursuing a B.A. in Computer Science & Linguistics at UCLA (expected June 2027, GPA
+            3.6). I build full-stack and mobile products—currently as a full stack mobile developer at We
+            Explore Earth and as co-founder of Rise the Fenua—while contributing to LA Blueprint and shipping
+            projects like SwipeBite.
           </p>
         </motion.div>
       </section>
@@ -61,10 +62,26 @@ export default function About() {
                 </div>
                 <div className="mt-4 md:mt-0 text-right">
                   <span className="text-sm font-medium text-gray-600 bg-gray-100 px-4 py-2 rounded-full">
-                    {edu.startDate} - {edu.endDate}
+                    {edu.startDate && edu.endDate
+                      ? `${edu.startDate} – ${edu.endDate}`
+                      : edu.endDate || edu.startDate}
                   </span>
                 </div>
               </div>
+              {edu.gpa && (
+                <p className="text-gray-700 mt-2">
+                  <span className="font-semibold text-gray-900">GPA: </span>
+                  {edu.gpa}
+                </p>
+              )}
+              {edu.relevantCoursework && (
+                <div className="mt-4 pt-4 border-t border-gray-100">
+                  <p className="text-sm font-semibold text-gray-900 mb-2">Relevant Coursework</p>
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                    {edu.relevantCoursework}
+                  </p>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -85,22 +102,18 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
               <p>
-                My passion for technology began during my time at Irvine Valley College, where I 
-                earned my Associates in Computer Science. This foundation sparked my interest in 
-                exploring how computer science intersects with other fields, leading me to pursue 
-                a unique interdisciplinary major in Computer Science and Linguistics at UCLA.
+                At UCLA I combine CS foundations—data structures, systems, databases, and math—with linguistics,
+                which shapes how I think about APIs, UX copy, and product clarity.
               </p>
               <p>
-                Through my research projects, I&apos;ve had the opportunity to work on diverse problems—from 
-                photorealistic graphics rendering using physics-based simulations to healthcare applications 
-                in anesthesiology. Each project has taught me the importance of combining theoretical 
-                knowledge with practical implementation.
+                Professionally I&apos;ve shipped mobile and web features for We Explore Earth, built nonprofit
+                tooling and dashboards as co-founder of Rise the Fenua, and shipped backend work at BID and
+                Vectorly. I&apos;m also a developer with LA Blueprint, building civic tech for nonprofits across
+                Los Angeles.
               </p>
               <p>
-                Currently, I&apos;m working as a Full-Stack Developer at LA Blueprint, where I collaborate 
-                with a talented team to build platforms that make a real impact. I&apos;m also deeply committed 
-                to giving back to communities through my volunteer work with School on Wheels and Rise the Fenua, 
-                helping students access educational resources and opportunities.
+                Outside of class and code I tutor with School on Wheels, perform on double bass, and make music—
+                the same discipline and practice mindset I bring to engineering.
               </p>
             </div>
           </motion.div>
@@ -117,17 +130,10 @@ export default function About() {
           className="text-center"
         >
           <h2 className="text-4xl font-display font-bold text-gray-900 mb-8">
-            Interests
+            Interests and Activities
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
-            {[
-              'Computer Graphics',
-              'Machine Learning',
-              'Healthcare Technology',
-              'Natural Language Processing',
-              'Software Engineering',
-              'Research & Development',
-            ].map((interest, index) => (
+            {additionalResumeInfo.interestsAndActivities.map((interest, index) => (
               <motion.span
                 key={interest}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -140,6 +146,10 @@ export default function About() {
               </motion.span>
             ))}
           </div>
+          <p className="mt-8 text-gray-600 text-lg max-w-2xl mx-auto">
+            <span className="font-semibold text-gray-900">Fun fact: </span>
+            {additionalResumeInfo.funFact}
+          </p>
         </motion.div>
       </section>
     </div>

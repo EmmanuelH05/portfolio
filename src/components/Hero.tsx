@@ -37,7 +37,7 @@ export default function Hero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-xl md:text-2xl text-gray-600 font-light"
             >
-              Full-Stack Developer & Research Enthusiast
+              B.A. Computer Science & Linguistics · UCLA
             </motion.p>
             
             <motion.p
@@ -46,8 +46,8 @@ export default function Hero() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-lg text-gray-500 max-w-2xl"
             >
-              Currently studying Computer Science and Linguistics at UCLA, building innovative solutions 
-              and exploring the intersection of technology, graphics, and healthcare.
+              Full-stack and mobile engineering—React Native, Next.js, Node, Firebase, and PostgreSQL—with
+              nonprofit and startup experience across LA.
             </motion.p>
 
             <motion.div

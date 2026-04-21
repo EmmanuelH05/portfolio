@@ -16,11 +16,11 @@ export default function Projects() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
-            Research Projects
+            Projects
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Exploring innovative solutions at the intersection of computer science, graphics, 
-            and healthcare through hands-on research and development
+            Selected projects from my resume—full-stack product work and a physics-based remeshing engine in
+            C++.
           </p>
         </motion.div>
 
@@ -43,8 +43,8 @@ export default function Projects() {
             Interested in Collaborating?
           </h2>
           <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-            I&apos;m always open to discussing new research opportunities, innovative projects, 
-            or creative collaborations. Let&apos;s build something amazing together!
+            I&apos;m always open to discussing internships, full-stack roles, or collaborations. Let&apos;s
+            build something great together.
           </p>
           <a
             href="/contact"

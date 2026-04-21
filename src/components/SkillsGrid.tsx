@@ -10,7 +10,7 @@ export default function SkillsGrid() {
         Technical Skills
       </h2>
       
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
         {technicalSkills.map((category, categoryIndex) => (
           <motion.div
             key={category.category}

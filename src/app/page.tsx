@@ -30,7 +30,8 @@ export default function Home() {
               Featured Projects
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Exploring the intersection of technology, graphics, and healthcare through innovative research
+              Full-stack and mobile projects aligned with my resume—restaurant discovery, physics-based
+              simulation, and production engineering work.
             </p>
           </motion.div>
 
@@ -99,9 +100,9 @@ export default function Home() {
               className="text-center"
             >
               <div className="text-5xl font-display font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent mb-2">
-                3+
+                2
               </div>
-              <p className="text-gray-600 text-lg">Research Projects</p>
+              <p className="text-gray-600 text-lg">Featured Projects</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -111,9 +112,9 @@ export default function Home() {
               className="text-center"
             >
               <div className="text-5xl font-display font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent mb-2">
-                2+
+                4+
               </div>
-              <p className="text-gray-600 text-lg">Years Experience</p>
+              <p className="text-gray-600 text-lg">Roles & Internships</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -123,7 +124,7 @@ export default function Home() {
               className="text-center"
             >
               <div className="text-5xl font-display font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent mb-2">
-                5+
+                20+
               </div>
               <p className="text-gray-600 text-lg">Technologies</p>
             </motion.div>

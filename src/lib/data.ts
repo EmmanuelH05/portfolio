@@ -4,6 +4,8 @@ export interface Education {
   location: string;
   startDate: string;
   endDate: string;
+  gpa?: string;
+  relevantCoursework?: string;
 }
 
 export interface WorkExperience {
@@ -22,15 +24,6 @@ export interface ResearchProject {
   endDate: string;
   description: string[];
   highlights?: string[];
-}
-
-export interface Volunteering {
-  role: string;
-  organization: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-  responsibilities: string[];
 }
 
 export interface PersonalInfo {
@@ -54,135 +47,131 @@ export interface CurrentWorkItem {
   building: string[];
 }
 
+export interface AdditionalResumeInfo {
+  awards: string[];
+  interestsAndActivities: string[];
+  funFact: string;
+}
+
 export const personalInfo: PersonalInfo = {
   name: "Emmanuel Hernandez",
-  phone: "(949)-910-8604",
-  email: "05mannyhernandez@gmail.com",
-  linkedin: "linkedin.com/in/05manny",
+  phone: "949-910-8604",
+  email: "eahernandez1@ucla.edu",
+  linkedin: "linkedin.com/in/05manny/",
   github: "github.com/EmmanuelH05",
 };
 
 export const education: Education[] = [
   {
-    institution: "University of California, Los Angeles (UCLA)",
-    degree: "B.A. in Computer Science and Linguistics",
+    institution: "University of California, Los Angeles",
+    degree: "B.A. Computer Science & Linguistics",
     location: "Los Angeles, CA",
-    startDate: "Aug. 2025",
-    endDate: "June 2027",
-  },
-  {
-    institution: "Irvine Valley College",
-    degree: "Associates in Computer Science",
-    location: "Irvine, California",
-    startDate: "Aug. 2023",
-    endDate: "June 2025",
+    startDate: "",
+    endDate: "Expected Graduation: June 2027",
+    gpa: "3.6/4.0",
+    relevantCoursework:
+      "Data Structures & Algorithms, Software Construction & Tools, Operating Systems, Computer Organization, Database Systems, Linear Algebra, Probability & Statistics, Discrete Mathematics, Multi-Variable Calculus",
   },
 ];
 
 export const workExperience: WorkExperience[] = [
   {
-    title: "Full-Stack Developer (Member)",
-    company: "LA Blueprint",
+    title: "Full Stack Mobile Developer",
+    company: "We Explore Earth",
     location: "Los Angeles, CA",
-    startDate: "Sept. 2025",
+    startDate: "December 2025",
     endDate: "Present",
     responsibilities: [
-      "Collaborating with a full-stack engineering team to develop mobile and web features using React Native and Node.js.",
-      "Working with AWS S3 and Firebase for secure storage, authentication, and scalable backend operations.",
-      "Practicing iterative deployment, code reviews, and team-based development workflows.",
-      "Contributing to an Instagram-style feed + storefront platform designed for event-goers and community representatives.",
-      "Engineering a platform that helps We Explore Earth (WEE) manage a large and diverse user base by improving event communication, community engagement, and operational transparency.",
-      "Building tech solutions to address WEE's lack of a centralized system for event management, strengthening communication pipelines between users and nonprofit organizers.",
+      "Built 20+ modular React Native components (e.g., event cards, forms, navigation flows) that standardized props and improved UI.",
+      "Designed and implemented 10+ RESTful APIs for authentication, event creation, and RSVP workflows, reducing redundant queries by 30%.",
+      "Collaborated with 5 designers using Figma hi-fis and coordinated development through GitHub as part of an agile 12-member team.",
+      "Integrated CRUD functionality with FireBase to support real-time event management and volunteer tracking for 20,000+ users.",
     ],
   },
   {
-    title: "Community Service Leader",
-    company: "City of Irvine",
-    location: "Irvine, CA",
-    startDate: "Nov. 2023",
+    title: "Co-Founder",
+    company: "Rise the Fenua",
+    location: "Los Angeles, CA",
+    startDate: "Feb 2024",
     endDate: "Present",
     responsibilities: [
-      "Prepared reports, data summaries, and public-facing materials for internal City operations.",
-      "Supported facility operations, documentation processing, and activity planning.",
-      "Worked closely with staff to maintain safe and organized public environments.",
-      "Enforced City policies and assisted community members as needed.",
+      "Built an admin dashboard (Next.js 16, TypeScript, Supabase) with auth-protected routes, collab CRUD, and a production tracker.",
+      "Wrote 6+ SQL migrations across 4 core tables to manage schema evolution and maintain data integrity.",
+      "Designed and automated inventory and donation tracking systems using Google Apps Script, reducing manual processing time by 40% for international shipment operations.",
+      "Coordinated fundraising campaigns generating $17,000 in donations and distributing 50+ educational supply units.",
+    ],
+  },
+  {
+    title: "Software Engineer Intern",
+    company: "BID",
+    location: "Los Angeles, CA",
+    startDate: "May 2025",
+    endDate: "Aug 2025",
+    responsibilities: [
+      "Assisted in developing backend services for authentication and session handling, supporting a platform used by 500+ active users.",
+      "Maintained and debugged 5+ RESTful APIs, improving reliability and reducing response errors across backend–frontend communication.",
+      "Supported product updates during a platform pivot, helping improve system usability and feature stability across multiple core modules.",
+    ],
+  },
+  {
+    title: "Intern",
+    company: "Vectorly",
+    location: "Los Angeles, CA",
+    startDate: "May 2024",
+    endDate: "Aug 2024",
+    responsibilities: [
+      "Assisted in implementing AI-driven features by testing outputs and refining prompts, contributing to the generation of 100+ structured interview questions.",
+      "Analyzed AI-generated outputs to identify inconsistencies and improve accuracy, helping increase response quality and reliability across workflows.",
+    ],
+  },
+];
+
+export const clubExperience: WorkExperience[] = [
+  {
+    title: "Developer",
+    company: "LA Blueprint",
+    location: "Los Angeles, CA",
+    startDate: "Sep 2025",
+    endDate: "Present",
+    responsibilities: [
+      "Selected through a 4% acceptance rate for a student-led organization that develops full-stack products for nonprofits across LA.",
+      "Built and maintained React, Express, Node.js, and Firebase features through GitHub PRs, sprint planning, and design reviews.",
+      "Presented technical deliverables and architecture proposals to peers improving collaboration and software adoption.",
+      "Contributed to open-source civic-tech products that empower Los Angeles nonprofits to modernize community operations.",
     ],
   },
 ];
 
 export const researchProjects: ResearchProject[] = [
   {
-    title: "Physics to Graphics: Particle Scattering and Absorptions",
-    technologies: ["C++", "Vulkan API"],
-    startDate: "Feb. 2024",
-    endDate: "Apr. 2024",
-    description: [
-      "Applied physics and linear algebra to generate photorealistic images through particle-based rendering.",
-      "Developed Vulkan API + C++ simulations modeling scattering, absorption, and random sampling.",
-      "Performed millions of Monte-Carlo trials to optimize rendering accuracy and performance.",
+    title: "SwipeBite",
+    technologies: [
+      "Next.js",
+      "Node.js",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "JWT",
+      "Google Places API",
     ],
-    highlights: [
-      "Monte-Carlo simulations",
-      "Photorealistic rendering",
-      "Vulkan API implementation",
-    ],
-  },
-  {
-    title: "AI in Anesthesiology: Dosage Modeling & Risk Prediction",
-    technologies: ["Python"],
-    startDate: "Sept. 2024",
-    endDate: "Feb. 2025",
-    description: [
-      "Explored dosage prediction models using patient features: weight, height, age, medical history.",
-      "Built Python scripts to compute BMI, adjusted dosages, and visualize patient-level data.",
-      "Designed early-stage structure for predictive modeling workflows.",
-    ],
-    highlights: [
-      "Predictive modeling",
-      "Healthcare applications",
-      "Data visualization",
-    ],
-  },
-  {
-    title: "Triangle Remeshing Simulation with Live Quality Metrics",
-    technologies: ["C++", "SFML"],
-    startDate: "Mar. 2025",
-    endDate: "May. 2025",
-    description: [
-      "Developed a dynamic mesh simulation enforcing boundary constraints and equilateral convergence.",
-      "Implemented color-coded triangle quality and animated mesh deformation.",
-      "Selected to present simulation research at UC Berkeley.",
-    ],
-    highlights: [
-      "Real-time mesh simulation",
-      "Mathematical optimization",
-      "Selected for UC Berkeley presentation",
-    ],
-  },
-];
-
-export const volunteering: Volunteering[] = [
-  {
-    role: "Tutor",
-    organization: "School on Wheels",
-    location: "Los Angeles, CA",
-    startDate: "Sept. 2023",
+    startDate: "Feb 2026",
     endDate: "Present",
-    responsibilities: [
-      "Tutored students experiencing homelessness in math, reading, and study skills.",
-      "Coached ESL learners on comprehension and writing fundamentals.",
-      "Provided feedback on academic growth and strategies for improvement.",
+    description: [
+      "Built a full-stack restaurant discovery app with Next.js, Node/Express, Prisma/PostgreSQL, JWT auth, and Google Places API for real-time location-based feeds.",
+      "Implemented a rule-based personalization engine with weighted signals and real-time preference updates per swipe.",
+      "Designed a swipe-based feed UI with touch/drag gesture handling, ~80px commit thresholds, and gesture locking to separate card swipes from photo scrolling across 15+ React components (card stack, matches list, visit/review modal).",
     ],
   },
   {
-    role: "Coordinator",
-    organization: "Rise the Fenua",
-    location: "Tahiti / Remote",
-    startDate: "Jan. 2024",
-    endDate: "Present",
-    responsibilities: [
-      "Supported a backpack and school-supply donation initiative for students in Tahiti.",
-      "Created a Google Sheets/Drive system to track donations, expenses, and inventory, ensuring organization and accountability.",
+    title: "Physics-Based Remeshing Engine",
+    technologies: ["C++"],
+    startDate: "Jan 2024",
+    endDate: "April 2024",
+    description: [
+      "Built a C++ physics-based remeshing engine modeling 100+ interior points as spring-mass systems, solving ODEs via Euler's method.",
+      "Implemented electrostatic boundary constraints across 4+ geometries maintaining 95%+ point containment.",
+      "Built a visualization pipeline processing 10+ mesh snapshots per run to demonstrate convergence across dynamic shape simulations.",
+      "Selected to present results at Bay Honors Symposium at UC Berkeley (10% acceptance rate).",
     ],
   },
 ];
@@ -190,57 +179,89 @@ export const volunteering: Volunteering[] = [
 export const technicalSkills: TechnicalSkill[] = [
   {
     category: "Languages",
-    skills: ["C/C++", "Python", "Java", "TypeScript"],
+    skills: ["C/C++", "Python", "Java", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    category: "Mobile/Web",
-    skills: ["React", "Next.js", "React Native (Expo)", "Node.js", "Express.js", "TailwindCSS"],
+    category: "Frontend",
+    skills: ["React Native", "React", "Next.js", "HTML/CSS", "Expo"],
   },
   {
-    category: "Cloud/Storage",
-    skills: ["AWS S3", "Firebase", "MongoDB Atlas", "Supabase", "Google Places API"],
+    category: "Backend",
+    skills: [
+      "Node.js",
+      "Express",
+      "Firebase",
+      "Firestore",
+      "PostgreSQL",
+      "Prisma",
+      "REST APIs",
+      "Supabase",
+    ],
+  },
+  {
+    category: "Tools",
+    skills: [
+      "Git",
+      "Linux/Unix",
+      "AWS (S3)",
+      "CI/CD",
+      "Google Apps Script",
+      "Postman",
+    ],
   },
 ];
 
 export const currentWork: CurrentWorkItem[] = [
   {
-    title: "DIDUC",
-    type: "Full-Stack Event Platform",
+    title: "We Explore Earth",
+    type: "Full Stack Mobile Developer",
     description:
-      "Building a scalable full-stack event management platform that allows users to create, discover, and manage events. Focused on clean architecture, role-based access control, and mobile-first performance.",
+      "Building modular React Native UI, REST APIs, and Firebase-backed event and volunteer workflows for a large community platform.",
     techStack: [
-      "MongoDB Atlas",
-      "Express.js",
-      "React Native (Expo)",
+      "React Native",
       "TypeScript",
-      "Firebase (Auth + Firestore)",
+      "REST APIs",
+      "Firebase",
+      "Firestore",
+      "Figma",
+      "GitHub",
     ],
     building: [
-      "Event creation & editing workflows",
-      "Role-based admin/user permissions",
-      "REST API structure",
-      "MongoDB schema optimization",
-      "Secure environment configuration",
+      "20+ modular React Native components (event cards, forms, navigation flows) with standardized props.",
+      "10+ RESTful APIs for authentication, event creation, and RSVP workflows.",
+      "Real-time event management and volunteer tracking for 20,000+ users.",
     ],
   },
   {
     title: "SwipeBite",
-    type: "Personalized Restaurant Discovery App",
+    type: "Full-Stack Restaurant Discovery",
     description:
-      "Developing a swipe-based food discovery app that personalizes restaurant recommendations based on user behavior. Focused on intelligent ranking algorithms, clean UX, and scalable backend integration.",
+      "Swipe-based restaurant discovery with personalization, JWT auth, and Google Places–powered location feeds.",
     techStack: [
-      "React / Next.js",
-      "Supabase (Auth + Database)",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "JWT",
       "Google Places API",
-      "TypeScript",
-      "TailwindCSS",
     ],
     building: [
-      "Personalization scoring algorithm",
-      "Dynamic restaurant ranking",
-      "Smart filtering (cuisine, price, distance)",
-      '"Why This Restaurant?" recommendation logic',
-      "Futuristic minimal UI system",
+      "Rule-based personalization engine with weighted signals and real-time preference updates per swipe.",
+      "Swipe feed UI with touch/drag gestures, ~80px commit thresholds, and gesture locking across 15+ React components.",
     ],
   },
 ];
+
+export const additionalResumeInfo: AdditionalResumeInfo = {
+  awards: [
+    "Dean's List",
+    "Southern California Research Symposium",
+    "Bay Area Honor's Undergraduate Research Conference",
+  ],
+  interestsAndActivities: [
+    "Double Bass (Music Theory & Performance)",
+    "School on Wheels Tutor",
+  ],
+  funFact: "I love to make music in my free time!",
+};

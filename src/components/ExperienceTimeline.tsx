@@ -1,15 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { WorkExperience, Volunteering } from '@/lib/data';
+import { WorkExperience } from '@/lib/data';
 
 interface ExperienceTimelineProps {
-  experiences: (WorkExperience | Volunteering)[];
+  experiences: WorkExperience[];
   title: string;
-}
-
-function isWorkExperience(exp: WorkExperience | Volunteering): exp is WorkExperience {
-  return 'title' in exp;
 }
 
 export default function ExperienceTimeline({ experiences, title }: ExperienceTimelineProps) {
@@ -39,17 +35,15 @@ export default function ExperienceTimeline({ experiences, title }: ExperienceTim
               <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 border border-gray-100">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {isWorkExperience(exp) ? exp.title : exp.role}
-                    </h3>
-                    <p className="text-lg text-primary-600 font-medium mt-1">
-                      {isWorkExperience(exp) ? exp.company : exp.organization}
-                    </p>
+                    <h3 className="text-xl font-bold text-gray-900">{exp.title}</h3>
+                    <p className="text-lg text-primary-600 font-medium mt-1">{exp.company}</p>
                     <p className="text-sm text-gray-500 mt-1">{exp.location}</p>
                   </div>
 
                   <span className="text-sm font-medium text-gray-600 mt-2 md:mt-0">
-                    {exp.startDate} - {exp.endDate}
+                    {exp.startDate && exp.endDate
+                      ? `${exp.startDate} – ${exp.endDate}`
+                      : exp.endDate || exp.startDate}
                   </span>
                 </div>
 

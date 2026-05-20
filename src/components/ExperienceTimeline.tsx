@@ -42,7 +42,7 @@ export default function ExperienceTimeline({ experiences, title }: ExperienceTim
 
                   <span className="text-sm font-medium text-gray-600 mt-2 md:mt-0">
                     {exp.startDate && exp.endDate
-                      ? `${exp.startDate} – ${exp.endDate}`
+                      ? `${exp.startDate} - ${exp.endDate}`
                       : exp.endDate || exp.startDate}
                   </span>
                 </div>

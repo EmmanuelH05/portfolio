@@ -19,8 +19,8 @@ export default function Projects() {
             Projects
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Selected projects from my resume—full-stack product work and a physics-based remeshing engine in
-            C++.
+            Same projects you&apos;d see on my resume: full-stack apps I&apos;ve led or co-built, plus a C++
+            remeshing experiment from an honors research course.
           </p>
         </motion.div>
 

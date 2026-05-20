@@ -10,7 +10,8 @@ export default function Experience() {
             Experience
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Work experience, clubs & organizations, and other resume highlights
+            Internships, founding work, student org engineering, and the awards and interests I usually tuck at
+            the bottom of a PDF.
           </p>
         </div>
 

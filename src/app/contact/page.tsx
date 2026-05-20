@@ -1,6 +1,6 @@
 'use client';
 
-import ContactForm from '@/components/ContactForm';
+import ContactLinks from '@/components/ContactLinks';
 import { motion } from 'framer-motion';
 
 export default function Contact() {
@@ -18,12 +18,11 @@ export default function Contact() {
             Get In Touch
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Have a question or want to work together? I&apos;d love to hear from you!
+            Email, phone, LinkedIn, GitHub, or Instagram. Use whatever you actually check.
           </p>
         </motion.div>
 
-        {/* Contact Form Section */}
-        <ContactForm />
+        <ContactLinks />
       </div>
     </div>
   );

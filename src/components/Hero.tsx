@@ -46,8 +46,8 @@ export default function Hero() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-lg text-gray-500 max-w-2xl"
             >
-              Full-stack and mobile engineering—React Native, Next.js, Node, Firebase, and PostgreSQL—with
-              nonprofit and startup experience across LA.
+              I work across the stack with React Native, Next.js, Node, Firebase, and PostgreSQL, mostly with
+              nonprofits and small teams in LA where the code has to ship and hold up.
             </motion.p>
 
             <motion.div

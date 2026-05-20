@@ -31,6 +31,8 @@ export interface PersonalInfo {
   phone: string;
   email: string;
   linkedin: string;
+  /** Profile path only, e.g. instagram.com/yourhandle */
+  instagram: string;
   github: string;
 }
 
@@ -55,9 +57,10 @@ export interface AdditionalResumeInfo {
 
 export const personalInfo: PersonalInfo = {
   name: "Emmanuel Hernandez",
-  phone: "949-910-8604",
+  phone: "9499108004",
   email: "eahernandez1@ucla.edu",
   linkedin: "linkedin.com/in/05manny/",
+  instagram: "instagram.com/05manny",
   github: "github.com/EmmanuelH05",
 };
 
@@ -67,7 +70,7 @@ export const education: Education[] = [
     degree: "B.A. Computer Science & Linguistics",
     location: "Los Angeles, CA",
     startDate: "",
-    endDate: "Expected Graduation: June 2027",
+    endDate: "Expected Graduation: June 2028",
     gpa: "3.6/4.0",
     relevantCoursework:
       "Data Structures & Algorithms, Software Construction & Tools, Operating Systems, Computer Organization, Database Systems, Linear Algebra, Probability & Statistics, Discrete Mathematics, Multi-Variable Calculus",
@@ -82,10 +85,10 @@ export const workExperience: WorkExperience[] = [
     startDate: "December 2025",
     endDate: "Present",
     responsibilities: [
-      "Built 20+ modular React Native components (e.g., event cards, forms, navigation flows) that standardized props and improved UI.",
-      "Designed and implemented 10+ RESTful APIs for authentication, event creation, and RSVP workflows, reducing redundant queries by 30%.",
-      "Collaborated with 5 designers using Figma hi-fis and coordinated development through GitHub as part of an agile 12-member team.",
-      "Integrated CRUD functionality with FireBase to support real-time event management and volunteer tracking for 20,000+ users.",
+      "Building mobile UI in React Native — event cards, forms, nav — with consistent prop shapes so teammates can reuse components without guessing at the API.",
+      "Added REST endpoints for auth, event creation, and RSVPs; cut some redundant fetches while I was in there so the app stops asking the server for the same data twice.",
+      "Wired Firebase for CRUD across events and volunteers, which is what tens of thousands of community members actually hit day to day.",
+      "Working from Figma specs with designers in a larger agile team across GitHub PRs and sprint cycles.",
     ],
   },
   {
@@ -95,10 +98,10 @@ export const workExperience: WorkExperience[] = [
     startDate: "Feb 2024",
     endDate: "Present",
     responsibilities: [
-      "Built an admin dashboard (Next.js 16, TypeScript, Supabase) with auth-protected routes, collab CRUD, and a production tracker.",
-      "Wrote 6+ SQL migrations across 4 core tables to manage schema evolution and maintain data integrity.",
-      "Designed and automated inventory and donation tracking systems using Google Apps Script, reducing manual processing time by 40% for international shipment operations.",
-      "Coordinated fundraising campaigns generating $17,000 in donations and distributing 50+ educational supply units.",
+      "Built our internal admin dashboard in Next.js + TypeScript on Supabase: auth, inventory CRUD, shipment tracking, and row-level security so each collaborator only sees their own data.",
+      "Kept the database evolving with small migrations as we learned what we actually needed, rather than trying to design everything up front.",
+      "Replaced manual spreadsheet workflows with Google Apps Script automations for inventory tracking and donation logging.",
+      "Helped run fundraising that brought in ~$17k and got educational supplies distributed internationally across active collabs.",
     ],
   },
   {
@@ -108,9 +111,9 @@ export const workExperience: WorkExperience[] = [
     startDate: "May 2025",
     endDate: "Aug 2025",
     responsibilities: [
-      "Assisted in developing backend services for authentication and session handling, supporting a platform used by 500+ active users.",
-      "Maintained and debugged 5+ RESTful APIs, improving reliability and reducing response errors across backend–frontend communication.",
-      "Supported product updates during a platform pivot, helping improve system usability and feature stability across multiple core modules.",
+      "Worked on auth and session logic on the backend while the product was live with active users.",
+      "Debugged and hardened several REST endpoints over the summer — error handling, edge cases, making sure mobile and web clients weren’t stepping on the same resources.",
+      "Stayed through a product pivot and helped keep core features stable while the team reshuffled how deploys worked.",
     ],
   },
   {
@@ -120,8 +123,8 @@ export const workExperience: WorkExperience[] = [
     startDate: "May 2024",
     endDate: "Aug 2024",
     responsibilities: [
-      "Assisted in implementing AI-driven features by testing outputs and refining prompts, contributing to the generation of 100+ structured interview questions.",
-      "Analyzed AI-generated outputs to identify inconsistencies and improve accuracy, helping increase response quality and reliability across workflows.",
+      "Iterated on AI-generated interview questions: run output, evaluate quality, adjust prompt, repeat. Most of that work shipped as structured technical content for the platform.",
+      "When responses came out wrong, figured out whether the issue was the prompt, model behavior, or post-processing — then fixed the actual root cause instead of patching the output.",
     ],
   },
 ];
@@ -134,10 +137,10 @@ export const clubExperience: WorkExperience[] = [
     startDate: "Sep 2025",
     endDate: "Present",
     responsibilities: [
-      "Selected through a 4% acceptance rate for a student-led organization that develops full-stack products for nonprofits across LA.",
-      "Built and maintained React, Express, Node.js, and Firebase features through GitHub PRs, sprint planning, and design reviews.",
-      "Presented technical deliverables and architecture proposals to peers improving collaboration and software adoption.",
-      "Contributed to open-source civic-tech products that empower Los Angeles nonprofits to modernize community operations.",
+      "Got in through a competitive application; the org pairs student dev teams with nonprofits around LA that need real software, not mock projects.",
+      "Day to day it’s React on the front, Node/Express and Firebase on the back, with the usual PRs, sprints, and design check-ins.",
+      "Sometimes I’m the one walking the team through a feature or a schema change so everyone’s aligned before we merge.",
+      "The work is very much “civic tech”: tools that help orgs run programs, not flashy landing pages.",
     ],
   },
 ];
@@ -157,21 +160,42 @@ export const researchProjects: ResearchProject[] = [
     startDate: "Feb 2026",
     endDate: "Present",
     description: [
-      "Built a full-stack restaurant discovery app with Next.js, Node/Express, Prisma/PostgreSQL, JWT auth, and Google Places API for real-time location-based feeds.",
-      "Implemented a rule-based personalization engine with weighted signals and real-time preference updates per swipe.",
-      "Designed a swipe-based feed UI with touch/drag gesture handling, ~80px commit thresholds, and gesture locking to separate card swipes from photo scrolling across 15+ React components (card stack, matches list, visit/review modal).",
+      "Full-stack restaurant discovery app: Next.js frontend, Node/Express + Prisma + Postgres in the middle, JWT for auth, and Google Places for real location data.",
+      "Personalization runs on lightweight rules that update as you swipe — no batch jobs, just preference weights shifting in real time.",
+      "Built the swipe stack from scratch, tuning gesture detection so card swipes and photo scrolls don’t conflict. Smaller React pieces (match view, visit log, review flow) wire into it.",
+    ],
+  },
+  {
+    title: "DIDUC",
+    technologies: [
+      "TypeScript",
+      "React Native",
+      "Express",
+      "MongoDB",
+      "Firebase",
+    ],
+    startDate: "Oct 2025",
+    endDate: "Dec 2025",
+    description: [
+      "Team project: React Native app backed by Express + MongoDB, with some storage moved onto Firebase as deployment needs became clearer.",
+      "Spent most of my time on the backend — routes, data modeling, making sure the API actually matched what the app needed instead of over-fetching.",
+      "Shipped a set of shared RN components so each screen didn’t reinvent the same buttons, cards, and form layouts.",
     ],
   },
   {
     title: "Physics-Based Remeshing Engine",
-    technologies: ["C++"],
+    technologies: ["C++", "VB.NET", "MATLAB"],
     startDate: "Jan 2024",
-    endDate: "April 2024",
+    endDate: "May 2024",
     description: [
-      "Built a C++ physics-based remeshing engine modeling 100+ interior points as spring-mass systems, solving ODEs via Euler's method.",
-      "Implemented electrostatic boundary constraints across 4+ geometries maintaining 95%+ point containment.",
-      "Built a visualization pipeline processing 10+ mesh snapshots per run to demonstrate convergence across dynamic shape simulations.",
-      "Selected to present results at Bay Honors Symposium at UC Berkeley (10% acceptance rate).",
+      "Treat every interior mesh vertex like a mass on springs — spring tension pulls triangles toward equilateral, electrostatic boundary repulsion keeps points inside the region, damping stops it from oscillating forever.",
+      "The differential equations come straight from Newton’s 2nd law and get stepped with Euler’s method. Implemented in C++/VB.NET, with a MATLAB pipeline for frame-by-frame visualization.",
+      "Tested on 4 region geometries (rectangular, triangular, L-shaped, time-evolving). Accepted and presented at the Bay Honors Symposium at UC Berkeley.",
+    ],
+    highlights: [
+      "Real-time mesh convergence across 4 region types",
+      "Presented at Bay Honors Symposium (UC Berkeley)",
+      "Also presented at ROCCT 2018",
     ],
   },
 ];
@@ -216,7 +240,7 @@ export const currentWork: CurrentWorkItem[] = [
     title: "We Explore Earth",
     type: "Full Stack Mobile Developer",
     description:
-      "Building modular React Native UI, REST APIs, and Firebase-backed event and volunteer workflows for a large community platform.",
+      "React Native app for a community platform: events, volunteers, and the usual mobile polish, with Firebase doing a lot of the live data.",
     techStack: [
       "React Native",
       "TypeScript",
@@ -227,16 +251,16 @@ export const currentWork: CurrentWorkItem[] = [
       "GitHub",
     ],
     building: [
-      "20+ modular React Native components (event cards, forms, navigation flows) with standardized props.",
-      "10+ RESTful APIs for authentication, event creation, and RSVP workflows.",
-      "Real-time event management and volunteer tracking for 20,000+ users.",
+      "Shared UI pieces (cards, forms, nav) so the product feels consistent phone to phone.",
+      "REST endpoints for auth, creating events, and RSVPs, with an eye on not over-fetching.",
+      "Flows for organizers and volunteers that a pretty large member base actually uses week to week.",
     ],
   },
   {
     title: "SwipeBite",
     type: "Full-Stack Restaurant Discovery",
     description:
-      "Swipe-based restaurant discovery with personalization, JWT auth, and Google Places–powered location feeds.",
+      "Swipe-first restaurant finder with simple personalization, JWT logins, and location data from Google Places.",
     techStack: [
       "Next.js",
       "Node.js",
@@ -247,8 +271,8 @@ export const currentWork: CurrentWorkItem[] = [
       "Google Places API",
     ],
     building: [
-      "Rule-based personalization engine with weighted signals and real-time preference updates per swipe.",
-      "Swipe feed UI with touch/drag gestures, ~80px commit thresholds, and gesture locking across 15+ React components.",
+      "Lightweight rules for “you liked this, try that” that update as you swipe.",
+      "Gesture-heavy feed UI where swipes and photo scrolls don’t step on each other.",
     ],
   },
 ];
@@ -257,11 +281,8 @@ export const additionalResumeInfo: AdditionalResumeInfo = {
   awards: [
     "Dean's List",
     "Southern California Research Symposium",
-    "Bay Area Honor's Undergraduate Research Conference",
+    "Bay Honors Undergraduate Research Conference (UC Berkeley)",
   ],
-  interestsAndActivities: [
-    "Double Bass (Music Theory & Performance)",
-    "School on Wheels Tutor",
-  ],
+  interestsAndActivities: ["Double Bass", "Tutoring (School on Wheels)"],
   funFact: "I love to make music in my free time!",
 };

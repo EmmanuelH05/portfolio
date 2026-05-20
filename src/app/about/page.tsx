@@ -18,10 +18,10 @@ export default function About() {
             About Me
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            I&apos;m pursuing a B.A. in Computer Science & Linguistics at UCLA (expected June 2027, GPA
-            3.6). I build full-stack and mobile products—currently as a full stack mobile developer at We
-            Explore Earth and as co-founder of Rise the Fenua—while contributing to LA Blueprint and shipping
-            projects like SwipeBite.
+            I&apos;m pursuing a B.A. in Computer Science & Linguistics at UCLA (expected June 2028, GPA
+            3.6). Most days I&apos;m writing full-stack and mobile code: React Native at We Explore Earth,
+            co-founding Rise the Fenua, and building civic tech with LA Blueprint. Side projects like SwipeBite
+            are where I try out ideas without a deadline breathing down my neck.
           </p>
         </motion.div>
       </section>
@@ -63,7 +63,7 @@ export default function About() {
                 <div className="mt-4 md:mt-0 text-right">
                   <span className="text-sm font-medium text-gray-600 bg-gray-100 px-4 py-2 rounded-full">
                     {edu.startDate && edu.endDate
-                      ? `${edu.startDate} – ${edu.endDate}`
+                      ? `${edu.startDate} - ${edu.endDate}`
                       : edu.endDate || edu.startDate}
                   </span>
                 </div>
@@ -102,18 +102,18 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
               <p>
-                At UCLA I combine CS foundations—data structures, systems, databases, and math—with linguistics,
-                which shapes how I think about APIs, UX copy, and product clarity.
+                At UCLA I stack CS fundamentals (data structures, systems, databases, math) next to linguistics,
+                which weirdly helps when I&apos;m naming APIs, tightening UX copy, or arguing for simpler product
+                behavior.
               </p>
               <p>
-                Professionally I&apos;ve shipped mobile and web features for We Explore Earth, built nonprofit
-                tooling and dashboards as co-founder of Rise the Fenua, and shipped backend work at BID and
-                Vectorly. I&apos;m also a developer with LA Blueprint, building civic tech for nonprofits across
-                Los Angeles.
+                Work-wise I&apos;ve shipped mobile and web for We Explore Earth, stood up nonprofit tooling as
+                co-founder of Rise the Fenua, and did backend support at BID and Vectorly. With LA Blueprint I get
+                to build real civic tech for nonprofits around Los Angeles, not toy demos.
               </p>
               <p>
-                Outside of class and code I tutor with School on Wheels, perform on double bass, and make music—
-                the same discipline and practice mindset I bring to engineering.
+                Away from the keyboard I tutor with School on Wheels, play double bass, and make music. That kind
+                of slow, repetitive practice maps pretty cleanly onto how I like to engineer.
               </p>
             </div>
           </motion.div>

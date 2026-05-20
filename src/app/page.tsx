@@ -30,8 +30,8 @@ export default function Home() {
               Featured Projects
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Full-stack and mobile projects aligned with my resume—restaurant discovery, physics-based
-              simulation, and production engineering work.
+              A few things I&apos;ve built end to end: restaurant discovery, a physics remeshing experiment in
+              C++, and the kind of production mobile work that shows up in my experience section.
             </p>
           </motion.div>
 
@@ -69,7 +69,8 @@ export default function Home() {
               Currently Working On
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Active projects in development—focused on scalability, clean architecture, and user experience
+              What I&apos;m actively touching right now: real users, messy edge cases, and UI that still feels
+              good after the tenth pass.
             </p>
           </motion.div>
 

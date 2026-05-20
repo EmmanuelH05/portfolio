@@ -1,7 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { ResearchProject } from '@/lib/data';
+
+const demoLinks: Record<string, string> = {
+  DIDUC: '/projects/diduc',
+};
 
 interface ProjectCardProps {
   project: ResearchProject;
@@ -9,6 +14,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const demoHref = demoLinks[project.title];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -57,6 +64,20 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {demoHref && (
+          <div className="pt-4 border-t border-gray-100">
+            <Link
+              href={demoHref}
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+            >
+              <span>View Demo</span>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         )}
       </div>

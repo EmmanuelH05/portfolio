@@ -9,37 +9,37 @@ const anesthesiologySlides = [
     id: 'abstract',
     label: 'Abstract',
     content:
-      'AI — specifically large language models like ChatGPT — has real potential in anesthesiology. We tested it against an actual anesthesiologist in Kauai, HI across 10 patient scenarios and measured how well its dosage and risk predictions held up.',
+      'We looked at whether ChatGPT could do what an anesthesiologist does: take a patient profile and output a safe dosage recommendation with risk flags. Tested it against a real anesthesiologist in Kauai, HI across 10 patient scenarios.',
   },
   {
     id: 'method',
     label: 'Method',
     content:
-      'Each patient came with weight, height, age, ethnicity, medical history, and surgery type. We prompted ChatGPT to act as an anesthesiologist and output dosage recommendations plus risk flags — then compared those against the specialist\'s actual chart notes.',
+      'Each patient had weight, height, age, ethnicity, medical history, and surgery type. We prompted GPT-4 to act as an anesthesiologist and return dosage recommendations and risk predictions, then compared every output against the specialist\'s actual clinical notes.',
   },
   {
     id: 'results1',
     label: 'Results: Dosage',
     content:
-      'ChatGPT consistently skewed conservative — recommending lower doses of Fentanyl and Propofol than the physicians did. For simpler patients this was fine; for complex cases with comorbidities, AI was more cautious than clinical judgment warranted.',
+      'ChatGPT consistently went lower on doses than the doctors did, especially for Fentanyl and Propofol. For straightforward cases that was fine. For patients with multiple comorbidities, the AI was being too cautious in ways that a real anesthesiologist would not.',
   },
   {
     id: 'results2',
     label: 'Results: Risk',
     content:
-      'Both sources agreed on major risk categories (cardiovascular events, respiratory distress). Where they diverged: AI flagged broader systemic risks while anesthesiologists named specific, condition-level concerns — like "aspiration" for Patient 5 vs. a generic respiratory flag.',
+      'Both agreed on the big categories like cardiovascular and respiratory risks. The difference was specificity. Anesthesiologists named exact conditions like "aspiration risk" for a specific patient. AI gave broader flags that applied to multiple patients at once.',
   },
   {
     id: 'implications',
     label: 'Implications',
     content:
-      'AI isn\'t replacing anesthesiologists. But it works well as a first-defense tool — catching patterns across large patient populations, reducing administrative overhead, and providing a sanity-check for dosage math. The cautious default is a feature in low-stakes monitoring, a risk in complex surgery.',
+      'AI is not replacing anyone here. But it has a real use case as a first-pass tool: flagging risks across large patient sets, handling documentation, and giving a sanity check on dosage math. Its conservative default is actually useful in monitoring contexts, less so in complex surgery.',
   },
   {
     id: 'future',
     label: 'Future Work',
     content:
-      'Next step: prompt specialists from other fields (emergency medicine, cardiology) and compare how differently they assess the same patients. Also explore emergency-scenario performance, where fast and accurate dosage calculation under pressure is exactly where AI could matter most.',
+      'Next we want to test ER doctors and cardiologists on the same patient profiles and see how their predictions compare. Also worth testing in emergency scenarios where fast, accurate dosage output actually matters.',
   },
 ];
 
@@ -54,43 +54,43 @@ const remeshingSlides = [
     id: 'abstract',
     label: 'Abstract',
     content:
-      'A novel methodology for mesh repair using physical forces: electrostatic repulsion keeps interior points inside the boundary, spring forces pull triangles toward equilateral, and damping prevents oscillation. The whole thing is solved as a 2nd-order ODE stepped with Euler\'s method.',
+      'Instead of using geometry to fix distorted meshes, we modeled the mesh as a physics system. Springs pull triangles toward equilateral, electrostatic forces keep points inside the boundary, and damping stops it from bouncing around. The positions are solved by stepping through a 2nd-order ODE with Euler\'s method.',
   },
   {
     id: 'problem',
     label: 'The Problem',
     content:
-      'Triangulation is easy — remeshing is not. Moving one interior point to fix a distorted triangle cascades changes through every connected triangle. Geometric algorithms handle this awkwardly. We asked: what if the mesh could feel forces and settle into a good shape on its own?',
+      'Creating a triangulation of a region is straightforward. Getting a good one is not. When you move one interior point to fix a bad triangle, every neighboring triangle shifts too. Existing geometric algorithms struggle with this. We wanted a physics-based approach that would let the mesh settle naturally.',
   },
   {
     id: 'electrostatic',
     label: 'Boundary Enforcement',
     content:
-      'Virtual "charged" particles placed along the boundary repel interior points, keeping them inside the region. This is modeled after Coulomb\'s electrostatic law — same math as point charges, applied to vertex containment.',
+      'We placed virtual charged particles along the boundary and modeled interior points as charges too. The repulsion between them keeps interior points inside the region. Same math as Coulomb\'s law, just applied to mesh containment instead of actual charges.',
   },
   {
     id: 'modeling',
     label: 'Physics Model',
     content:
-      'Three forces act on each interior point: electrostatic repulsion from boundary charges, spring tension from edges connecting to neighbors (pulling toward equal-length), and a resistance term that damps motion so the system converges instead of oscillating.',
+      'Each interior point has three forces acting on it: electrostatic repulsion from the boundary, spring tension pulling it toward equal edge lengths with its neighbors, and a resistance term so the system actually converges instead of oscillating forever.',
   },
   {
     id: 'implementation',
     label: 'Implementation',
     content:
-      'The differential equations are solved numerically in VB.NET using Euler\'s first-order method, with zero initial-velocity conditions. MATLAB handles post-processing: we dump mesh snapshots per time step and visualize how the triangulation evolves toward equilibrium.',
+      'Differential equations solved numerically in VB.NET with Euler\'s first-order method and zero initial velocity. MATLAB handles the visualization side: we output mesh snapshots at each time step to show how the triangulation converges.',
   },
   {
     id: 'results',
     label: 'Results',
     content:
-      'Tested on rectangular regions (2 interior pts), triangular regions (3 pts), and L-shaped regions (6 pts). Interior points reliably converge toward equilateral configurations. The engine also handles time-evolving shapes — remeshing updates as the boundary changes.',
+      'Ran tests on rectangular, triangular, and L-shaped regions with 2 to 6 interior points. Interior points consistently converged toward equilateral configurations. The engine also works on time-evolving shapes where the boundary itself changes.',
   },
   {
     id: 'future',
     label: 'Future Work',
     content:
-      'Add localization: finer meshes in small subregions that need more detail. The current approach moves all interior points uniformly — localization would let certain areas resolve at higher resolution, which matters a lot for engineering simulations with stress concentrations.',
+      'The next step is localization: letting subregions resolve at higher resolution when more detail is needed there. Right now all interior points move with the same granularity, which is not ideal for engineering sims with stress concentrations.',
   },
 ];
 
@@ -260,14 +260,14 @@ const papers = [
     venue: 'IVC Honors Research',
     tech: ['Python', 'ChatGPT (GPT-4)', 'Data Visualization'],
     problem:
-      'Anesthesia is one of the highest-stakes moments in any surgery. A wrong dose — too little and a patient wakes up mid-procedure, too much and you risk respiratory failure. Anesthesiologists synthesize age, weight, height, comorbidities, and surgery type in seconds. We wanted to know whether a large language model could do the same, and where it would break.',
+      'Getting anesthesia dosage wrong is catastrophic either way. Too little and a patient can wake up mid-surgery; too much and you risk respiratory failure. Anesthesiologists factor in weight, height, age, comorbidities, surgery type, and medication history all at once. We wanted to see how close a large language model could get, and what it would miss.',
     approach:
-      'We ran 10 real patient profiles through ChatGPT, asking it to act as an anesthesiologist and output dosage recommendations plus risk flags. Then we compared every prediction against the actual clinical judgment of the head anesthesiologist in Kauai, HI.',
+      'We gave GPT-4 10 real patient profiles and told it to act as an anesthesiologist: output a recommended dosage and flag any risks. Then we compared every prediction against what the head anesthesiologist in Kauai, HI actually charted for the same patients.',
     findings: [
-      'AI aligned on major risk categories (cardiovascular, respiratory) but named them more broadly than specialists did',
-      'ChatGPT consistently recommended lower doses — conservative by default, which is both a safety feature and a clinical risk for complex cases',
-      'Anesthesiologists gave more condition-specific risk assessments; AI generalized across patient types',
-      'Strongest case for AI: first-defense monitoring and documentation automation, not replacing surgical judgment',
+      'AI agreed on major risk categories but named them broadly; doctors flagged specific conditions like "aspiration risk" for individual patients',
+      'ChatGPT recommended lower doses across the board, especially for Fentanyl and Propofol',
+      'For complex patients with multiple comorbidities, AI was more cautious than clinical judgment warranted',
+      'Best use case is first-pass monitoring and documentation, not replacing surgical decision-making',
     ],
     slides: anesthesiologySlides,
     sliderAccent: 'purple' as const,
@@ -286,15 +286,14 @@ const papers = [
     venue: 'ROCCT 2018 · Bay Honors Symposium (UC Berkeley)',
     tech: ['C++', 'VB.NET', 'MATLAB'],
     problem:
-      '3D objects in games, simulations, and engineering tools are made of triangles. When shapes change — liquid flowing, a robot transforming, a structural part deforming — those triangles have to update. The catch: moving one vertex to fix a distorted triangle shifts every triangle it touches. Geometric algorithms handle this but don\'t adapt well to physics-driven motion. We asked: what if the mesh could feel forces and find its own equilibrium?',
+      '3D objects in simulations and games are made of triangles. When a shape changes over time, those triangles have to update too. The problem is that moving one interior vertex to fix a bad triangle shifts every triangle connected to it. Standard geometric algorithms handle this badly. We wanted to try a physics-based approach where the mesh finds a good configuration on its own.',
     approach:
-      'We modeled each interior mesh vertex as a mass on springs, with virtual "charged" particles along the boundary repelling interior points inward via Coulomb\'s law. The whole system evolves by solving Newton\'s 2nd law as a 2nd-order ODE, stepped numerically with Euler\'s method. Implemented in VB.NET, visualized in MATLAB.',
+      'We modeled each interior vertex as a point mass connected to its neighbors by springs, with virtual charged particles along the boundary keeping points from escaping. The system evolves by applying Newton\'s 2nd law as a 2nd-order ODE, stepped with Euler\'s method. Code in VB.NET, visualization in MATLAB.',
     findings: [
-      'Interior points converge reliably toward equilateral triangle configurations under spring-damping forces',
-      'Electrostatic boundary repulsion keeps 95%+ of interior points inside test regions throughout the simulation',
-      'Tested on 4 region geometries: rectangles, triangles, L-shapes, and time-evolving shapes',
-      'Remeshing updates in real time as the boundary changes shape, not just at start state',
-      'Presented at ROCCT 2018 and Bay Honors Symposium at UC Berkeley',
+      'Interior points converge toward equilateral configurations under spring and damping forces',
+      'Electrostatic boundary repulsion kept 95%+ of interior points inside the region across all test geometries',
+      'Tested on rectangles, triangles, L-shapes, and time-evolving shapes where the boundary changes mid-simulation',
+      'Presented at ROCCT 2018 and the Bay Honors Symposium at UC Berkeley',
     ],
     slides: remeshingSlides,
     sliderAccent: 'blue' as const,

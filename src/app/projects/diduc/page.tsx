@@ -181,16 +181,74 @@ export default function DIDUCPage() {
               </div>
             </motion.div>
 
-            {/* Phone mockup — hero screen */}
+            {/* Phone mockup — hero video */}
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex justify-center lg:justify-end"
             >
-              <PhoneMockup src={screens[0].src} alt="DIDUC home screen" priority />
+              <PhoneVideo src="/diduc/demo.mp4" />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Full video section */}
+      <section className="py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <span className="text-xs font-mono text-pink-400 tracking-widest uppercase">
+              Demo Walkthrough
+            </span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mt-2">
+              See it in action
+            </h2>
+            <p className="text-white/50 mt-2 text-sm">
+              Recorded live on iPhone 17 Pro simulator — events feed, event detail, create flow, profile.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center"
+          >
+            {/* Wide cinematic phone + video */}
+            <div className="relative">
+              {/* Ambient glow */}
+              <div className="absolute -inset-8 bg-pink-500/10 rounded-full blur-3xl" />
+              <div className="relative w-[320px] md:w-[380px]">
+                <div className="relative rounded-[48px] overflow-hidden border-2 border-white/10 bg-gray-900 shadow-2xl shadow-black/60">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-8 bg-gray-950 rounded-b-2xl z-10" />
+                  <video
+                    src="/diduc/demo.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full block"
+                    style={{ aspectRatio: '390/844' }}
+                  />
+                  {/* Screen sheen */}
+                  <div className="absolute inset-0 rounded-[46px] bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+                </div>
+                {/* Side buttons */}
+                <div className="absolute right-0 top-28 w-1.5 h-12 bg-white/10 rounded-l-full" />
+                <div className="absolute left-0 top-24 w-1.5 h-8 bg-white/10 rounded-r-full" />
+                <div className="absolute left-0 top-36 w-1.5 h-8 bg-white/10 rounded-r-full" />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -386,6 +444,29 @@ export default function DIDUCPage() {
           </Link>
         </div>
       </section>
+    </div>
+  );
+}
+
+function PhoneVideo({ src }: { src: string }) {
+  return (
+    <div className="relative w-[240px] h-[500px]">
+      <div className="absolute inset-4 bg-pink-500/10 rounded-[44px] blur-2xl" />
+      <div className="relative w-full h-full rounded-[44px] bg-gray-900 border-2 border-white/10 shadow-2xl overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-gray-950 rounded-b-2xl z-10" />
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-top"
+        />
+        <div className="absolute inset-0 rounded-[42px] bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+      </div>
+      <div className="absolute right-0 top-24 w-1 h-10 bg-white/10 rounded-l-full" />
+      <div className="absolute left-0 top-20 w-1 h-7 bg-white/10 rounded-r-full" />
+      <div className="absolute left-0 top-30 w-1 h-7 bg-white/10 rounded-r-full" />
     </div>
   );
 }

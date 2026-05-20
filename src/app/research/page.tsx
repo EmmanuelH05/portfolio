@@ -216,7 +216,7 @@ function PdfViewer({ src }: PdfViewerProps) {
           </div>
           <div className="text-left">
             <p className="text-sm font-semibold text-gray-800">Research Poster</p>
-            <p className="text-xs text-gray-500">IVC Honors Program — 2024</p>
+            <p className="text-xs text-gray-500">IVC Honors Program, 2024</p>
           </div>
         </div>
         <svg
@@ -254,7 +254,7 @@ const papers = [
     number: '01',
     title: 'The Implementation of AI in the Field of Anesthesiology',
     authors: 'Emmanuel Hernandez · Hinanui Swider',
-    institution: 'Irvine Valley College — Honors Program',
+    institution: 'Irvine Valley College, Honors Program',
     mentor: 'Mentor: Prof. Kristen Skjonsby',
     year: '2024',
     venue: 'IVC Honors Research',
@@ -280,7 +280,7 @@ const papers = [
     number: '02',
     title: 'Triangle Mesh Renormalization Using Physical Principles',
     authors: 'Emmanuel Hernandez · Colin Minhquan Pham',
-    institution: 'Irvine Valley College — Department of Mathematics',
+    institution: 'Irvine Valley College, Department of Mathematics',
     mentor: 'Mentor: Lan Pham',
     year: '2018 · 2024',
     venue: 'ROCCT 2018 · Bay Honors Symposium (UC Berkeley)',

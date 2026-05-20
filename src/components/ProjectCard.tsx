@@ -6,6 +6,7 @@ import { ResearchProject } from '@/lib/data';
 
 const demoLinks: Record<string, string> = {
   DIDUC: '/projects/diduc',
+  SwipeBite: '/projects/swipebite',
 };
 
 interface ProjectCardProps {

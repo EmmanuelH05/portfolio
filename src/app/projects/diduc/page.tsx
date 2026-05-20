@@ -16,7 +16,7 @@ const screens = [
     id: 'event',
     label: 'Event Detail',
     src: '/diduc/event-detail.png',
-    description: 'Every photo, every member, every moment from the event — all in one screen.',
+    description: 'Every photo, every member, and every moment from the event all in one screen.',
   },
   {
     id: 'create',
@@ -141,7 +141,7 @@ export default function DIDUCPage() {
                   Mobile App
                 </span>
                 <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-white/50 border border-white/10">
-                  UCLA CS 35L — Fall 2025
+                  UCLA CS 35L, Fall 2025
                 </span>
               </div>
 
@@ -181,7 +181,7 @@ export default function DIDUCPage() {
               </div>
             </motion.div>
 
-            {/* Phone mockup — hero video */}
+            {/* Phone mockup - hero video */}
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
@@ -211,7 +211,7 @@ export default function DIDUCPage() {
               See it in action
             </h2>
             <p className="text-white/50 mt-2 text-sm">
-              Recorded live on iPhone 17 Pro simulator — events feed, event detail, create flow, profile.
+              Recorded live on iPhone 17 Pro simulator. Events feed, event detail, create flow, and profile.
             </p>
           </motion.div>
 
@@ -401,7 +401,7 @@ export default function DIDUCPage() {
 
               <div className="space-y-4">
                 {[
-                  'Designed and wired backend API routes — auth, events, photos, user sessions — using Express and MongoDB.',
+                  'Designed and wired backend API routes for auth, events, photos, and user sessions using Express and MongoDB.',
                   'Built the data models and schemas, then kept them in sync with the frontend as requirements changed mid-project.',
                   'Contributed shared React Native components (cards, forms, layout) so screens stayed visually consistent across the team.',
                   'Migrated key storage to Firebase when our deployment needs shifted later in the quarter.',

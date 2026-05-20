@@ -159,7 +159,7 @@ export const researchProjects: ResearchProject[] = [
     endDate: "Present",
     description: [
       "Full-stack restaurant discovery app: Next.js frontend, Node/Express + Prisma + Postgres in the middle, JWT for auth, and Google Places for real location data.",
-      "Personalization runs on lightweight rules that update as you swipe — no batch jobs, just preference weights shifting in real time.",
+      "Personalization runs on lightweight rules that update as you swipe. No batch jobs, just preference weights shifting in real time.",
       "Built the swipe stack from scratch, tuning gesture detection so card swipes and photo scrolls don’t conflict. Smaller React pieces (match view, visit log, review flow) wire into it.",
     ],
   },
@@ -176,7 +176,7 @@ export const researchProjects: ResearchProject[] = [
     endDate: "Dec 2025",
     description: [
       "Team project: React Native app backed by Express + MongoDB, with some storage moved onto Firebase as deployment needs became clearer.",
-      "Spent most of my time on the backend — routes, data modeling, making sure the API actually matched what the app needed instead of over-fetching.",
+      "Spent most of my time on the backend: routes, data modeling, and making sure the API matched what the app needed instead of over-fetching.",
       "Shipped a set of shared RN components so each screen didn’t reinvent the same buttons, cards, and form layouts.",
     ],
   },

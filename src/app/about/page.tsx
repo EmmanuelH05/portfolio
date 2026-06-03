@@ -18,8 +18,8 @@ export default function About() {
             About Me
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            I&apos;m pursuing a B.A. in Computer Science & Linguistics at UCLA (expected June 2028, GPA
-            3.6). Most days I&apos;m writing full-stack and mobile code: React Native at We Explore Earth,
+            I&apos;m pursuing a B.A. in Computer Science & Linguistics at UCLA (expected June 2027, GPA
+            3.5). Most days I&apos;m writing full-stack and mobile code: React Native at We Explore Earth,
             co-founding Rise the Fenua, and building civic tech with LA Blueprint. Side projects like SwipeBite
             are where I try out ideas without a deadline breathing down my neck.
           </p>

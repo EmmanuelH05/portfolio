@@ -46,8 +46,34 @@ export default function Hero() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-lg text-gray-500 max-w-2xl"
             >
-              I work across the stack with React Native, Next.js, Node, Firebase, and PostgreSQL, mostly with
-              nonprofits and small teams in LA where the code has to ship and hold up.
+              Before computer science, I was convinced I was going to go pro in soccer. I played competitively
+              for years and honestly saw it as the only path for myself until I tore my ACL in high school and
+              suddenly had a lot more time sitting in front of a computer than I expected. Out of boredom at
+              first, I started exploring computer science as a degree and ended up loving it, especially the mix
+              of problem solving and working closely with people to take ideas from 0 to 1.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65, duration: 0.6 }}
+              className="text-lg text-gray-500 max-w-2xl"
+            >
+              Now, I study Computer Science and Linguistics at UCLA, where I spend most of my time building
+              products that solve real problems and actually get used. I have worked on everything from real time
+              event platforms to nonprofit systems and civic tech, and what I enjoy most is building things where
+              I can see the impact of what I worked on.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75, duration: 0.6 }}
+              className="text-lg text-gray-500 max-w-2xl"
+            >
+              Outside of coding, I tutor with School on Wheels, play double bass, and make music. I think the
+              patience and repetition that come with music carry over pretty naturally into how I approach
+              engineering.
             </motion.p>
 
             <motion.div

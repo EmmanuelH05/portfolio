@@ -43,8 +43,7 @@ export default function Projects() {
             Interested in Collaborating?
           </h2>
           <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-            I&apos;m always open to discussing internships, full-stack roles, or collaborations. Let&apos;s
-            build something great together.
+            Open to internships, full-stack roles, and collabs. If something fits, reach out.
           </p>
           <a
             href="/contact"

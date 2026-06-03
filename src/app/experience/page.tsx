@@ -9,10 +9,6 @@ export default function Experience() {
           <h1 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
             Experience
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Internships, founding work, student org engineering, and the awards and interests I usually tuck at
-            the bottom of a PDF.
-          </p>
         </div>
 
         <section className="mb-20">

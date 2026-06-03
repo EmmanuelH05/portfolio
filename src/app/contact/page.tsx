@@ -18,7 +18,7 @@ export default function Contact() {
             Get In Touch
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Email, phone, LinkedIn, GitHub, or Instagram. Use whatever you actually check.
+            Email, phone, LinkedIn, or GitHub. Use whatever you actually check.
           </p>
         </motion.div>
 

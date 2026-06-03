@@ -48,7 +48,7 @@ const remeshingSlides = [
     id: 'title',
     label: 'Overview',
     content:
-      'Triangle Mesh Renormalization Using Physical Principles. Presented at ROCCT 2018. Co-authored with Colin Minhquan Pham, mentored by Lan Pham, Dept. of Mathematics, Irvine Valley College.',
+      'Triangle Mesh Renormalization Using Physical Principles. Co-authored with Colin Minhquan Pham, mentored by Lan Pham, Dept. of Mathematics, Irvine Valley College.',
   },
   {
     id: 'abstract',
@@ -216,7 +216,7 @@ function PdfViewer({ src }: PdfViewerProps) {
           </div>
           <div className="text-left">
             <p className="text-sm font-semibold text-gray-800">Research Poster</p>
-            <p className="text-xs text-gray-500">IVC Honors Program, 2024</p>
+            <p className="text-xs text-gray-500">IVC Honors Program, 2025</p>
           </div>
         </div>
         <svg
@@ -256,7 +256,7 @@ const papers = [
     authors: 'Emmanuel Hernandez · Hinanui Swider',
     institution: 'Irvine Valley College, Honors Program',
     mentor: 'Mentor: Prof. Kristen Skjonsby',
-    year: '2024',
+    year: '2025',
     venue: 'IVC Honors Research',
     tech: ['Python', 'ChatGPT (GPT-4)', 'Data Visualization'],
     problem:
@@ -282,8 +282,8 @@ const papers = [
     authors: 'Emmanuel Hernandez · Colin Minhquan Pham',
     institution: 'Irvine Valley College, Department of Mathematics',
     mentor: 'Mentor: Lan Pham',
-    year: '2018 · 2024',
-    venue: 'ROCCT 2018 · Bay Honors Symposium (UC Berkeley)',
+    year: '2025',
+    venue: 'Bay Honors Symposium (UC Berkeley)',
     tech: ['C++', 'VB.NET', 'MATLAB'],
     problem:
       '3D objects in simulations and games are made of triangles. When a shape changes over time, those triangles have to update too. The problem is that moving one interior vertex to fix a bad triangle shifts every triangle connected to it. Standard geometric algorithms handle this badly. We wanted to try a physics-based approach where the mesh finds a good configuration on its own.',
@@ -293,7 +293,7 @@ const papers = [
       'Interior points converge toward equilateral configurations under spring and damping forces',
       'Electrostatic boundary repulsion kept 95%+ of interior points inside the region across all test geometries',
       'Tested on rectangles, triangles, L-shapes, and time-evolving shapes where the boundary changes mid-simulation',
-      'Presented at ROCCT 2018 and the Bay Honors Symposium at UC Berkeley',
+      'Presented at the Bay Honors Symposium at UC Berkeley',
     ],
     slides: remeshingSlides,
     sliderAccent: 'blue' as const,
@@ -356,35 +356,13 @@ export default function ResearchPage() {
               Academic Research
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              Research &{' '}
-              <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-                Publications
-              </span>
+              Research
             </h1>
             <p className="text-lg text-white/60 max-w-2xl leading-relaxed">
-              Two research threads: AI in high-stakes medical decision-making, and
-              physics-based algorithms for 3D graphics. Both published and presented at
-              undergraduate research conferences.
+              Two research projects: AI in high-stakes medical decision-making, and
+              physics-based algorithms for 3D graphics. Both presented at undergraduate
+              research conferences.
             </p>
-          </motion.div>
-
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap gap-8 mt-12"
-          >
-            {[
-              { value: '2', label: 'Published Papers' },
-              { value: '3+', label: 'Conferences' },
-              { value: '2', label: 'Institutions' },
-            ].map((stat) => (
-              <div key={stat.label} className="border-l-2 border-primary-500 pl-4">
-                <div className="text-3xl font-display font-bold text-white">{stat.value}</div>
-                <div className="text-sm text-white/50 mt-0.5">{stat.label}</div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </section>
@@ -537,8 +515,7 @@ export default function ResearchPage() {
               Interested in collaborating?
             </h2>
             <p className="text-white/50 mb-8 max-w-xl mx-auto">
-              I&apos;m actively looking for research opportunities at the intersection of CS,
-              healthcare, and graphics.
+              Looking for research opportunities across CS, healthcare, and graphics.
             </p>
             <Link
               href="/contact"

@@ -2,25 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply bg-white text-gray-900 antialiased;
-    font-family: var(--font-inter), system-ui, sans-serif;
+    @apply bg-ground font-sans text-ink antialiased;
   }
 
-  .font-display {
-    font-family: var(--font-playfair), serif;
+  ::selection {
+    background: #cfe0d4;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  /* The dot pattern peeking out behind the hero photo. */
+  .dot-grid {
+    background-image: radial-gradient(theme('colors.dots') 1.2px, transparent 1.3px);
+    background-size: 12px 12px;
+  }
+
+  .text-link {
+    text-decoration-line: underline;
+    text-decoration-color: theme('colors.accent');
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

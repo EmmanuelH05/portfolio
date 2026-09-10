@@ -1,45 +1,28 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
-import './../styles/globals.css';
-import Navigation from '@/components/Navigation';
+import { Fragment_Mono, Instrument_Sans, Instrument_Serif } from 'next/font/google';
+import '@/styles/globals.css';
+import SiteFooter from '@/components/SiteFooter';
 import { personalInfo } from '@/lib/data';
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
+const sans = Instrument_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', variable: '--font-serif', display: 'swap' });
+const mono = Fragment_Mono({ subsets: ['latin'], weight: '400', variable: '--font-mono', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: `${personalInfo.name} - Portfolio`,
+  title: { default: personalInfo.name, template: `%s · ${personalInfo.name}` },
   description:
     'UCLA CS and Linguistics student building full-stack and mobile products with React Native, Next.js, Node, and Firebase.',
   keywords: ['Emmanuel Hernandez', 'Full-Stack Developer', 'UCLA', 'Computer Science', 'Portfolio'],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className={`${inter.className} ${playfair.variable}`}>
-        <Navigation />
-        <main>{children}</main>
-        <footer className="bg-gray-900 text-white py-8 mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-gray-400">
-              © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
-            </p>
-          </div>
-        </footer>
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+      <body>
+        <div className="mx-auto max-w-[1240px] px-3 pt-3 sm:px-[22px] sm:pt-[22px]">
+          {children}
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );

@@ -1,70 +1,28 @@
-# Emmanuel Hernandez - Portfolio Website
+# Emmanuel Hernandez, portfolio
 
-A modern, creative portfolio website showcasing my experiences, research projects, and technical skills.
+My portfolio: selected work, research, and experience. Built with Next.js 14 (App Router), Tailwind CSS, and Framer Motion.
 
-##  Tech Stack
+## Running it
 
-- **Framework**: Next.js 14+ (App Router)
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Language**: TypeScript
-
-##  Project Structure
-
-```
-portfolio/
-├── public/
-│   └── images/
-│       └── profile-photo.jpg (add your photo here)
-├── src/
-│   ├── app/              # Next.js app router pages
-│   ├── components/       # Reusable React components
-│   ├── lib/              # Data and utilities
-│   └── styles/           # Global styles
-└── ...
-```
-
-##  Getting Started
-
-### Prerequisites
-
-- Node.js 18+ and npm (or yarn)
-
-### Installation
-
-1. Install dependencies:
 ```bash
-npm install
+bun install
+bun run dev      # http://localhost:3000
+bun run build
+bun test         # copy checks and the mesh simulation
 ```
 
-3. Run the development server:
-```bash
-npm run dev
-```
+## Where things live
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+- `src/lib/data.ts`: resume facts, experience, and "The longer version" on the home page
+- `src/lib/projects.ts`: the SwipeBite and DIDUC pages
+- `src/lib/research.ts`: the two research pages
+- `src/lib/mesh.ts`: the spring simulation behind the remeshing drawing
+- `src/components/motion/`: the scroll-linked pieces (photo drift, card swipe, screen fan, mesh relaxation)
+- `public/resume.pdf`: add this file and "Read my resume" starts opening it
 
-## Customization
+Old routes (`/about`, `/contact`, `/projects`, `/experience`, `/research`) redirect to sections of the home page; see `next.config.js`.
 
-- Personal information (name, contact details)
-- Education history
-- Work experience
-- Research projects
-- Technical skills
-- Volunteering experience
-
-##  Design Features
-
-- **Creative Design**: Unique color scheme and typography
-- **Smooth Animations**: Framer Motion for page transitions and scroll animations
-- **Responsive**: Mobile-first design that works on all devices
-- **Performance**: Optimized with Next.js Image component and static generation
-
-##  License
-
-This project is open source and available for personal use.
-
-##  Author
+## Author
 
 **Emmanuel Hernandez**
 - Email: 05mannyhernandez@gmail.com

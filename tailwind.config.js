@@ -7,60 +7,26 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // "Sage". Muted doubles as the meta-text color: anything lighter fails WCAG AA at 12px.
       colors: {
-        primary: {
-          50: '#fff5f9',
-          100: '#ffe8f3',
-          200: '#ffd1e8',
-          300: '#ffaed6',
-          400: '#ff80bc',
-          500: '#ff4da0',
-          600: '#f0308a',
-          700: '#cc2272',
-          800: '#a81d5e',
-          900: '#8a1a4e',
-        },
-        accent: {
-          50: '#fff5f9',
-          100: '#ffe8f3',
-          200: '#ffd1e8',
-          300: '#ffaed6',
-          400: '#ff80bc',
-          500: '#ff4da0',
-          600: '#f0308a',
-          700: '#cc2272',
-          800: '#a81d5e',
-          900: '#8a1a4e',
-        },
+        ground: '#E6EAE1',
+        shell: '#F4F6F0',
+        ink: '#172019',
+        muted: '#56615A',
+        accent: '#2F6B4F',
+        forest: '#1F3A2C',
+        sand: '#EFE5D6',
+        mist: '#DCE6E1',
+        dots: '#B3BCB0',
+        live: '#3F9A5A',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'gradient': 'gradient 15s ease infinite',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        gradient: {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          },
-        },
+      boxShadow: {
+        shot: '0 10px 30px rgba(30, 45, 35, 0.18)',
       },
     },
   },

@@ -1,7 +1,15 @@
+// The old standalone pages are sections of the home page now.
+const sectionRedirects = [
+  ['/about', '/#about'],
+  ['/contact', '/#contact'],
+  ['/projects', '/#work'],
+  ['/experience', '/#experience'],
+  ['/research', '/#research'],
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [],
     formats: ['image/avif', 'image/webp'],
   },
   eslint: {
@@ -9,8 +17,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // Ignore TypeScript errors during build (optional, but helps with deployment)
     ignoreBuildErrors: false,
+  },
+  async redirects() {
+    return sectionRedirects.map(([source, destination]) => ({ source, destination, permanent: false }));
   },
 }
 

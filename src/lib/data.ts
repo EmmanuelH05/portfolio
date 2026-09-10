@@ -1,11 +1,9 @@
 export interface Education {
-  institution: string;
+  school: string;
   degree: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-  gpa?: string;
-  relevantCoursework?: string;
+  graduation: string;
+  summary: string;
+  coursework: string[];
 }
 
 export interface WorkExperience {
@@ -14,21 +12,13 @@ export interface WorkExperience {
   location: string;
   startDate: string;
   endDate: string;
+  /** One plain sentence shown on the home page; the full bullets open underneath. */
+  summary: string;
   responsibilities: string[];
-}
-
-export interface ResearchProject {
-  title: string;
-  technologies: string[];
-  startDate: string;
-  endDate: string;
-  description: string[];
-  highlights?: string[];
 }
 
 export interface PersonalInfo {
   name: string;
-  phone: string;
   email: string;
   linkedin: string;
   /** Profile path only, e.g. instagram.com/yourhandle */
@@ -41,49 +31,44 @@ export interface TechnicalSkill {
   skills: string[];
 }
 
-export interface CurrentWorkItem {
-  title: string;
-  type: string;
-  description: string;
-  techStack: string[];
-  building: string[];
-}
-
-export interface AdditionalResumeInfo {
-  awards: string[];
-  interestsAndActivities: string[];
-  funFact: string;
-}
-
 export const personalInfo: PersonalInfo = {
   name: "Emmanuel Hernandez",
-  phone: "9499108004",
   email: "eahernandez1@ucla.edu",
   linkedin: "linkedin.com/in/05manny/",
   instagram: "instagram.com/05manny",
   github: "github.com/EmmanuelH05",
 };
 
-export const education: Education[] = [
-  {
-    institution: "University of California, Los Angeles",
-    degree: "B.A. Computer Science & Linguistics",
-    location: "Los Angeles, CA",
-    startDate: "",
-    endDate: "Expected Graduation: June 2027",
-    gpa: "3.5/4.0",
-    relevantCoursework:
-      "Data Structures & Algorithms, Software Construction & Tools, Operating Systems, Computer Organization, Database Systems, Linear Algebra, Probability & Statistics, Discrete Mathematics, Multi-Variable Calculus",
-  },
-];
+/** personalInfo stores bare profile paths; this turns one into a link. */
+export const profileUrl = (profilePath: string) => `https://${profilePath}`;
+
+export const education: Education = {
+  school: "UCLA",
+  degree: "B.A. Computer Science & Linguistics",
+  graduation: "June 2027",
+  summary: "GPA 3.5. Dean's List.",
+  coursework: [
+    "Data Structures & Algorithms",
+    "Software Construction & Tools",
+    "Operating Systems",
+    "Computer Organization",
+    "Database Systems",
+    "Linear Algebra",
+    "Probability & Statistics",
+    "Discrete Mathematics",
+    "Multi-Variable Calculus",
+  ],
+};
 
 export const workExperience: WorkExperience[] = [
   {
     title: "Full Stack Mobile Developer",
     company: "We Explore Earth",
     location: "Los Angeles, CA",
-    startDate: "Dec. 2025",
+    startDate: "Dec 2025",
     endDate: "Present",
+    summary:
+      "I work on the React Native app for an event platform with 20,000+ users, mostly the event and RSVP APIs behind it.",
     responsibilities: [
       "Developing features for a real-time event platform used by 20,000+ users for event management, RSVPs, and volunteer coordination.",
       "Designing and implementing 10+ RESTful APIs for event creation and RSVP workflows, reducing redundant queries by 20%.",
@@ -95,8 +80,10 @@ export const workExperience: WorkExperience[] = [
     title: "Technical Co-Founder",
     company: "Rise the Fenua",
     location: "Los Angeles, CA",
-    startDate: "Feb. 2024",
+    startDate: "Feb 2024",
     endDate: "Present",
+    summary:
+      "A nonprofit I co-founded that gets school supplies to kids in Tahiti. I built the dashboard our volunteers run fulfillment from, and we've raised $20,000 so far.",
     responsibilities: [
       "Co-founded an education-focused nonprofit supporting underserved youth in Tahiti through school supplies and fundraising initiatives.",
       "Developed a production dashboard used by 20+ volunteers to streamline merchandise fulfillment and coordination.",
@@ -109,7 +96,9 @@ export const workExperience: WorkExperience[] = [
     company: "BID",
     location: "Los Angeles, CA",
     startDate: "May 2025",
-    endDate: "Aug. 2025",
+    endDate: "Aug 2025",
+    summary:
+      "Auth and session endpoints in Node, Express, and MongoDB for a marketplace of local service providers with 500+ users.",
     responsibilities: [
       "Contributed to development for a marketplace platform connecting users with local service providers through task-based bidding workflows.",
       "Built auth and session management endpoints using Node.js, Express, and MongoDB, supporting 500+ active users.",
@@ -122,7 +111,8 @@ export const workExperience: WorkExperience[] = [
     company: "Vectorly",
     location: "Los Angeles, CA",
     startDate: "May 2024",
-    endDate: "Aug. 2024",
+    endDate: "Aug 2024",
+    summary: "Graded AI-written code for a platform that helps people prep for technical interviews.",
     responsibilities: [
       "Contributed to an AI-powered technical interview platform designed to help users prepare for software engineering interviews.",
       "Evaluated AI-generated coding outputs for technical interview workflows, assessing accuracy and response quality across problems.",
@@ -137,66 +127,11 @@ export const clubExperience: WorkExperience[] = [
     location: "Los Angeles, CA",
     startDate: "Sep 2025",
     endDate: "Present",
+    summary: "A student org that builds software for nonprofits around LA. About 4% of applicants get in.",
     responsibilities: [
       "Selected through a 4% acceptance rate for a student-led organization that develops full-stack products for nonprofits across LA.",
       "Presented technical deliverables and architecture proposals to peers improving collaboration and software adoption.",
       "Contributed to open-source civic-tech products that empower Los Angeles nonprofits to modernize community operations.",
-    ],
-  },
-];
-
-export const researchProjects: ResearchProject[] = [
-  {
-    title: "SwipeBite",
-    technologies: [
-      "Next.js",
-      "Node.js",
-      "Express",
-      "Prisma",
-      "PostgreSQL",
-      "JWT",
-      "Google Places API",
-    ],
-    startDate: "Feb 2026",
-    endDate: "Present",
-    description: [
-      "Building a Tinder-style restaurant discovery app that personalizes recommendations over time based on user behavior and taste preferences.",
-      "Implemented a rule-based personalization engine with weighted signals and real-time preference updates per swipe.",
-      "Designed a swipe-based UI with gesture handling and threshold locking to separate card swipes from photo scrolling across 15+ React components.",
-    ],
-  },
-  {
-    title: "DIDUC",
-    technologies: [
-      "TypeScript",
-      "React Native",
-      "Express",
-      "MongoDB",
-      "Firebase",
-    ],
-    startDate: "Oct 2025",
-    endDate: "Dec 2025",
-    description: [
-      "Led a 4-person team to build a shared event photo app where users join via code and collaboratively upload photos into a shared feed.",
-      "Architected REST backend from scratch with 10+ endpoints, JWT middleware, and Mongoose models adopted as core team infrastructure.",
-      "Implemented Firebase Cloud Storage and Authentication, reducing server load and removing local storage dependencies.",
-      "Shipped 8+ reusable components and API abstractions across frontend and backend using Expo, NativeWind, and Firebase.",
-    ],
-  },
-  {
-    title: "Physics-Based Remeshing Engine",
-    technologies: ["C++", "MATLAB"],
-    startDate: "Feb. 2025",
-    endDate: "April 2025",
-    description: [
-      "Built a C++ remeshing engine to improve triangle quality through physics-based geometric optimization.",
-      "Applied MATLAB simulations to model spring forces, damping, and boundary constraints for mesh stabilization.",
-      "Presented remeshing research as an Irvine Valley College representative at the UC Berkeley Bay Honors Symposium.",
-    ],
-    highlights: [
-      "Real-time mesh simulation",
-      "Mathematical optimization",
-      "Presented at 2 undergraduate research conferences",
     ],
   },
 ];
@@ -239,54 +174,15 @@ export const technicalSkills: TechnicalSkill[] = [
   },
 ];
 
-export const currentWork: CurrentWorkItem[] = [
-  {
-    title: "We Explore Earth",
-    type: "Full Stack Mobile Developer",
-    description:
-      "React Native app for a community platform: events, volunteers, and the usual mobile polish, with Firebase doing a lot of the live data.",
-    techStack: [
-      "React Native",
-      "TypeScript",
-      "REST APIs",
-      "Firebase",
-      "Firestore",
-      "Figma",
-      "GitHub",
-    ],
-    building: [
-      "Shared UI pieces (cards, forms, nav) so the product feels consistent phone to phone.",
-      "REST endpoints for auth, creating events, and RSVPs, with an eye on not over-fetching.",
-      "Flows for organizers and volunteers that a pretty large member base actually uses week to week.",
-    ],
-  },
-  {
-    title: "SwipeBite",
-    type: "Full-Stack Restaurant Discovery",
-    description:
-      "Swipe-first restaurant finder with simple personalization, JWT logins, and location data from Google Places.",
-    techStack: [
-      "Next.js",
-      "Node.js",
-      "Express",
-      "Prisma",
-      "PostgreSQL",
-      "JWT",
-      "Google Places API",
-    ],
-    building: [
-      "Lightweight rules for 'you liked this, try that' that update as you swipe.",
-      "Gesture-heavy feed UI where swipes and photo scrolls don't step on each other.",
-    ],
-  },
+export const awards: string[] = [
+  "Dean's List",
+  "Southern California Research Symposium",
+  "Bay Honors Undergraduate Research Conference (UC Berkeley)",
 ];
 
-export const additionalResumeInfo: AdditionalResumeInfo = {
-  awards: [
-    "Dean's List",
-    "Southern California Research Symposium",
-    "Bay Honors Undergraduate Research Conference (UC Berkeley)",
-  ],
-  interestsAndActivities: ["Double Bass", "Tutoring (School on Wheels)"],
-  funFact: "I love to make music in my free time!",
-};
+/** "The longer version" on the home page, in Emmanuel's own words. */
+export const story: string[] = [
+  "Before computer science, I was convinced I was going to go pro in soccer. I played competitively for years and honestly saw it as the only path for myself until I tore my ACL in high school and suddenly had a lot more time sitting in front of a computer than I expected. Out of boredom at first, I started exploring computer science as a degree and ended up loving it, especially the mix of problem solving and working closely with people to take ideas from 0 to 1.",
+  "Now, I study Computer Science and Linguistics at UCLA, where I spend most of my time building products that solve real problems and actually get used. I have worked on everything from real time event platforms to nonprofit systems and civic tech, and what I enjoy most is building things where I can see the impact of what I worked on.",
+  "Outside of coding, I tutor with School on Wheels, play double bass, and make music. I think the patience and repetition that come with music carry over pretty naturally into how I approach engineering.",
+];

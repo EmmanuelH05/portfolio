@@ -16,7 +16,7 @@ export default function ResearchCard({ paper }: { paper: Paper }) {
             src={figure.image}
             alt={`The research poster for "${paper.title}"`}
             fill
-            sizes="(min-width: 768px) 720px, 100vw"
+            sizes="(min-width: 1730px) 720px, (min-width: 768px) 600px, 100vw"
             className="object-cover object-top"
           />
         ) : (

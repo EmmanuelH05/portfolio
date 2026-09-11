@@ -32,7 +32,7 @@ export default function DriftPhoto({ src, alt, children }: DriftPhotoProps) {
             alt={alt}
             fill
             priority
-            sizes="(min-width: 768px) 460px, 90vw"
+            sizes="(min-width: 1730px) 460px, (min-width: 768px) 380px, 90vw"
             className="object-cover object-[50%_40%]"
           />
         </motion.div>

@@ -44,8 +44,9 @@ function VideoFan({ video, name, screenSize }: VideoFanProps) {
   return (
     <figure className="w-full">
       <div className="relative grid h-[23rem] place-items-center sm:h-[26rem]">
-        <Image src={left} alt="" {...screenSize} sizes="220px" className={`${flankClass} -translate-x-[58%] -rotate-[7deg]`} />
-        <Image src={right} alt="" {...screenSize} sizes="220px" className={`${flankClass} translate-x-[58%] rotate-[7deg]`} />
+        {/* The flanks render at most about 192px wide. */}
+        <Image src={left} alt="" {...screenSize} sizes="192px" className={`${flankClass} -translate-x-[58%] -rotate-[7deg]`} />
+        <Image src={right} alt="" {...screenSize} sizes="192px" className={`${flankClass} translate-x-[58%] rotate-[7deg]`} />
         <DemoVideo
           src={video.src}
           poster={video.poster}
@@ -66,7 +67,8 @@ function HeaderMedia({ project }: { project: Project }) {
     return <VideoFan video={project.video} name={project.name} screenSize={project.screenSize} />;
   }
   // In the header the stack is on screen at load, so it swipes over the first stretch of page scroll.
-  return project.slug === 'swipebite' ? <SwipeStack fromTop={320} /> : null;
+  // The large size fills the panel, which stretches to the height of the text beside it.
+  return project.slug === 'swipebite' ? <SwipeStack fromTop={320} size="large" /> : null;
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {

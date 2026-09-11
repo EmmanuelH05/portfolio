@@ -32,13 +32,13 @@ export default function FanStack() {
   return (
     <div ref={ref} className="relative grid h-[18.75rem] place-items-center sm:h-[23.125rem]">
       <motion.div className="absolute" style={reduceMotion ? FANNED.left : { x: leftX, rotate: leftRotate }}>
-        <Image src="/diduc/event-detail.png" alt="DIDUC's event detail screen" {...SHOT} sizes="200px" className={shotClass} />
+        <Image src="/diduc/event-detail.png" alt="DIDUC's event detail screen" {...SHOT} sizes="184px" className={shotClass} />
       </motion.div>
       <motion.div className="absolute" style={reduceMotion ? FANNED.right : { x: rightX, rotate: rightRotate }}>
-        <Image src="/diduc/profile.png" alt="DIDUC's profile screen" {...SHOT} sizes="200px" className={shotClass} />
+        <Image src="/diduc/profile.png" alt="DIDUC's profile screen" {...SHOT} sizes="184px" className={shotClass} />
       </motion.div>
       <motion.div className="absolute" style={reduceMotion ? FANNED.center : { y: centerY }}>
-        <Image src="/diduc/home.png" alt="DIDUC's events feed" {...SHOT} sizes="200px" className={shotClass} />
+        <Image src="/diduc/home.png" alt="DIDUC's events feed" {...SHOT} sizes="184px" className={shotClass} />
       </motion.div>
     </div>
   );

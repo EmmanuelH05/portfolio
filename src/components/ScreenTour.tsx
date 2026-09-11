@@ -67,18 +67,20 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
             }}
             data-step={i}
             // Each caption sits at the top of its step, right under its line. The tall step on wide
-            // screens is scroll room; its top edge crosses the middle of the screen as it activates.
-            className={`border-t pb-10 pt-6 lg:min-h-[55vh] ${i === active ? 'border-accent' : 'border-ink/10'}`}
+            // screens is scroll room; its top edge crosses the middle of the screen as it activates,
+            // and at half a screen tall the caption is still in view when the next step takes over.
+            className={`border-t pb-10 pt-6 lg:min-h-[50vh] ${i === active ? 'border-accent' : 'border-ink/10'}`}
           >
             <p className={`font-mono text-xs ${i === active ? 'text-accent' : 'text-muted'}`}>{counter(i + 1)}</p>
             <h3 className="mt-2 text-xl">{screen.label}</h3>
             <p className="mt-2 max-w-[27.5rem] leading-relaxed text-muted">{screen.caption}</p>
+            {/* Only shown below lg, where it renders about 212px wide. */}
             <Image
               src={screen.src}
               alt={screen.label}
               width={size.width}
               height={size.height}
-              sizes="280px"
+              sizes="212px"
               className="mt-6 h-[28.75rem] w-auto rounded-[1.625rem] shadow-shot lg:hidden"
             />
           </li>

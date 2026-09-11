@@ -17,7 +17,7 @@ export default function SiteFooter() {
         </p>
         <a
           href={`mailto:${personalInfo.email}`}
-          className="mt-7 inline-block rounded-full bg-forest px-6 py-3.5 text-[0.9375rem] text-shell transition-colors hover:bg-ink"
+          className="mt-7 inline-block max-w-full rounded-full bg-forest px-6 py-3.5 text-[0.9375rem] text-shell transition-colors [overflow-wrap:anywhere] hover:bg-ink"
         >
           {personalInfo.email}
         </a>

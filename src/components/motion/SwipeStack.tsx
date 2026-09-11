@@ -3,34 +3,16 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useTransform } from 'framer-motion';
+import * as styles from '@/styles/components/motion/SwipeStack';
+import type { StackSize } from '@/styles/components/motion/SwipeStack';
 import { useReducedMotionAfterMount, useScrollProgress } from './hooks';
 
-const SHOT = { width: 390, height: 844 };
-// Literal class names so Tailwind sees them. `large` fills the taller panel in a project page header.
-const SIZES = {
-  regular: {
-    stage: 'h-[18.75rem] sm:h-[23.125rem]',
-    card: 'h-[16.25rem] w-auto rounded-[1.375rem] shadow-shot sm:h-[20.625rem]',
-    // Cards render at most about 181px wide.
-    hint: '184px',
-  },
-  large: {
-    stage: 'h-[23rem] sm:h-[30rem]',
-    card: 'h-[20rem] w-auto rounded-[1.75rem] shadow-shot sm:h-[26rem]',
-    hint: '232px',
-  },
-};
-// While crossing the screen, the swipe plays out while the whole stack is visible.
-const CROSSING_RANGE = [0.05, 0.95];
-const SWIPED = {
-  top: { x: '38%', rotate: 8 },
-  next: { rotate: 0, scale: 1 },
-};
+const { SIZES, CROSSING_RANGE, STACKED, SWIPED } = styles;
 
 interface SwipeStackProps {
   /** Pixels of page scroll to play over, for a stack that is on screen at page load. */
   fromTop?: number;
-  size?: keyof typeof SIZES;
+  size?: StackSize;
 }
 
 /** SwipeBite's top card swipes off to the right as you scroll, and the card under it straightens up. */
@@ -40,28 +22,27 @@ export default function SwipeStack({ fromTop, size = 'regular' }: SwipeStackProp
   const progress = useScrollProgress(ref, ['end end', 'start start'], fromTop);
   const range = fromTop === undefined ? CROSSING_RANGE : [0, 1];
   const topX = useTransform(progress, range, ['0%', SWIPED.top.x]);
-  const topRotate = useTransform(progress, range, [-2, SWIPED.top.rotate]);
-  const nextRotate = useTransform(progress, range, [4, SWIPED.next.rotate]);
-  const nextScale = useTransform(progress, range, [0.94, SWIPED.next.scale]);
-  const { stage, card, hint } = SIZES[size];
+  const topRotate = useTransform(progress, range, [STACKED.topRotate, SWIPED.top.rotate]);
+  const nextRotate = useTransform(progress, range, [STACKED.nextRotate, SWIPED.next.rotate]);
+  const nextScale = useTransform(progress, range, [STACKED.nextScale, SWIPED.next.scale]);
+  const { card, hint } = SIZES[size];
 
   return (
-    // w-full: the cards are absolutely positioned, so without it the stack collapses to zero width in a flex parent.
-    <div ref={ref} className={`relative grid w-full place-items-center ${stage}`}>
-      <motion.div className="absolute" style={reduceMotion ? SWIPED.next : { rotate: nextRotate, scale: nextScale }}>
+    <div ref={ref} className={styles.stage(size)}>
+      <motion.div className={styles.layer} style={reduceMotion ? SWIPED.next : styles.turn(nextRotate, nextScale)}>
         <Image
           src="/swipebite/feed.png"
           alt="SwipeBite's swipe feed showing Warehouse 72"
-          {...SHOT}
+          {...styles.shotSize}
           sizes={hint}
           className={card}
         />
       </motion.div>
-      <motion.div className="absolute" style={reduceMotion ? SWIPED.top : { x: topX, rotate: topRotate }}>
+      <motion.div className={styles.layer} style={reduceMotion ? SWIPED.top : styles.slide(topX, topRotate)}>
         <Image
           src="/swipebite/feed2.png"
           alt="A SwipeBite restaurant card for Urban Plates"
-          {...SHOT}
+          {...styles.shotSize}
           sizes={hint}
           className={card}
         />

@@ -7,10 +7,10 @@ import NumberedList from '@/components/NumberedList';
 import PageFooterNav from '@/components/PageFooterNav';
 import PageShell from '@/components/PageShell';
 import MeshSettle from '@/components/motion/MeshSettle';
-import { tintClass } from '@/components/tint';
 import { papers, type Paper } from '@/lib/research';
 import { fileKind, fileSize } from '@/lib/site';
 import { findBySlug, nextAfter } from '@/lib/slugs';
+import * as styles from '@/styles/pages/paper';
 
 interface PaperPageProps {
   params: { slug: string };
@@ -27,19 +27,16 @@ export function generateMetadata({ params }: PaperPageProps): Metadata {
   return paper ? { title: paper.shortTitle, description: paper.summary } : {};
 }
 
-const captionClass = 'mx-auto mt-5 max-w-[37.5rem] text-center text-[0.9375rem] leading-relaxed text-muted';
-
 function PaperFigure({ paper }: { paper: Paper }) {
   const { figure } = paper;
 
   if (figure.kind === 'mesh') {
     return (
       <>
-        <div className="mx-auto max-w-[47.5rem]">
-          {/* On screen at load, so it settles over the first stretch of page scroll. */}
-          <MeshSettle readout fromTop={420} />
+        <div className={styles.meshStage}>
+          <MeshSettle readout fromTop={styles.MESH_SCROLL} />
         </div>
-        <figcaption className={captionClass}>
+        <figcaption className={styles.caption}>
           Scroll to run it. Boundary points stay put, and every interior point is pulled toward its neighbors by
           springs and slowed by damping, one Euler step at a time. Shaded triangles are the badly shaped ones.
         </figcaption>
@@ -49,19 +46,19 @@ function PaperFigure({ paper }: { paper: Paper }) {
 
   return (
     <>
-      <a href={figure.pdf} className="block">
+      <a href={figure.pdf} className={styles.posterLink}>
         <Image
           src={figure.image}
           alt={`The research poster for "${paper.title}"`}
           width={figure.width}
           height={figure.height}
-          sizes="(min-width: 1240px) 1200px, 100vw"
-          className="mx-auto h-auto w-full max-w-[62.5rem] rounded-xl shadow-shot"
+          sizes={styles.posterSizes}
+          className={styles.poster}
         />
       </a>
-      <figcaption className={captionClass}>
+      <figcaption className={styles.caption}>
         The poster.{' '}
-        <a href={figure.pdf} className="text-link">
+        <a href={figure.pdf} className={styles.inlineLink}>
           Open the full PDF
         </a>{' '}
         ({fileSize(figure.pdf)}).
@@ -78,26 +75,26 @@ export default function PaperPage({ params }: PaperPageProps) {
   return (
     <main>
       <PageShell>
-        <div className="max-w-[50rem] pt-10 md:pt-14">
-          <Link href="/#research" className="font-mono text-xs text-muted transition-colors hover:text-ink">
+        <div className={styles.header}>
+          <Link href="/#research" className={styles.backLink}>
             <span aria-hidden>←</span> Research
           </Link>
-          <p className="mt-8 font-mono text-xs uppercase tracking-[0.02em] text-muted">
+          <p className={styles.meta}>
             {paper.venue} <span aria-hidden>/</span> {paper.year}
           </p>
-          <h1 className="mt-2 font-serif text-[2.125rem] leading-[1.1] tracking-[-0.01em] sm:text-[2.75rem]">{paper.title}</h1>
-          <p className="mt-5 max-w-[38.75rem] text-[1.0625rem] leading-relaxed text-muted">
+          <h1 className={styles.title}>{paper.title}</h1>
+          <p className={styles.authors}>
             {paper.authors}. Mentored by {paper.mentor}, {paper.institution}.
           </p>
-          <p className="mt-4 font-mono text-xs uppercase tracking-[0.02em] text-muted">{paper.tools.join(' · ')}</p>
+          <p className={styles.tools}>{paper.tools.join(' · ')}</p>
         </div>
       </PageShell>
 
-      <figure className={`mt-[1.125rem] rounded-[1.625rem] px-5 py-8 sm:px-10 sm:py-12 ${tintClass[paper.tint]}`}>
+      <figure className={styles.figure(paper.tint)}>
         <PaperFigure paper={paper} />
       </figure>
 
-      <article className="mx-auto max-w-[45rem] px-2 text-[1.0625rem] leading-[1.7] sm:text-[1.125rem]">
+      <article className={styles.article}>
         <ArticleSection title="The problem">
           <p>{paper.problem}</p>
         </ArticleSection>
@@ -111,26 +108,23 @@ export default function PaperPage({ params }: PaperPageProps) {
         </ArticleSection>
 
         <ArticleSection title="In more detail">
-          <div className="space-y-8">
+          <div className={styles.details}>
             {paper.details.map((detail) => (
               <div key={detail.label}>
-                <h3 className="font-mono text-xs uppercase tracking-[0.02em] text-muted">{detail.label}</h3>
-                <p className="mt-2">{detail.body}</p>
+                <h3 className={styles.detailLabel}>{detail.label}</h3>
+                <p className={styles.detailBody}>{detail.body}</p>
               </div>
             ))}
           </div>
         </ArticleSection>
 
         <ArticleSection title="Files">
-          <ul className="divide-y divide-ink/10 border-y border-ink/10">
+          <ul className={styles.fileList}>
             {paper.documents.map((doc) => (
               <li key={doc.href}>
-                <a
-                  href={doc.href}
-                  className="flex items-baseline justify-between gap-4 py-4 transition-colors hover:text-accent"
-                >
+                <a href={doc.href} className={styles.fileLink}>
                   <span>{doc.label}</span>
-                  <span className="font-mono text-xs uppercase text-muted">
+                  <span className={styles.fileMeta}>
                     {fileKind(doc.href)} · {fileSize(doc.href)}
                   </span>
                 </a>

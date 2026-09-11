@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useTransform } from 'framer-motion';
+import * as styles from '@/styles/components/motion/DrawRule';
 import { useReducedMotionAfterMount, useScrollProgress } from './hooks';
 
 /** The short accent line under a section heading. It draws out from the center as it scrolls up the screen. */
@@ -12,11 +13,6 @@ export default function DrawRule() {
   const scaleX = useTransform(progress, [0.15, 1], [0, 1]);
 
   return (
-    <motion.div
-      ref={ref}
-      aria-hidden
-      className="mx-auto mt-3.5 h-[0.09375rem] w-[7.5rem] bg-accent"
-      style={{ scaleX: reduceMotion ? 1 : scaleX }}
-    />
+    <motion.div ref={ref} aria-hidden className={styles.rule} style={styles.draw(reduceMotion ? styles.DRAWN : scaleX)} />
   );
 }

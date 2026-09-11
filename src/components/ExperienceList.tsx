@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { awards, clubExperience, education, technicalSkills, workExperience } from '@/lib/data';
+import * as styles from '@/styles/components/ExperienceList';
 
 interface RowProps {
   heading: string;
@@ -13,23 +14,23 @@ interface RowProps {
 function Row({ heading, subheading, summary, when, children }: RowProps) {
   return (
     <li>
-      <details className="group">
-        <summary className="flex cursor-pointer list-none flex-col gap-2 rounded-2xl px-4 py-5 transition-colors hover:bg-ground/50 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8 sm:px-6 [&::-webkit-details-marker]:hidden">
+      <details className={styles.row}>
+        <summary className={styles.rowSummary}>
           {/* Only phrasing content is valid inside <summary>, so these are spans set to block. */}
-          <span className="block max-w-[41.25rem]">
-            <span className="block text-[1.0625rem]">
-              {heading} <span className="text-muted">· {subheading}</span>
+          <span className={styles.rowHeadings}>
+            <span className={styles.rowHeading}>
+              {heading} <span className={styles.rowSubheading}>· {subheading}</span>
             </span>
-            <span className="mt-1 block text-[0.9375rem] leading-relaxed text-muted">{summary}</span>
+            <span className={styles.rowNote}>{summary}</span>
           </span>
-          <span className="flex shrink-0 items-center gap-3 font-mono text-xs uppercase text-muted">
+          <span className={styles.rowWhen}>
             {when}
-            <span aria-hidden className="text-base leading-none transition-transform group-open:rotate-45">
+            <span aria-hidden className={styles.rowMarker}>
               +
             </span>
           </span>
         </summary>
-        <div className="px-4 pb-6 text-[0.9375rem] leading-relaxed text-muted sm:px-6">{children}</div>
+        <div className={styles.rowBody}>{children}</div>
       </details>
     </li>
   );
@@ -40,7 +41,7 @@ export default function ExperienceList() {
 
   return (
     <>
-      <ul className="divide-y divide-ink/10 rounded-[1.625rem] bg-shell p-2 sm:p-3">
+      <ul className={styles.list}>
         {roles.map((role) => (
           <Row
             key={role.company}
@@ -49,7 +50,7 @@ export default function ExperienceList() {
             summary={role.summary}
             when={`${role.startDate} → ${role.endDate}`}
           >
-            <ul className="max-w-[45rem] list-disc space-y-2 pl-5 marker:text-accent">
+            <ul className={styles.bullets}>
               {role.responsibilities.map((line) => (
                 <li key={line}>{line}</li>
               ))}
@@ -62,18 +63,18 @@ export default function ExperienceList() {
           summary={education.summary}
           when={education.graduation}
         >
-          <p className="max-w-[45rem]">Coursework: {education.coursework.join(', ')}.</p>
+          <p className={styles.coursework}>Coursework: {education.coursework.join(', ')}.</p>
         </Row>
       </ul>
 
-      <dl className="mt-[1.125rem] grid gap-x-8 gap-y-3 rounded-[1.625rem] bg-shell px-6 py-7 text-[0.9375rem] leading-relaxed sm:grid-cols-[8rem_1fr] sm:px-9">
+      <dl className={styles.skills}>
         {technicalSkills.map((group) => (
           <Fragment key={group.category}>
-            <dt className="font-mono text-xs uppercase leading-6 text-muted">{group.category}</dt>
+            <dt className={styles.skillCategory}>{group.category}</dt>
             <dd>{group.skills.join(', ')}</dd>
           </Fragment>
         ))}
-        <dt className="font-mono text-xs uppercase leading-6 text-muted">Awards</dt>
+        <dt className={styles.skillCategory}>Awards</dt>
         <dd>{awards.join(', ')}</dd>
       </dl>
     </>

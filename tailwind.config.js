@@ -1,10 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  // Every source file, not a list of folders: the class names live in src/styles, and a glob
+  // that misses a folder drops its CSS silently. tests/content.test.ts guards this.
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       // "Sage". Muted doubles as the meta-text color: anything lighter fails WCAG AA at 12px.

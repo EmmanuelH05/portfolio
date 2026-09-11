@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import type { Screen } from '@/lib/projects';
+import * as styles from '@/styles/components/ScreenTour';
 
 interface ScreenTourProps {
   screens: Screen[];
@@ -35,24 +36,22 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
   }, []);
 
   return (
-    <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-      <div className="hidden lg:block">
-        <div className="sticky top-[10vh] flex flex-col items-center">
-          <div className="relative h-[72vh] max-h-[40rem]" style={{ aspectRatio: `${size.width} / ${size.height}` }}>
+    <div className={styles.layout}>
+      <div className={styles.stickyColumn}>
+        <div className={styles.sticky}>
+          <div className={styles.stage} style={styles.stageRatio(size)}>
             {screens.map((screen, i) => (
               <Image
                 key={screen.src}
                 src={screen.src}
                 alt={i === active ? screen.label : ''}
                 fill
-                sizes="380px"
-                className={`rounded-[1.875rem] object-cover shadow-shot transition-opacity duration-300 motion-reduce:transition-none ${
-                  i === active ? 'opacity-100' : 'opacity-0'
-                }`}
+                sizes={styles.stickyShotSizes}
+                className={styles.stickyShot(i === active)}
               />
             ))}
           </div>
-          <p className="mt-5 font-mono text-xs uppercase text-muted">
+          <p className={styles.counter}>
             {counter(active + 1)} / {counter(screens.length)} · {screens[active].label}
           </p>
         </div>
@@ -66,22 +65,18 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
               steps.current[i] = element;
             }}
             data-step={i}
-            // Each caption sits at the top of its step, right under its line. The tall step on wide
-            // screens is scroll room; its top edge crosses the middle of the screen as it activates,
-            // and at half a screen tall the caption is still in view when the next step takes over.
-            className={`border-t pb-10 pt-6 lg:min-h-[50vh] ${i === active ? 'border-accent' : 'border-ink/10'}`}
+            className={styles.step(i === active)}
           >
-            <p className={`font-mono text-xs ${i === active ? 'text-accent' : 'text-muted'}`}>{counter(i + 1)}</p>
-            <h3 className="mt-2 text-xl">{screen.label}</h3>
-            <p className="mt-2 max-w-[27.5rem] leading-relaxed text-muted">{screen.caption}</p>
-            {/* Only shown below lg, where it renders about 212px wide. */}
+            <p className={styles.stepNumber(i === active)}>{counter(i + 1)}</p>
+            <h3 className={styles.stepLabel}>{screen.label}</h3>
+            <p className={styles.stepCaption}>{screen.caption}</p>
             <Image
               src={screen.src}
               alt={screen.label}
               width={size.width}
               height={size.height}
-              sizes="212px"
-              className="mt-6 h-[28.75rem] w-auto rounded-[1.625rem] shadow-shot lg:hidden"
+              sizes={styles.inlineShotSizes}
+              className={styles.inlineShot}
             />
           </li>
         ))}

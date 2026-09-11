@@ -3,9 +3,8 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useTransform } from 'framer-motion';
+import * as styles from '@/styles/components/motion/DriftPhoto';
 import { useReducedMotionAfterMount, useScrollProgress } from './hooks';
-
-const REST_Y = '-4%';
 
 interface DriftPhotoProps {
   src: string;
@@ -20,21 +19,14 @@ export default function DriftPhoto({ src, alt, children }: DriftPhotoProps) {
   const reduceMotion = useReducedMotionAfterMount();
   // 0 until the photo's top edge reaches the top of the screen, so the page loads at rest.
   const progress = useScrollProgress(ref, ['start start', 'end start']);
-  const y = useTransform(progress, [0, 1], [REST_Y, '4%']);
+  const y = useTransform(progress, [0, 1], [styles.REST_Y, styles.DRIFT_Y]);
 
   return (
-    <div className="relative mx-auto w-full max-w-[23.75rem] md:mr-0">
-      <div aria-hidden className="dot-grid absolute -right-[1.125rem] -top-[1.125rem] h-[11.25rem] w-[7.5rem]" />
-      <div ref={ref} className="relative aspect-[4/5] overflow-clip rounded-[1.375rem]">
-        <motion.div className="absolute inset-0" style={{ scale: 1.12, y: reduceMotion ? REST_Y : y }}>
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority
-            sizes="(min-width: 1730px) 460px, (min-width: 768px) 380px, 90vw"
-            className="object-cover object-[50%_40%]"
-          />
+    <div className={styles.frame}>
+      <div aria-hidden className={styles.dots} />
+      <div ref={ref} className={styles.clip}>
+        <motion.div className={styles.layer} style={styles.drift(reduceMotion ? styles.REST_Y : y)}>
+          <Image src={src} alt={alt} fill priority sizes={styles.photoSizes} className={styles.photo} />
         </motion.div>
       </div>
       {children}

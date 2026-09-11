@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
-import { Fragment_Mono, Instrument_Sans, Instrument_Serif } from 'next/font/google';
 import '@/styles/globals.css';
 import SiteFooter from '@/components/SiteFooter';
 import { personalInfo } from '@/lib/data';
-
-const sans = Instrument_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', variable: '--font-serif', display: 'swap' });
-const mono = Fragment_Mono({ subsets: ['latin'], weight: '400', variable: '--font-mono', display: 'swap' });
+import * as styles from '@/styles/pages/layout';
 
 export const metadata: Metadata = {
   title: { default: personalInfo.name, template: `%s · ${personalInfo.name}` },
@@ -17,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" className={styles.fontVariables}>
       <body>
-        <div className="mx-auto max-w-[77.5rem] px-3 pt-3 sm:px-[1.375rem] sm:pt-[1.375rem]">
+        <div className={styles.container}>
           {children}
           <SiteFooter />
         </div>

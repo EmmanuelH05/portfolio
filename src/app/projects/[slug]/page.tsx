@@ -11,9 +11,9 @@ import PageShell from '@/components/PageShell';
 import ScreenTour from '@/components/ScreenTour';
 import SwipeStack from '@/components/motion/SwipeStack';
 import { external } from '@/components/links';
-import { tintClass } from '@/components/tint';
 import { projects, type Project } from '@/lib/projects';
 import { findBySlug, nextAfter } from '@/lib/slugs';
+import * as styles from '@/styles/pages/project';
 
 interface ProjectPageProps {
   params: { slug: string };
@@ -30,8 +30,6 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
   return project ? { title: project.name, description: project.blurb } : {};
 }
 
-const flankClass = 'absolute h-[19rem] w-auto rounded-[1.5rem] shadow-shot sm:h-[22rem]';
-
 interface VideoFanProps {
   video: NonNullable<Project['video']>;
   name: string;
@@ -42,21 +40,13 @@ interface VideoFanProps {
 function VideoFan({ video, name, screenSize }: VideoFanProps) {
   const [left, right] = video.flanks;
   return (
-    <figure className="w-full">
-      <div className="relative grid h-[23rem] place-items-center sm:h-[26rem]">
-        {/* The flanks render at most about 192px wide. */}
-        <Image src={left} alt="" {...screenSize} sizes="192px" className={`${flankClass} -translate-x-[58%] -rotate-[7deg]`} />
-        <Image src={right} alt="" {...screenSize} sizes="192px" className={`${flankClass} translate-x-[58%] rotate-[7deg]`} />
-        <DemoVideo
-          src={video.src}
-          poster={video.poster}
-          label={`${name} demo`}
-          className="relative aspect-[390/844] h-[23rem] w-auto rounded-[1.75rem] bg-ink shadow-shot sm:h-[26rem]"
-        />
+    <figure className={styles.videoFigure}>
+      <div className={styles.videoStage}>
+        <Image src={left} alt="" {...screenSize} sizes={styles.flankSizes} className={styles.leftFlank} />
+        <Image src={right} alt="" {...screenSize} sizes={styles.flankSizes} className={styles.rightFlank} />
+        <DemoVideo src={video.src} poster={video.poster} label={`${name} demo`} className={styles.video} />
       </div>
-      <figcaption className="mx-auto mt-6 max-w-[22.5rem] text-center font-mono text-xs leading-relaxed text-muted">
-        {video.note}
-      </figcaption>
+      <figcaption className={styles.videoCaption}>{video.note}</figcaption>
     </figure>
   );
 }
@@ -66,9 +56,8 @@ function HeaderMedia({ project }: { project: Project }) {
   if (project.video) {
     return <VideoFan video={project.video} name={project.name} screenSize={project.screenSize} />;
   }
-  // In the header the stack is on screen at load, so it swipes over the first stretch of page scroll.
   // The large size fills the panel, which stretches to the height of the text beside it.
-  return project.slug === 'swipebite' ? <SwipeStack fromTop={320} size="large" /> : null;
+  return project.slug === 'swipebite' ? <SwipeStack fromTop={styles.HEADER_STACK_SCROLL} size="large" /> : null;
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
@@ -79,63 +68,53 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   return (
     <main>
       <PageShell>
-        {/* Top-aligned: the text starts right under the nav and the panel stretches to match it. */}
-        <div className="grid gap-10 pt-10 md:pt-14 lg:grid-cols-2 lg:gap-14">
+        <div className={styles.header}>
           <div>
-            <Link href="/#work" className="font-mono text-xs text-muted transition-colors hover:text-ink">
+            <Link href="/#work" className={styles.backLink}>
               <span aria-hidden>←</span> All work
             </Link>
-            <p className="mt-8 font-mono text-xs uppercase tracking-[0.02em] text-muted">
+            <p className={styles.meta}>
               {project.number} <span aria-hidden>/</span> {project.period}
             </p>
-            <h1 className="mt-2 font-serif text-[2.5rem] leading-[1.05] tracking-[-0.01em] sm:text-[2.75rem]">
-              {project.name}
-            </h1>
-            <div className="mt-4 max-w-[33.75rem] space-y-4 text-[1.0625rem] leading-relaxed text-muted sm:text-[1.1875rem]">
+            <h1 className={styles.title}>{project.name}</h1>
+            <div className={styles.intro}>
               {project.intro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <dl className="mt-8 grid max-w-[33.75rem] grid-cols-[5rem_1fr] gap-x-4 gap-y-2.5 text-[0.9375rem] leading-6">
+            <dl className={styles.facts}>
               {project.facts.map((fact) => (
                 <Fragment key={fact.label}>
-                  <dt className="font-mono text-xs uppercase leading-6 text-muted">{fact.label}</dt>
+                  <dt className={styles.factLabel}>{fact.label}</dt>
                   <dd>{fact.value}</dd>
                 </Fragment>
               ))}
             </dl>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className={styles.links}>
               {project.links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  {...external}
-                  className="rounded-full bg-forest px-5 py-3 text-[0.9375rem] text-shell transition-colors hover:bg-ink"
-                >
+                <a key={link.href} href={link.href} {...external} className={styles.linkButton}>
                   {link.label}
                 </a>
               ))}
             </div>
           </div>
-          <div
-            className={`flex items-center justify-center overflow-clip rounded-[1.625rem] p-6 sm:p-10 ${tintClass[project.tint]}`}
-          >
+          <div className={styles.panel(project.tint)}>
             <HeaderMedia project={project} />
           </div>
         </div>
       </PageShell>
 
-      <div className="px-2 sm:px-10">
+      <div className={styles.article}>
         <ArticleSection title="Screens" note={project.screensNote}>
           <ScreenTour screens={project.screens} size={project.screenSize} />
         </ArticleSection>
 
         <ArticleSection title="What it does">
-          <dl className="grid gap-x-12 md:grid-cols-2">
+          <dl className={styles.featureGrid}>
             {project.features.map((feature) => (
-              <div key={feature.title} className="border-t border-ink/10 py-5">
-                <dt className="text-[1.0625rem]">{feature.title}</dt>
-                <dd className="mt-1.5 leading-relaxed text-muted">{feature.body}</dd>
+              <div key={feature.title} className={styles.feature}>
+                <dt className={styles.featureTitle}>{feature.title}</dt>
+                <dd className={styles.featureBody}>{feature.body}</dd>
               </div>
             ))}
           </dl>
@@ -143,11 +122,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
         {project.build && (
           <ArticleSection title="How it's built">
-            <dl className="max-w-[53.75rem] divide-y divide-ink/10 border-y border-ink/10">
+            <dl className={styles.buildList}>
               {project.build.map((row) => (
-                <div key={row.layer} className="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-6">
-                  <dt className="font-mono text-xs uppercase leading-7 text-muted">{row.layer}</dt>
-                  <dd className="leading-relaxed">{row.detail}</dd>
+                <div key={row.layer} className={styles.buildRow}>
+                  <dt className={styles.buildLayer}>{row.layer}</dt>
+                  <dd className={styles.buildDetail}>{row.detail}</dd>
                 </div>
               ))}
             </dl>

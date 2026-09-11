@@ -96,12 +96,12 @@ export const papers: Paper[] = [
       "We fixed distorted triangle meshes by treating them as a physics system: springs, charged boundaries, and damping.",
     figure: { kind: "mesh" },
     problem:
-      "3D objects in simulations and games are made of triangles. When a shape changes over time, those triangles have to update too. The problem is that moving one interior vertex to fix a bad triangle shifts every triangle connected to it. Standard geometric algorithms handle this badly. We wanted to try a physics-based approach where the mesh finds a good configuration on its own.",
+      "Objects in graphics are points joined into triangles, and it is the GPU's job to turn that triangulation into what you see on screen. When the object changes shape, a liquid drop falling or a robot transforming into a jet, the triangulation has to change with it, and it gets distorted along the way. Triangulation is easy. Remeshing is hard: moving one interior point to fix a bad triangle affects every triangle around it, and the standard algorithms are purely geometric. We wanted a version where the mesh settles into a good shape on its own.",
     approach:
-      "We modeled each interior vertex as a point mass connected to its neighbors by springs, with virtual charged particles along the boundary keeping points from escaping. The system evolves by applying Newton's 2nd law as a 2nd-order ODE, stepped with Euler's method. Code in VB.NET, visualization in MATLAB.",
+      "We modeled every interior point as a point mass, connected it to its neighbors with springs, and let it move in a damping field, with virtual charges along the boundary so points cannot escape the region. Positions come from Newton's second law, solved as a second order differential equation with Euler's method and zero initial velocity. Boundary points never move.",
     findings: [
-      "Interior points converge toward equilateral configurations under spring and damping forces",
-      "Electrostatic boundary repulsion kept 95%+ of interior points inside the region across all test geometries",
+      "Interior points settle into an equilibrium where most triangles come out close to equilateral",
+      "Virtual charges along the boundary kept interior points inside the region on every shape we tested",
       "Tested on rectangles, triangles, L-shapes, and time-evolving shapes where the boundary changes mid-simulation",
       "Presented at the Bay Honors Symposium at UC Berkeley",
     ],
@@ -116,7 +116,7 @@ export const papers: Paper[] = [
       },
       {
         label: "Implementation",
-        body: "Differential equations solved numerically in VB.NET with Euler's first-order method and zero initial velocity. MATLAB handles the visualization side: we output mesh snapshots at each time step to show how the triangulation converges.",
+        body: "The engine reads a triangulation and solves the differential equation in C++. The numerical solver was also implemented in VB.NET with Euler's first-order method and zero initial velocity, and MATLAB handled the plots, writing out a mesh snapshot at each time step so we could watch the triangulation converge.",
       },
       {
         label: "Results",

@@ -9,14 +9,14 @@ export default function ResearchCard({ paper }: { paper: Paper }) {
   const { figure } = paper;
 
   return (
-    <article className="flex flex-col overflow-clip rounded-[26px] bg-shell">
+    <article className="flex flex-col overflow-clip rounded-[1.625rem] bg-shell">
       <div className={`relative aspect-[16/10] ${tintClass[paper.tint]}`}>
         {figure.kind === 'poster' ? (
           <Image
             src={figure.image}
             alt={`The research poster for "${paper.title}"`}
             fill
-            sizes="(min-width: 768px) 600px, 100vw"
+            sizes="(min-width: 768px) 720px, 100vw"
             className="object-cover object-top"
           />
         ) : (
@@ -29,11 +29,11 @@ export default function ResearchCard({ paper }: { paper: Paper }) {
         <p className="mb-2.5 font-mono text-xs uppercase tracking-[0.02em] text-muted">
           {paper.venue} <span aria-hidden>/</span> {paper.year}
         </p>
-        <h3 className="font-serif text-[26px] leading-[1.15]">{paper.title}</h3>
+        <h3 className="font-serif text-[1.625rem] leading-[1.15]">{paper.title}</h3>
         <p className="mb-6 mt-3 leading-normal text-muted">{paper.summary}</p>
         <Link
           href={`/research/${paper.slug}`}
-          className="mt-auto self-start border-b border-accent pb-0.5 text-[15px] transition-colors hover:border-ink"
+          className="mt-auto self-start border-b border-accent pb-0.5 text-[0.9375rem] transition-colors hover:border-ink"
         >
           Read more <span aria-hidden>→</span>
         </Link>

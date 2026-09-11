@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
       <body>
-        <div className="mx-auto max-w-[1240px] px-3 pt-3 sm:px-[22px] sm:pt-[22px]">
+        <div className="mx-auto max-w-[77.5rem] px-3 pt-3 sm:px-[1.375rem] sm:pt-[1.375rem]">
           {children}
           <SiteFooter />
         </div>

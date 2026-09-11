@@ -6,7 +6,7 @@ import { motion, useTransform } from 'framer-motion';
 import { useReducedMotionAfterMount, useScrollProgress } from './hooks';
 
 const SHOT = { width: 390, height: 844 };
-const shotClass = 'h-[260px] w-auto rounded-[22px] shadow-shot sm:h-[330px]';
+const shotClass = 'h-[16.25rem] w-auto rounded-[1.375rem] shadow-shot sm:h-[20.625rem]';
 // While crossing the screen, the swipe plays out while the whole stack is visible.
 const CROSSING_RANGE = [0.05, 0.95];
 const SWIPED = {
@@ -31,13 +31,14 @@ export default function SwipeStack({ fromTop }: SwipeStackProps) {
   const nextScale = useTransform(progress, range, [0.94, SWIPED.next.scale]);
 
   return (
-    <div ref={ref} className="relative grid h-[300px] place-items-center sm:h-[370px]">
+    // w-full: the cards are absolutely positioned, so without it the stack collapses to zero width in a flex parent.
+    <div ref={ref} className="relative grid h-[18.75rem] w-full place-items-center sm:h-[23.125rem]">
       <motion.div className="absolute" style={reduceMotion ? SWIPED.next : { rotate: nextRotate, scale: nextScale }}>
         <Image
           src="/swipebite/feed.png"
           alt="SwipeBite's swipe feed showing Warehouse 72"
           {...SHOT}
-          sizes="160px"
+          sizes="200px"
           className={shotClass}
         />
       </motion.div>
@@ -46,7 +47,7 @@ export default function SwipeStack({ fromTop }: SwipeStackProps) {
           src="/swipebite/feed2.png"
           alt="A SwipeBite restaurant card for Urban Plates"
           {...SHOT}
-          sizes="160px"
+          sizes="200px"
           className={shotClass}
         />
       </motion.div>

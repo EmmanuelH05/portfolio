@@ -15,7 +15,7 @@ export default function DrawRule() {
     <motion.div
       ref={ref}
       aria-hidden
-      className="mx-auto mt-3.5 h-[1.5px] w-[120px] bg-accent"
+      className="mx-auto mt-3.5 h-[0.09375rem] w-[7.5rem] bg-accent"
       style={{ scaleX: reduceMotion ? 1 : scaleX }}
     />
   );

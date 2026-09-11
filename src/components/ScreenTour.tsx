@@ -38,15 +38,15 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
     <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
       <div className="hidden lg:block">
         <div className="sticky top-[10vh] flex flex-col items-center">
-          <div className="relative h-[72vh] max-h-[640px]" style={{ aspectRatio: `${size.width} / ${size.height}` }}>
+          <div className="relative h-[72vh] max-h-[40rem]" style={{ aspectRatio: `${size.width} / ${size.height}` }}>
             {screens.map((screen, i) => (
               <Image
                 key={screen.src}
                 src={screen.src}
                 alt={i === active ? screen.label : ''}
                 fill
-                sizes="320px"
-                className={`rounded-[30px] object-cover shadow-shot transition-opacity duration-300 motion-reduce:transition-none ${
+                sizes="380px"
+                className={`rounded-[1.875rem] object-cover shadow-shot transition-opacity duration-300 motion-reduce:transition-none ${
                   i === active ? 'opacity-100' : 'opacity-0'
                 }`}
               />
@@ -66,20 +66,20 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
               steps.current[i] = element;
             }}
             data-step={i}
-            className={`flex flex-col justify-center border-t py-8 lg:min-h-[62vh] ${
-              i === active ? 'border-accent' : 'border-ink/10'
-            }`}
+            // Each caption sits at the top of its step, right under its line. The tall step on wide
+            // screens is scroll room; its top edge crosses the middle of the screen as it activates.
+            className={`border-t pb-10 pt-6 lg:min-h-[55vh] ${i === active ? 'border-accent' : 'border-ink/10'}`}
           >
             <p className={`font-mono text-xs ${i === active ? 'text-accent' : 'text-muted'}`}>{counter(i + 1)}</p>
             <h3 className="mt-2 text-xl">{screen.label}</h3>
-            <p className="mt-2 max-w-[440px] leading-relaxed text-muted">{screen.caption}</p>
+            <p className="mt-2 max-w-[27.5rem] leading-relaxed text-muted">{screen.caption}</p>
             <Image
               src={screen.src}
               alt={screen.label}
               width={size.width}
               height={size.height}
-              sizes="240px"
-              className="mt-6 h-[460px] w-auto self-start rounded-[26px] shadow-shot lg:hidden"
+              sizes="280px"
+              className="mt-6 h-[28.75rem] w-auto rounded-[1.625rem] shadow-shot lg:hidden"
             />
           </li>
         ))}

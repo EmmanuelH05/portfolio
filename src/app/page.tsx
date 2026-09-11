@@ -24,11 +24,11 @@ export default function Home() {
       <PageShell home>
         <div className="grid items-center gap-10 pt-10 md:grid-cols-[1.2fr_1fr] md:gap-14 md:pt-16">
           <div>
-            <p className="mb-4 max-w-[520px] text-[19px] leading-[1.55] sm:text-[21px]">
+            <p className="mb-4 max-w-[32.5rem] text-[1.1875rem] leading-[1.55] sm:text-[1.3125rem]">
               I study Computer Science and Linguistics at UCLA. I was going to play soccer for a living until I tore
               my ACL in high school, picked up a laptop, and never really put it down.
             </p>
-            <p className="mb-8 max-w-[520px] leading-relaxed text-muted sm:text-[17px]">
+            <p className="mb-8 max-w-[32.5rem] leading-relaxed text-muted sm:text-[1.0625rem]">
               Right now I build the mobile app at{' '}
               <a href="#experience" className="text-link">
                 We Explore Earth
@@ -42,17 +42,17 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
               <a
                 href={resumeHref}
-                className="rounded-full bg-forest px-6 py-3.5 text-[15px] text-shell transition-colors hover:bg-ink"
+                className="rounded-full bg-forest px-6 py-3.5 text-[0.9375rem] text-shell transition-colors hover:bg-ink"
               >
                 Read my resume
               </a>
-              <a href={`mailto:${personalInfo.email}`} className="border-b border-ink pb-0.5 text-[15px]">
+              <a href={`mailto:${personalInfo.email}`} className="border-b border-ink pb-0.5 text-[0.9375rem]">
                 {personalInfo.email}
               </a>
             </div>
           </div>
           <DriftPhoto src="/images/profile-photo.jpg" alt="Emmanuel Hernandez at UCLA">
-            <p className="absolute bottom-4 left-4 flex items-center gap-2 rounded-[10px] bg-shell/95 px-3.5 py-2.5 text-[13px]">
+            <p className="absolute bottom-4 left-4 flex items-center gap-2 rounded-[0.625rem] bg-shell/95 px-3.5 py-2.5 text-[0.8125rem]">
               <span aria-hidden className="h-2 w-2 rounded-full bg-live" />
               Open to summer 2027 internships
             </p>
@@ -69,7 +69,7 @@ export default function Home() {
 
       <section id="research" className="scroll-mt-6">
         <SectionHeading>Research</SectionHeading>
-        <div className="grid gap-[18px] md:grid-cols-2">
+        <div className="grid gap-[1.125rem] md:grid-cols-2">
           {papers.map((paper) => (
             <ResearchCard key={paper.slug} paper={paper} />
           ))}
@@ -83,7 +83,7 @@ export default function Home() {
 
       <section id="about" className="scroll-mt-6">
         <SectionHeading>The longer version</SectionHeading>
-        <div className="mx-auto max-w-[640px] space-y-5 px-2 text-[17px] leading-[1.7] sm:text-[18px]">
+        <div className="mx-auto max-w-[40rem] space-y-5 px-2 text-[1.0625rem] leading-[1.7] sm:text-[1.125rem]">
           {story.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

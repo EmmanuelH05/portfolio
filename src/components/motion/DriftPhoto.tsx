@@ -23,16 +23,16 @@ export default function DriftPhoto({ src, alt, children }: DriftPhotoProps) {
   const y = useTransform(progress, [0, 1], [REST_Y, '4%']);
 
   return (
-    <div className="relative mx-auto w-full max-w-[380px] md:mr-0">
-      <div aria-hidden className="dot-grid absolute -right-[18px] -top-[18px] h-[180px] w-[120px]" />
-      <div ref={ref} className="relative aspect-[4/5] overflow-clip rounded-[22px]">
+    <div className="relative mx-auto w-full max-w-[23.75rem] md:mr-0">
+      <div aria-hidden className="dot-grid absolute -right-[1.125rem] -top-[1.125rem] h-[11.25rem] w-[7.5rem]" />
+      <div ref={ref} className="relative aspect-[4/5] overflow-clip rounded-[1.375rem]">
         <motion.div className="absolute inset-0" style={{ scale: 1.12, y: reduceMotion ? REST_Y : y }}>
           <Image
             src={src}
             alt={alt}
             fill
             priority
-            sizes="(min-width: 768px) 380px, 90vw"
+            sizes="(min-width: 768px) 460px, 90vw"
             className="object-cover object-[50%_40%]"
           />
         </motion.div>

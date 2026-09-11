@@ -6,7 +6,7 @@ import { cubicBezier, motion, useTransform } from 'framer-motion';
 import { useReducedMotionAfterMount, useScrollProgress } from './hooks';
 
 const SHOT = { width: 1206, height: 2622 };
-const shotClass = 'h-[260px] w-auto rounded-[22px] shadow-shot sm:h-[330px]';
+const shotClass = 'h-[16.25rem] w-auto rounded-[1.375rem] shadow-shot sm:h-[20.625rem]';
 // From the stack's top edge coming on screen to its middle reaching the middle of the screen.
 const RANGE = [0.12, 0.5];
 // Fast at first, then easing into place, like cards sliding apart on a table.
@@ -30,15 +30,15 @@ export default function FanStack() {
   const centerY = useTransform(progress, RANGE, [0, FANNED.center.y], EASE);
 
   return (
-    <div ref={ref} className="relative grid h-[300px] place-items-center sm:h-[370px]">
+    <div ref={ref} className="relative grid h-[18.75rem] place-items-center sm:h-[23.125rem]">
       <motion.div className="absolute" style={reduceMotion ? FANNED.left : { x: leftX, rotate: leftRotate }}>
-        <Image src="/diduc/event-detail.png" alt="DIDUC's event detail screen" {...SHOT} sizes="160px" className={shotClass} />
+        <Image src="/diduc/event-detail.png" alt="DIDUC's event detail screen" {...SHOT} sizes="200px" className={shotClass} />
       </motion.div>
       <motion.div className="absolute" style={reduceMotion ? FANNED.right : { x: rightX, rotate: rightRotate }}>
-        <Image src="/diduc/profile.png" alt="DIDUC's profile screen" {...SHOT} sizes="160px" className={shotClass} />
+        <Image src="/diduc/profile.png" alt="DIDUC's profile screen" {...SHOT} sizes="200px" className={shotClass} />
       </motion.div>
       <motion.div className="absolute" style={reduceMotion ? FANNED.center : { y: centerY }}>
-        <Image src="/diduc/home.png" alt="DIDUC's events feed" {...SHOT} sizes="160px" className={shotClass} />
+        <Image src="/diduc/home.png" alt="DIDUC's events feed" {...SHOT} sizes="200px" className={shotClass} />
       </motion.div>
     </div>
   );

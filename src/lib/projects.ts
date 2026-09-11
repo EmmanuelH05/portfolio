@@ -33,7 +33,8 @@ export interface Project {
   build?: { layer: string; detail: string }[];
   roadmap?: string[];
   contributions?: string[];
-  video?: { src: string; poster: string; note: string };
+  /** `flanks` are two screenshots fanned out behind the video in the page header. */
+  video?: { src: string; poster: string; flanks: [string, string]; note: string };
 }
 
 export const projects: Project[] = [
@@ -172,7 +173,8 @@ export const projects: Project[] = [
     screenSize: { width: 1206, height: 2622 },
     video: {
       src: "/diduc/demo.mp4",
-      poster: "/diduc/home.png",
+      poster: "/diduc/demo-poster.jpg",
+      flanks: ["/diduc/event-detail.png", "/diduc/profile.png"],
       note: "Recorded live on the iPhone 17 Pro simulator: events feed, event detail, the create flow, and profile.",
     },
     screensNote: "Captured from an iPhone 17 Pro simulator on the demo branch.",

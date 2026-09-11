@@ -11,13 +11,13 @@ export default function SiteFooter() {
 
   return (
     <footer id="contact" className="mt-20 scroll-mt-6">
-      <div className="rounded-[28px] bg-shell px-6 py-12 text-center sm:px-10 sm:py-16">
-        <p className="mx-auto max-w-[540px] text-[19px] leading-[1.55] sm:text-[21px]">
+      <div className="rounded-[1.75rem] bg-shell px-6 py-12 text-center sm:px-10 sm:py-16">
+        <p className="mx-auto max-w-[33.75rem] text-[1.1875rem] leading-[1.55] sm:text-[1.3125rem]">
           Hiring for summer 2027, or want to talk about anything on here? Email is the fastest way to reach me.
         </p>
         <a
           href={`mailto:${personalInfo.email}`}
-          className="mt-7 inline-block rounded-full bg-forest px-6 py-3.5 text-[15px] text-shell transition-colors hover:bg-ink"
+          className="mt-7 inline-block rounded-full bg-forest px-6 py-3.5 text-[0.9375rem] text-shell transition-colors hover:bg-ink"
         >
           {personalInfo.email}
         </a>
@@ -29,7 +29,7 @@ export default function SiteFooter() {
               <a
                 href={link.href}
                 {...(link.leavesSite ? external : {})}
-                className="text-ink underline decoration-accent underline-offset-[3px]"
+                className="text-ink underline decoration-accent underline-offset-[0.1875rem]"
               >
                 {link.label}
               </a>

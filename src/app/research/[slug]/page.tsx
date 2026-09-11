@@ -27,7 +27,7 @@ export function generateMetadata({ params }: PaperPageProps): Metadata {
   return paper ? { title: paper.shortTitle, description: paper.summary } : {};
 }
 
-const captionClass = 'mx-auto mt-5 max-w-[600px] text-center text-[15px] leading-relaxed text-muted';
+const captionClass = 'mx-auto mt-5 max-w-[37.5rem] text-center text-[0.9375rem] leading-relaxed text-muted';
 
 function PaperFigure({ paper }: { paper: Paper }) {
   const { figure } = paper;
@@ -35,7 +35,7 @@ function PaperFigure({ paper }: { paper: Paper }) {
   if (figure.kind === 'mesh') {
     return (
       <>
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[47.5rem]">
           {/* On screen at load, so it settles over the first stretch of page scroll. */}
           <MeshSettle readout fromTop={420} />
         </div>
@@ -55,8 +55,8 @@ function PaperFigure({ paper }: { paper: Paper }) {
           alt={`The research poster for "${paper.title}"`}
           width={figure.width}
           height={figure.height}
-          sizes="(min-width: 1240px) 1000px, 100vw"
-          className="mx-auto h-auto w-full max-w-[1000px] rounded-xl shadow-shot"
+          sizes="(min-width: 1240px) 1200px, 100vw"
+          className="mx-auto h-auto w-full max-w-[62.5rem] rounded-xl shadow-shot"
         />
       </a>
       <figcaption className={captionClass}>
@@ -78,26 +78,26 @@ export default function PaperPage({ params }: PaperPageProps) {
   return (
     <main>
       <PageShell>
-        <div className="max-w-[800px] pt-10 md:pt-14">
+        <div className="max-w-[50rem] pt-10 md:pt-14">
           <Link href="/#research" className="font-mono text-xs text-muted transition-colors hover:text-ink">
             <span aria-hidden>←</span> Research
           </Link>
           <p className="mt-8 font-mono text-xs uppercase tracking-[0.02em] text-muted">
             {paper.venue} <span aria-hidden>/</span> {paper.year}
           </p>
-          <h1 className="mt-2 font-serif text-[34px] leading-[1.1] tracking-[-0.01em] sm:text-[44px]">{paper.title}</h1>
-          <p className="mt-5 max-w-[620px] text-[17px] leading-relaxed text-muted">
+          <h1 className="mt-2 font-serif text-[2.125rem] leading-[1.1] tracking-[-0.01em] sm:text-[2.75rem]">{paper.title}</h1>
+          <p className="mt-5 max-w-[38.75rem] text-[1.0625rem] leading-relaxed text-muted">
             {paper.authors}. Mentored by {paper.mentor}, {paper.institution}.
           </p>
           <p className="mt-4 font-mono text-xs uppercase tracking-[0.02em] text-muted">{paper.tools.join(' · ')}</p>
         </div>
       </PageShell>
 
-      <figure className={`mt-[18px] rounded-[26px] px-5 py-8 sm:px-10 sm:py-12 ${tintClass[paper.tint]}`}>
+      <figure className={`mt-[1.125rem] rounded-[1.625rem] px-5 py-8 sm:px-10 sm:py-12 ${tintClass[paper.tint]}`}>
         <PaperFigure paper={paper} />
       </figure>
 
-      <article className="mx-auto max-w-[720px] px-2 text-[17px] leading-[1.7] sm:text-[18px]">
+      <article className="mx-auto max-w-[45rem] px-2 text-[1.0625rem] leading-[1.7] sm:text-[1.125rem]">
         <ArticleSection title="The problem">
           <p>{paper.problem}</p>
         </ArticleSection>

@@ -5,6 +5,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Every size is in rem, so on wide screens the whole layout grows a little instead of
+       sitting small in the middle: 16px up to 1440px wide, easing up to 19px around 2300px. */
+    font-size: clamp(100%, 68.75% + 0.35vw, 118.75%);
   }
 
   body {
@@ -20,7 +23,7 @@
   /* The dot pattern peeking out behind the hero photo. */
   .dot-grid {
     background-image: radial-gradient(theme('colors.dots') 1.2px, transparent 1.3px);
-    background-size: 12px 12px;
+    background-size: 0.75rem 0.75rem;
   }
 
   .text-link {

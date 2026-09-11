@@ -19,10 +19,10 @@ interface PageShellProps {
 
 /** The rounded panel at the top of every page: name, nav, then the page's own header. */
 export default function PageShell({ home = false, children }: PageShellProps) {
-  const name = <span className="font-serif text-[26px] leading-none tracking-[-0.01em]">{personalInfo.name}</span>;
+  const name = <span className="font-serif text-[1.625rem] leading-none tracking-[-0.01em]">{personalInfo.name}</span>;
 
   return (
-    <div className="rounded-[28px] bg-shell px-5 pb-10 pt-5 sm:px-10 sm:pb-14 sm:pt-[22px]">
+    <div className="rounded-[1.75rem] bg-shell px-5 pb-10 pt-5 sm:px-10 sm:pb-14 sm:pt-[1.375rem]">
       <header className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
         {home ? <h1>{name}</h1> : <Link href="/">{name}</Link>}
         <nav aria-label="Main">

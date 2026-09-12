@@ -24,7 +24,15 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: PaperPageProps): Metadata {
   const paper = findBySlug(papers, params.slug);
-  return paper ? { title: paper.shortTitle, description: paper.summary } : {};
+  if (!paper) return {};
+
+  // No openGraph block on purpose: declaring one drops the root opengraph-image, and
+  // og:title and og:description derive from the two fields above anyway.
+  return {
+    title: paper.shortTitle,
+    description: paper.summary,
+    alternates: { canonical: `/research/${paper.slug}` },
+  };
 }
 
 function PaperFigure({ paper }: { paper: Paper }) {

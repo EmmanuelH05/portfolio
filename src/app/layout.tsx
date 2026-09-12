@@ -16,16 +16,11 @@ export const metadata: Metadata = {
   keywords: ['Emmanuel Hernandez', 'Full-Stack Developer', 'UCLA', 'Computer Science', 'Portfolio'],
   authors: [{ name: personalInfo.name, url: siteUrl }],
   creator: personalInfo.name,
-  alternates: { canonical: '/' },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: siteUrl,
-    siteName: personalInfo.name,
-    title: personalInfo.name,
-    description,
-  },
-  twitter: { card: 'summary_large_image', title: personalInfo.name, description },
+  // Only the fields that are true of every page. A canonical, title, description or url
+  // here would be inherited verbatim by the project and research pages, telling search
+  // engines they are all duplicates of the home page. Each page sets its own.
+  openGraph: { type: 'website', locale: 'en_US', siteName: personalInfo.name },
+  twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
 };
 

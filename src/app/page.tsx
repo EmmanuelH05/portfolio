@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import ExperienceList from '@/components/ExperienceList';
 import PageShell from '@/components/PageShell';
@@ -12,6 +13,12 @@ import { projects } from '@/lib/projects';
 import { papers } from '@/lib/research';
 import { resumeHref } from '@/lib/site';
 import * as styles from '@/styles/pages/home';
+
+// The title and description come from the root layout; only the URLs are the home page's own.
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+  openGraph: { url: '/' },
+};
 
 // Each project's panel gets its own scroll motion.
 const panelMedia: Record<string, React.ReactNode> = {

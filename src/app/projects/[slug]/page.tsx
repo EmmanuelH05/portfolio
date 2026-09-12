@@ -27,7 +27,17 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: ProjectPageProps): Metadata {
   const project = findBySlug(projects, params.slug);
-  return project ? { title: project.name, description: project.blurb } : {};
+  if (!project) return {};
+
+  // Relative, so it resolves against metadataBase. Without its own canonical this page
+  // inherits the home page's and search engines treat it as a duplicate.
+  // No openGraph block on purpose: declaring one here drops the root opengraph-image,
+  // and og:title and og:description derive from the two fields above anyway.
+  return {
+    title: project.name,
+    description: project.blurb,
+    alternates: { canonical: `/projects/${project.slug}` },
+  };
 }
 
 interface VideoFanProps {

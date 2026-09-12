@@ -13,9 +13,6 @@ export default function SiteFooter() {
   return (
     <footer id="contact" className={styles.footer}>
       <div className={styles.panel}>
-        <p className={styles.line}>
-          Hiring for summer 2027, or want to talk about anything on here? Email is the fastest way to reach me.
-        </p>
         <a href={`mailto:${personalInfo.email}`} className={styles.emailButton}>
           {personalInfo.email}
         </a>

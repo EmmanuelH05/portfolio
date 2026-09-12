@@ -1,7 +1,5 @@
 export const hero = 'grid items-center gap-10 pt-10 md:grid-cols-[1.2fr_1fr] md:gap-14 md:pt-16';
-export const lead = 'mb-4 max-w-[32.5rem] text-[1.1875rem] leading-[1.55] sm:text-[1.3125rem]';
-export const second = 'mb-8 max-w-[32.5rem] leading-relaxed text-muted sm:text-[1.0625rem]';
-export const inlineLink = 'text-link';
+export const lead = 'mb-8 max-w-[32.5rem] text-[1.1875rem] leading-[1.55] sm:text-[1.3125rem]';
 export const actions = 'flex flex-wrap items-center gap-x-5 gap-y-3';
 export const resumeButton = 'rounded-full bg-forest px-6 py-3.5 text-[0.9375rem] text-shell transition-colors hover:bg-ink';
 export const emailLink = 'border-b border-ink pb-0.5 text-[0.9375rem]';

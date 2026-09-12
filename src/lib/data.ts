@@ -180,9 +180,13 @@ export const awards: string[] = [
   "Bay Honors Undergraduate Research Conference (UC Berkeley)",
 ];
 
-/** "The longer version" on the home page, in Emmanuel's own words. */
+/**
+ * "My story" on the home page. The first and last paragraphs are Emmanuel's own writing,
+ * spelling fixed and wording left alone. The middle one bridges them and is drawn only
+ * from facts already on the site, so it stays checkable against workExperience above.
+ */
 export const story: string[] = [
-  "Before computer science, I was convinced I was going to go pro in soccer. I played competitively for years and honestly saw it as the only path for myself until I tore my ACL in high school and suddenly had a lot more time sitting in front of a computer than I expected. Out of boredom at first, I started exploring computer science as a degree and ended up loving it, especially the mix of problem solving and working closely with people to take ideas from 0 to 1.",
-  "Now, I study Computer Science and Linguistics at UCLA, where I spend most of my time building products that solve real problems and actually get used. I have worked on everything from real time event platforms to nonprofit systems and civic tech, and what I enjoy most is building things where I can see the impact of what I worked on.",
-  "Outside of coding, I tutor with School on Wheels, play double bass, and make music. I think the patience and repetition that come with music carry over pretty naturally into how I approach engineering.",
+  "Before studying computer science, my life was on a completely different path. All throughout high school I was convinced that soccer was going to be my life. I played at a high level, and all I wanted to do was play at a higher level. That all took a turn when I unfortunately tore my ACL my junior year of high school. Suddenly I was bedridden and realized the one thing in my life that made me feel fulfilled could no longer do that, and I was convinced that nothing would ever come close. Since I was bedridden, all I had was a computer and an abundant amount of free time that would be considered dangerous for a high schooler to have. That was the case until I stumbled on a tutorial on how to build your own PC. I became fascinated with computers, eventually got into computer science, and began to find small ways to make my life a little easier, one line of code at a time.",
+  "That habit never really left. I am at UCLA now studying computer science and linguistics, and most of the things I build still start the same way, with something small that was annoying me or somebody around me. Right now I work on the mobile app at We Explore Earth, mostly the event and RSVP side of it, and I help run a nonprofit I co-founded that gets school supplies to kids in Tahiti, where I built the dashboard our volunteers use to keep track of everything. On my own time I am making SwipeBite, which exists because my friends and I kept spending half an hour deciding where to eat and then not deciding. I also tutor with School on Wheels, which is probably the part that has stuck with me the most.",
+  "Outside of coding, I make music and play double bass in my free time. Learning a piece is mostly slow, unglamorous repetition, and that has changed how I approach engineering problems more than I expected. When something is not working, I am a lot more willing to sit with it and go over the same few bars again until it finally clicks.",
 ];

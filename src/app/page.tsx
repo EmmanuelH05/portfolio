@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import ExperienceList from '@/components/ExperienceList';
 import PageShell from '@/components/PageShell';
 import ProjectPanel from '@/components/ProjectPanel';
@@ -34,19 +33,10 @@ export default function Home() {
         <div className={styles.hero}>
           <div>
             <p className={styles.lead}>
-              I study Computer Science and Linguistics at UCLA. I was going to play soccer for a living until I tore
-              my ACL in high school, picked up a laptop, and never really put it down.
-            </p>
-            <p className={styles.second}>
-              Right now I build the mobile app at{' '}
-              <a href="#experience" className={styles.inlineLink}>
-                We Explore Earth
-              </a>
-              , and I&apos;m making{' '}
-              <Link href="/projects/swipebite" className={styles.inlineLink}>
-                SwipeBite
-              </Link>
-              , a restaurant app that learns what you like one swipe at a time.
+              Hello! I&apos;m Emmanuel Hernandez, a first-generation college student studying Computer Science &amp;
+              Linguistics @ UCLA. The further I get into tech and higher education, the more I notice how few people
+              in these rooms come from where I come from. I got lucky to be here, and I want to use that to show the
+              students coming up behind me that it is reachable.
             </p>
             <div className={styles.actions}>
               <a href={resumeHref} className={styles.resumeButton}>
@@ -60,7 +50,7 @@ export default function Home() {
           <DriftPhoto src="/images/profile-photo.jpg" alt="Emmanuel Hernandez at UCLA">
             <p className={styles.badge}>
               <span aria-hidden className={styles.badgeDot} />
-              Open to summer 2027 internships
+              Open to summer 2027 internships and co-ops
             </p>
           </DriftPhoto>
         </div>
@@ -88,7 +78,7 @@ export default function Home() {
       </section>
 
       <section id="about" className={styles.section}>
-        <SectionHeading>The longer version</SectionHeading>
+        <SectionHeading>My story</SectionHeading>
         <div className={styles.story}>
           {story.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>

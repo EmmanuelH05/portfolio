@@ -226,4 +226,173 @@ export const projects: Project[] = [
       "Migrated key storage to Firebase when our deployment needs shifted later in the quarter.",
     ],
   },
+  {
+    slug: "crash-simulator",
+    name: "Database Crash Simulator",
+    number: "03",
+    period: "Aug 2026",
+    headline: "A crash simulator that found a real data-loss bug in a production database",
+    blurb:
+      "Databases promise that once a write comes back, your data survives a crash. This traces every write one makes, works out which on-disk states a crash could legally leave behind, and replays each one to see whether the promise holds.",
+    chips: ["Solo", "C, TypeScript, Bun, Rust, Linux", "10,942 crash states"],
+    cta: "Read the case study",
+    tint: "sand",
+    intro: [
+      "Databases advertise durability, but that guarantee is rarely tested against the narrow set of on-disk states a real crash can actually produce. I wanted something that enumerated those states instead of guessing at them, so this records a real syscall trace of a database under load, models what each filesystem journaling mode actually guarantees, and replays every legal crash state through the database's own recovery path.",
+      "I pointed it at redb, a production Rust embedded database, across 20 combinations of filesystem mode and workload shape. It ran 10,942 crash states in 21 minutes and found a genuine data-loss bug, where recovery permanently lost an intact file after one specific interrupted write. Checking redb's git history and all 75 released tags showed the maintainer had already found and fixed the same bug before I picked the target, so I found it independently rather than first. I packaged the disclosure the way it would have been written and left the credit where it belonged. The fix ships in redb 4.2.0.",
+    ],
+    facts: [
+      { label: "Role", value: "Solo" },
+      { label: "Stack", value: "C, TypeScript on Bun, Rust, Linux" },
+      { label: "Scale", value: "10,942 crash states in 21 minutes, 77 tests" },
+      { label: "Status", value: "Local only, not published" },
+    ],
+    links: [],
+    screenSize: { width: 1200, height: 800 },
+    screensNote: "Output from the committed campaign run, not a mock-up.",
+    screens: [
+      {
+        src: "/crashfuzz/campaign.png",
+        label: "The campaign",
+        caption:
+          "Every filesystem and workload shape, 10,942 states in total. Three rows produced a finding, and all three are the same bug on a different filesystem.",
+      },
+      {
+        src: "/crashfuzz/finding.png",
+        label: "The bug",
+        caption:
+          "The header persisted but the ftruncate that grew the file did not, so the file ends up smaller than the layout its own header describes. redb panics instead of recovering.",
+      },
+      {
+        src: "/crashfuzz/disclosure.png",
+        label: "Disclosure",
+        caption:
+          "The maintainer had already found and fixed it upstream. Nothing was filed, because a duplicate report adds nothing.",
+      },
+    ],
+    features: [
+      {
+        title: "Traces the real thing",
+        body: "An LD_PRELOAD shim in C intercepts the database's actual writes. No source changes to the target and no instrumentation it could behave differently under.",
+      },
+      {
+        title: "Four journaling modes",
+        body: "ext4 ordered and journal, xfs and btrfs each guarantee different things. The models deliberately diverge instead of collapsing into one conservative approximation.",
+      },
+      {
+        title: "Real recovery, not a simulation",
+        body: "Each crash state is materialized as an actual filesystem image on a loopback device, and the database's own recovery code runs against it.",
+      },
+      {
+        title: "One-command reproducer",
+        body: "Findings are deduplicated by root-cause signature and packaged so anyone can reproduce one in about six seconds from a clean machine.",
+      },
+    ],
+    build: [
+      {
+        layer: "Trace",
+        detail:
+          "C shim loaded with LD_PRELOAD. Every intercepted syscall gets submission and completion timestamps from one counter in a shared page, which gives a total order without a lock in the hot path.",
+      },
+      {
+        layer: "Enumeration",
+        detail:
+          "TypeScript on Bun builds a persistence graph per journaling mode and enumerates the legal on-disk states at each crash point.",
+      },
+      {
+        layer: "Oracle",
+        detail:
+          "Derived mechanically from the database's own documented durability contract rather than hand-written per workload, so it cannot be quietly tuned to pass.",
+      },
+      {
+        layer: "Targets",
+        detail:
+          "redb as the real target, SQLite as a working control, and a deliberately broken key-value store as a positive control to prove the oracle catches what it should.",
+      },
+    ],
+  },
+  {
+    slug: "code-switching-benchmark",
+    name: "LLM Code-Switching Benchmark",
+    number: "04",
+    period: "Aug 2026 → now",
+    headline: "A benchmark for whether language models actually handle Spanglish",
+    blurb:
+      "Bilingual speakers switch languages mid-sentence using rules they never consciously learned. This measures whether a language model follows those rules or just produces something that sounds close.",
+    chips: ["Solo", "Python, pydantic, pytest, Ollama", "402 items, 3 models"],
+    cta: "Read the case study",
+    tint: "mist",
+    intro: [
+      "Spanish and English bilinguals mix languages inside a single sentence constantly, and which mixtures sound right is governed by grammar rather than taste. Most evaluations prompt a model with some Spanglish and grade the output on feel, which says nothing about whether the model represents the rule being tested. This grades against the Matrix Language Frame model from linguistics, which makes specific predictions about which language controls the grammar of a mixed sentence, so a violation becomes a gradeable error instead of an awkward phrase.",
+      "Version 1.0 is 402 items, hash pinned so any edit fails the suite, balanced across three violation types and four task types. Three local open-weight models each ran the full set. One of them timed out on every item of the language identification task, so that row is unusable and the writeup says so rather than quietly dropping it. The suite is 177 tests at 96% statement coverage. It is the only thing I have built that uses both halves of my major.",
+    ],
+    facts: [
+      { label: "Role", value: "Solo" },
+      { label: "Stack", value: "Python, pydantic, pytest, Ollama" },
+      { label: "Scale", value: "402 items, 3 models, 177 tests at 96% coverage" },
+      { label: "Status", value: "Local only, v1.0 tagged" },
+    ],
+    links: [],
+    screenSize: { width: 1200, height: 800 },
+    screensNote: "Output from the committed v1.0 runs and a live test run.",
+    screens: [
+      {
+        src: "/cswbench/results.png",
+        label: "Repair scores",
+        caption:
+          "Two of the three models repair the easy violation types well and collapse on T5, a bare English verb in a Spanish frame. The third breaks differently, which is why the finding is scoped to two.",
+      },
+      {
+        src: "/cswbench/runs.png",
+        label: "The runs",
+        caption:
+          "All three models completed 402 items. One lost a single task entirely to timeouts, and a second is degraded across all four. Errored records are counted, never silently dropped.",
+      },
+      {
+        src: "/cswbench/tests.png",
+        label: "Tests",
+        caption: "177 tests at 96% statement coverage, with eight of the fourteen modules at 100%.",
+      },
+    ],
+    features: [
+      {
+        title: "Grammaticality judgment",
+        body: "Pick the licensed member of a minimal pair that differs only in one violation the theory predicts. The one task every model does well.",
+      },
+      {
+        title: "Repair",
+        body: "Fix a violating sentence with the smallest possible change. This is where the models actually separate from each other.",
+      },
+      {
+        title: "Matrix language identification",
+        body: "Name which language is running the grammar and cite the evidence for it. Every model scores below chance here.",
+      },
+      {
+        title: "Reproducible by construction",
+        body: "Every response is cached by a content hash of prompt, model and seed, so rescoring a changed rule costs zero model calls and every published number regenerates from committed data.",
+      },
+    ],
+    build: [
+      {
+        layer: "Items",
+        detail:
+          "402 items, each carrying a source, one violation type from a mutually exclusive taxonomy, a difficulty, and the linguistic justification for its gold answer. The set has a recorded SHA-256 that a test pins, so any edit fails the suite.",
+      },
+      {
+        layer: "Taxonomy",
+        detail:
+          "Three violation types, cut down from a planned four. Two candidates could not be populated with enough real items for a held-out split to mean anything, so they were dropped and the reasoning recorded rather than smoothed over.",
+      },
+      {
+        layer: "Scoring",
+        detail:
+          "Each task is rescaled against its own floor and tasks are never averaged together. Every reported number carries a 95% bootstrap interval from 10,000 resamples.",
+      },
+      {
+        layer: "Inference",
+        detail:
+          "Local open-weight models through Ollama. No API keys and nothing leaves the machine, which meant the harness had to handle GPU out-of-memory, hung models and contention per item rather than failing the run.",
+      },
+    ],
+  },
 ];

@@ -57,9 +57,12 @@ export const projects: Project[] = [
       { label: "Role", value: "Solo, full stack" },
       { label: "Stack", value: "Next.js 16, TypeScript, Express, PostgreSQL, Prisma" },
       { label: "Data", value: "Google Places API" },
-      { label: "Status", value: "In development" },
+      { label: "Status", value: "Live" },
     ],
-    links: [{ label: "Code on GitHub", href: "https://github.com/EmmanuelH05/SwipeBite" }],
+    links: [
+      { label: "Try the live demo", href: "https://frontend-livid-ten-37.vercel.app" },
+      { label: "Code on GitHub", href: "https://github.com/EmmanuelH05/SwipeBite" },
+    ],
     screenSize: { width: 390, height: 844 },
     screensNote: "Captured from a running local instance connected to a real PostgreSQL database.",
     screens: [
@@ -152,7 +155,7 @@ export const projects: Project[] = [
     slug: "diduc",
     name: "DIDUC",
     number: "02",
-    period: "Oct → Dec 2025",
+    period: "Jan → May 2026",
     headline: "DIDUC: one shared photo album for everyone at the party",
     blurb:
       "Make an event, share a code, and everybody's photos land in the same feed. I led the team and wrote the backend.",
@@ -161,12 +164,12 @@ export const projects: Project[] = [
     tint: "mist",
     intro: [
       "A shared photo album app for events. You create an event, share a code, and everyone who joins can upload photos that live in one place.",
-      "Built as a class project for UCLA CS 35L by four of us on the code and a designer working in Figma. I led the team and wrote the backend.",
+      "Built as a class project for UCLA CS 35L by five of us on the code and a designer working in Figma. I led the team and wrote the backend.",
     ],
     facts: [
       { label: "Role", value: "Team lead, backend" },
-      { label: "Team", value: "4 engineers and a designer" },
-      { label: "Class", value: "UCLA CS 35L, Fall 2025" },
+      { label: "Team", value: "5 engineers and a designer" },
+      { label: "Class", value: "UCLA CS 35L, Winter 2026" },
       { label: "Stack", value: "React Native, Expo, TypeScript, Express, MongoDB, Firebase" },
     ],
     links: [{ label: "GitHub", href: "https://github.com/EmmanuelH05" }],

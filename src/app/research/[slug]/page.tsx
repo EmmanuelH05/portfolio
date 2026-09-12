@@ -26,8 +26,10 @@ export function generateMetadata({ params }: PaperPageProps): Metadata {
   const paper = findBySlug(papers, params.slug);
   if (!paper) return {};
 
-  // No openGraph block on purpose: declaring one drops the root opengraph-image, and
-  // og:title and og:description derive from the two fields above anyway.
+  // No openGraph block on purpose: Next replaces that object instead of merging it, so a
+  // partial one here drops the root's og:type, og:site_name and og:locale, and in a nested
+  // segment it drops the opengraph-image too. og:title and og:description derive from the
+  // two fields above anyway.
   return {
     title: paper.shortTitle,
     description: paper.summary,

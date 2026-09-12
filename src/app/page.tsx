@@ -14,10 +14,11 @@ import { papers } from '@/lib/research';
 import { resumeHref } from '@/lib/site';
 import * as styles from '@/styles/pages/home';
 
-// The title and description come from the root layout; only the URLs are the home page's own.
+// The title and description come from the root layout. No openGraph block: Next replaces
+// that object wholesale instead of merging it, so declaring one here just to add og:url
+// would drop the root's og:type, og:site_name and og:locale from the most shared page.
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
-  openGraph: { url: '/' },
 };
 
 // Each project's panel gets its own scroll motion.

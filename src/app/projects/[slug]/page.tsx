@@ -31,8 +31,10 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
 
   // Relative, so it resolves against metadataBase. Without its own canonical this page
   // inherits the home page's and search engines treat it as a duplicate.
-  // No openGraph block on purpose: declaring one here drops the root opengraph-image,
-  // and og:title and og:description derive from the two fields above anyway.
+  // No openGraph block on purpose: Next replaces that object instead of merging it, so a
+  // partial one here drops the root's og:type, og:site_name and og:locale, and in a nested
+  // segment it drops the opengraph-image too. og:title and og:description derive from the
+  // two fields above anyway.
   return {
     title: project.name,
     description: project.blurb,

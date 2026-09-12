@@ -44,7 +44,7 @@ export const profileUrl = (profilePath: string) => `https://${profilePath}`;
 
 export const education: Education = {
   school: "UCLA",
-  degree: "B.A. Computer Science & Linguistics",
+  degree: "B.A. Linguistics and Computer Science",
   graduation: "June 2028",
   summary: "Dean's List.",
   coursework: [
@@ -112,11 +112,11 @@ export const clubExperience: WorkExperience[] = [
 export const technicalSkills: TechnicalSkill[] = [
   {
     category: "Languages",
-    skills: ["C/C++", "Python", "Java", "JavaScript", "TypeScript", "SQL"],
+    skills: ["C/C++", "Python", "Java", "JavaScript", "TypeScript", "SQL", "Swift", "Rust"],
   },
   {
     category: "Frontend",
-    skills: ["React Native", "React", "Next.js", "HTML/CSS", "Expo"],
+    skills: ["React Native", "React", "Next.js", "Tailwind CSS", "HTML/CSS", "Expo"],
   },
   {
     category: "Backend",
@@ -127,22 +127,27 @@ export const technicalSkills: TechnicalSkill[] = [
       "Firestore",
       "PostgreSQL",
       "Prisma",
+      "MongoDB",
       "REST APIs",
+      "JWT auth",
       "Supabase",
     ],
   },
   {
+    // AWS stays narrowed to S3 on purpose. Bare "AWS" would claim more than the work supports.
     category: "Tools",
+    skills: ["Git", "Linux/Unix", "AWS (S3)", "CI/CD", "Google Apps Script", "Postman", "Cursor", "GitHub Copilot"],
+  },
+  {
+    category: "Agentic",
     skills: [
-      "Git",
-      "Linux/Unix",
-      "AWS (S3)",
-      "CI/CD",
-      "Google Apps Script",
-      "Postman",
-      "Cursor",
-      "GitHub Copilot",
       "Claude Code",
+      "MCP servers",
+      "Custom subagents and skills",
+      "Ollama",
+      "LM Studio",
+      "Gemini API",
+      "LLM eval harnesses",
     ],
   },
 ];

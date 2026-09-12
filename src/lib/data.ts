@@ -45,8 +45,8 @@ export const profileUrl = (profilePath: string) => `https://${profilePath}`;
 export const education: Education = {
   school: "UCLA",
   degree: "B.A. Computer Science & Linguistics",
-  graduation: "June 2027",
-  summary: "GPA 3.5. Dean's List.",
+  graduation: "June 2028",
+  summary: "Dean's List.",
   coursework: [
     "Data Structures & Algorithms",
     "Software Construction & Tools",
@@ -62,67 +62,40 @@ export const education: Education = {
 
 export const workExperience: WorkExperience[] = [
   {
-    title: "Full Stack Mobile Developer",
+    title: "Software Engineer Intern",
     company: "We Explore Earth",
     location: "Los Angeles, CA",
     startDate: "Dec 2025",
-    endDate: "Present",
+    endDate: "June 2026",
     summary:
-      "I work on the React Native app for an event platform with 20,000+ users, mostly the event and RSVP APIs behind it.",
+      "I worked on the React Native app for an event platform with 20,000+ users, mostly the event and RSVP APIs behind it.",
     responsibilities: [
-      "Developing features for a real-time event platform used by 20,000+ users for event management, RSVPs, and volunteer coordination.",
-      "Designing and implementing 10+ RESTful APIs for event creation and RSVP workflows, reducing redundant queries by 20%.",
-      "Collaborating with 5 designers using Figma hi-fis and coordinating development through GitHub as part of an agile 15-member team.",
-      "Leveraging AWS services and Firebase-backed infrastructure to support scalable event management and real-time platform functionality.",
+      "Developed features for a real-time event platform used by 20,000+ users for event management, RSVPs, and volunteer coordination.",
+      "Designed and implemented 10+ RESTful APIs for event creation and RSVP workflows, reducing redundant queries by 20%.",
+      "Collaborated with 5 designers using Figma hi-fis and coordinated development through GitHub as part of an agile 15-member team.",
+      "Leveraged AWS services and Firebase-backed infrastructure to support scalable event management and real-time platform functionality.",
     ],
   },
   {
-    title: "Technical Co-Founder",
+    title: "Software Engineering Intern",
     company: "Rise the Fenua",
     location: "Los Angeles, CA",
-    startDate: "Feb 2024",
-    endDate: "Present",
+    startDate: "June 2026",
+    endDate: "Aug 2026",
     summary:
-      "A nonprofit I co-founded that gets school supplies to kids in Tahiti. I built the dashboard our volunteers run fulfillment from, and we've raised $20,000 so far.",
+      "A nonprofit that gets school supplies to kids in Tahiti. I built the dashboard the volunteers run fulfillment from, and they have raised $25,000 so far.",
     responsibilities: [
-      "Co-founded an education-focused nonprofit supporting underserved youth in Tahiti through school supplies and fundraising initiatives.",
+      "Built software for an education-focused nonprofit supporting underserved youth in Tahiti through school supplies and fundraising initiatives.",
       "Developed a production dashboard used by 20+ volunteers to streamline merchandise fulfillment and coordination.",
       "Engineered a data pipeline using 6+ SQL migrations to normalize Google Form responses, reducing manual processing time by 40%.",
-      "Led operations, overseeing software systems, merchandise logistics, and fundraising workflows that generated $20,000 in donations.",
-    ],
-  },
-  {
-    title: "Software Engineer Intern",
-    company: "BID",
-    location: "Los Angeles, CA",
-    startDate: "May 2025",
-    endDate: "Aug 2025",
-    summary:
-      "Auth and session endpoints in Node, Express, and MongoDB for a marketplace of local service providers with 500+ users.",
-    responsibilities: [
-      "Contributed to development for a marketplace platform connecting users with local service providers through task-based bidding workflows.",
-      "Built auth and session management endpoints using Node.js, Express, and MongoDB, supporting 500+ active users.",
-      "Debugged API response, session persistence, and state synchronization issues across 5+ backend/frontend routes.",
-      "Supported product updates during a platform pivot, helping improve system usability and feature stability across multiple core modules.",
-    ],
-  },
-  {
-    title: "Intern",
-    company: "Vectorly",
-    location: "Los Angeles, CA",
-    startDate: "May 2024",
-    endDate: "Aug 2024",
-    summary: "Graded AI-written code for a platform that helps people prep for technical interviews.",
-    responsibilities: [
-      "Contributed to an AI-powered technical interview platform designed to help users prepare for software engineering interviews.",
-      "Evaluated AI-generated coding outputs for technical interview workflows, assessing accuracy and response quality across problems.",
+      "Supported operations across software systems, merchandise logistics, and fundraising workflows that generated $25,000 in donations.",
     ],
   },
 ];
 
 export const clubExperience: WorkExperience[] = [
   {
-    title: "Developer",
+    title: "Full-Stack Developer",
     company: "LA Blueprint",
     location: "Los Angeles, CA",
     startDate: "Sep 2025",
@@ -187,6 +160,6 @@ export const awards: string[] = [
  */
 export const story: string[] = [
   "Before studying computer science, my life was on a completely different path. All throughout high school I was convinced that soccer was going to be my life. I played at a high level, and all I wanted to do was play at a higher level. That all took a turn when I unfortunately tore my ACL my junior year of high school. Suddenly I was bedridden and realized the one thing in my life that made me feel fulfilled could no longer do that, and I was convinced that nothing would ever come close. Since I was bedridden, all I had was a computer and an abundant amount of free time that would be considered dangerous for a high schooler to have. That was the case until I stumbled on a tutorial on how to build your own PC. I became fascinated with computers, eventually got into computer science, and began to find small ways to make my life a little easier, one line of code at a time.",
-  "That habit never really left. I am at UCLA now studying computer science and linguistics, and most of the things I build still start the same way, with something small that was annoying me or somebody around me. Right now I work on the mobile app at We Explore Earth, mostly the event and RSVP side of it, and I help run a nonprofit I co-founded that gets school supplies to kids in Tahiti, where I built the dashboard our volunteers use to keep track of everything. On my own time I am making SwipeBite, which exists because my friends and I kept spending half an hour deciding where to eat and then not deciding. I also tutor with School on Wheels, which is probably the part that has stuck with me the most.",
+  "That habit never really left. I am at UCLA now studying computer science and linguistics, and most of the things I build still start the same way, with something small that was annoying me or somebody around me. I have worked on the mobile app at We Explore Earth, mostly the event and RSVP side of it, and spent this past summer at a nonprofit that gets school supplies to kids in Tahiti, where I built the dashboard the volunteers use to keep track of everything. On my own time I am making SwipeBite, which exists because my friends and I kept spending half an hour deciding where to eat and then not deciding. I also tutor with School on Wheels, which is probably the part that has stuck with me the most.",
   "Outside of coding, I make music and play double bass in my free time. Learning a piece is mostly slow, unglamorous repetition, and that has changed how I approach engineering problems more than I expected. When something is not working, I am a lot more willing to sit with it and go over the same few bars again until it finally clicks.",
 ];

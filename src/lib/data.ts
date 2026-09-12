@@ -134,13 +134,14 @@ export const technicalSkills: TechnicalSkill[] = [
     ],
   },
   {
-    // AWS stays narrowed to S3 on purpose. Bare "AWS" would claim more than the work supports.
+    // Not narrowed to S3: Emmanuel confirmed directly that his AWS work went wider than that,
+    // which is also why the We Explore Earth bullet says "AWS services" rather than S3.
     category: "Tools",
     skills: [
       "Git",
       "Linux/Unix",
       "Docker",
-      "AWS (S3)",
+      "AWS",
       "CI/CD",
       "Vercel",
       "Render",

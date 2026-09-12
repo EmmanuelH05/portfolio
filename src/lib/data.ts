@@ -73,7 +73,7 @@ export const workExperience: WorkExperience[] = [
       "Developed features for a real-time event platform used by 20,000+ users for event management, RSVPs, and volunteer coordination.",
       "Designed and implemented 10+ RESTful APIs for event creation and RSVP workflows, reducing redundant queries by 20%.",
       "Collaborated with 5 designers using Figma hi-fis and coordinated development through GitHub as part of an agile 15-member team.",
-      "Leveraged AWS services and Firebase-backed infrastructure to support scalable event management and real-time platform functionality.",
+      "Leveraged AWS S3 and Firebase-backed infrastructure to support scalable event management and real-time platform functionality.",
     ],
   },
   {
@@ -134,14 +134,14 @@ export const technicalSkills: TechnicalSkill[] = [
     ],
   },
   {
-    // Not narrowed to S3: Emmanuel confirmed directly that his AWS work went wider than that,
-    // which is also why the We Explore Earth bullet says "AWS services" rather than S3.
+    // S3 only. Asked what he actually did on AWS rather than which string to ship, he said
+    // storage for uploads and images, so the bullet above names S3 too and the resume agrees.
     category: "Tools",
     skills: [
       "Git",
       "Linux/Unix",
       "Docker",
-      "AWS",
+      "AWS (S3)",
       "CI/CD",
       "Vercel",
       "Render",

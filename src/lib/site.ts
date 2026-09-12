@@ -5,6 +5,9 @@ import path from 'node:path';
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 const RESUME_FILE = '/resume.pdf';
 
+/** Canonical origin. Metadata, the sitemap and robots.txt all resolve against it. */
+export const siteUrl = 'https://manniehernandez.com';
+
 /** "Read my resume" opens public/resume.pdf once it exists, otherwise it jumps to the Experience section. */
 export const resumeHref = fs.existsSync(path.join(PUBLIC_DIR, RESUME_FILE)) ? RESUME_FILE : '/#experience';
 

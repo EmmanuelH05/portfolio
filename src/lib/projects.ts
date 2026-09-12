@@ -156,16 +156,16 @@ export const projects: Project[] = [
     headline: "DIDUC: one shared photo album for everyone at the party",
     blurb:
       "Make an event, share a code, and everybody's photos land in the same feed. I led the team and wrote the backend.",
-    chips: ["Led a team of 4", "React Native, Express, MongoDB, Firebase"],
+    chips: ["Led a team of 5", "React Native, Express, MongoDB, Firebase"],
     cta: "Watch the demo",
     tint: "mist",
     intro: [
       "A shared photo album app for events. You create an event, share a code, and everyone who joins can upload photos that live in one place.",
-      "Built with a team of 4 as a class project for UCLA CS 35L. I led the team and wrote the backend.",
+      "Built as a class project for UCLA CS 35L by four of us on the code and a designer working in Figma. I led the team and wrote the backend.",
     ],
     facts: [
       { label: "Role", value: "Team lead, backend" },
-      { label: "Team", value: "4 people" },
+      { label: "Team", value: "4 engineers and a designer" },
       { label: "Class", value: "UCLA CS 35L, Fall 2025" },
       { label: "Stack", value: "React Native, Expo, TypeScript, Express, MongoDB, Firebase" },
     ],

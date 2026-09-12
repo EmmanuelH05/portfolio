@@ -136,7 +136,20 @@ export const technicalSkills: TechnicalSkill[] = [
   {
     // AWS stays narrowed to S3 on purpose. Bare "AWS" would claim more than the work supports.
     category: "Tools",
-    skills: ["Git", "Linux/Unix", "AWS (S3)", "CI/CD", "Google Apps Script", "Postman", "Cursor", "GitHub Copilot"],
+    skills: [
+      "Git",
+      "Linux/Unix",
+      "Docker",
+      "AWS (S3)",
+      "CI/CD",
+      "Vercel",
+      "Render",
+      "Postman",
+      "pytest",
+      "Google Apps Script",
+      "Cursor",
+      "GitHub Copilot",
+    ],
   },
   {
     category: "Agentic",

@@ -1,8 +1,13 @@
 import type { Tint } from '@/lib/projects';
 import { tintClass } from '@/styles/tint';
 
-/** Top-aligned: the text starts right under the nav and the panel stretches to match it. */
-export const header = 'grid gap-10 pt-10 md:pt-14 lg:grid-cols-2 lg:gap-14';
+/**
+ * Top-aligned: the text starts right under the nav and the panel stretches to match it.
+ * The second column only exists when the project has media, otherwise the text runs full width
+ * instead of sitting beside an empty box.
+ */
+export const header = (hasMedia: boolean) =>
+  ['grid gap-10 pt-10 md:pt-14', hasMedia ? 'lg:grid-cols-2 lg:gap-14' : ''].filter(Boolean).join(' ');
 export const backLink = 'font-mono text-xs text-muted transition-colors hover:text-ink';
 export const meta = 'mt-8 font-mono text-xs uppercase tracking-[0.02em] text-muted';
 export const title = 'mt-2 font-serif text-[2.5rem] leading-[1.05] tracking-[-0.01em] sm:text-[2.75rem]';

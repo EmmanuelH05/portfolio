@@ -63,8 +63,12 @@ function VideoFan({ video, name, screenSize }: VideoFanProps) {
   );
 }
 
-/** A project with a demo video plays it up top; SwipeBite gets its swipe stack. */
-function HeaderMedia({ project }: { project: Project }) {
+/**
+ * A project with a demo video plays it up top; SwipeBite gets its swipe stack. Returns null
+ * for a project with neither, and the caller then skips the panel rather than rendering an
+ * empty tinted box beside the text.
+ */
+function headerMedia(project: Project) {
   if (project.video) {
     return <VideoFan video={project.video} name={project.name} screenSize={project.screenSize} />;
   }
@@ -76,11 +80,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const project = findBySlug(projects, params.slug);
   if (!project) notFound();
   const next = nextAfter(projects, project.slug);
+  const media = headerMedia(project);
 
   return (
     <main>
       <PageShell>
-        <div className={styles.header}>
+        <div className={styles.header(Boolean(media))}>
           <div>
             <Link href="/#work" className={styles.backLink}>
               <span aria-hidden>←</span> All work
@@ -110,9 +115,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </div>
           </div>
-          <div className={styles.panel(project.tint)}>
-            <HeaderMedia project={project} />
-          </div>
+          {media && <div className={styles.panel(project.tint)}>{media}</div>}
         </div>
       </PageShell>
 

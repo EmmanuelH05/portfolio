@@ -1,8 +1,18 @@
 import type { Tint } from '@/lib/projects';
 import { tintClass } from '@/styles/tint';
 
-export const panel = (tint: Tint) =>
-  `mb-[1.125rem] grid items-center gap-8 overflow-clip rounded-[1.625rem] p-6 sm:p-11 md:grid-cols-2 md:gap-9 ${tintClass[tint]}`;
+/**
+ * Two columns only when there is something to put in the second one. Without the guard a
+ * project with no media still reserves the track and renders an empty tinted half.
+ */
+export const panel = (tint: Tint, hasMedia: boolean) =>
+  [
+    'mb-[1.125rem] grid items-center gap-8 overflow-clip rounded-[1.625rem] p-6 sm:p-11 md:gap-9',
+    hasMedia ? 'md:grid-cols-2' : '',
+    tintClass[tint],
+  ]
+    .filter(Boolean)
+    .join(' ');
 
 export const meta = 'mb-2.5 font-mono text-xs uppercase tracking-[0.02em] text-muted';
 export const headline = 'mb-3 text-[1.625rem] leading-[1.15] tracking-[-0.01em] sm:text-[2rem]';

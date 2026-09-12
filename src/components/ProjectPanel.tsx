@@ -4,13 +4,14 @@ import * as styles from '@/styles/components/ProjectPanel';
 
 interface ProjectPanelProps {
   project: Project;
-  media: React.ReactNode;
+  /** Optional: the projects with no screenshots of their own run as a single column. */
+  media?: React.ReactNode;
 }
 
 /** A tinted panel under "Selected work" on the home page. */
 export default function ProjectPanel({ project, media }: ProjectPanelProps) {
   return (
-    <article className={styles.panel(project.tint)}>
+    <article className={styles.panel(project.tint, Boolean(media))}>
       <div>
         <p className={styles.meta}>
           {project.number} <span aria-hidden>/</span> {project.period}

@@ -34,9 +34,7 @@ export default function Home() {
           <div>
             <p className={styles.lead}>
               Hello! I&apos;m Emmanuel Hernandez, a first-generation college student studying Computer Science &amp;
-              Linguistics @ UCLA. The further I get into tech and higher education, the more I notice how few people
-              in these rooms come from where I come from. I got lucky to be here, and I want to use that to show the
-              students coming up behind me that it is reachable.
+              Linguistics @ UCLA.
             </p>
             <div className={styles.actions}>
               <a href={resumeHref} className={styles.resumeButton}>

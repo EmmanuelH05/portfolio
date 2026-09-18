@@ -418,6 +418,13 @@ export const projects: Project[] = [
     ],
     links: [],
     screenSize: { width: 390, height: 818 },
+    video: {
+      src: "/we-explore-earth/flow.mp4",
+      poster: "/we-explore-earth/flow-poster.jpg",
+      flanks: ["/we-explore-earth/your-events.png", "/we-explore-earth/rsvp-modal-cancel.png"],
+      note:
+        "Four stills from my merged pull requests, sequenced into a loop, not a live recording. The app needs the organization's Firebase project to run, which this portfolio doesn't have access to.",
+    },
     screensNote: "Screenshots from my own merged pull requests, May 2026.",
     screens: [
       {
@@ -442,17 +449,6 @@ export const projects: Project[] = [
         label: "Confirm delete",
         caption:
           "Deleting asks for confirmation first. On confirm, the backend walks every attendee's RSVP before removing the event from Firestore.",
-      },
-      {
-        src: "/we-explore-earth/user-home.png",
-        label: "User home",
-        caption: "The user home screen's \"Brewing next\" section, showing events they've RSVPed yes or maybe to.",
-      },
-      {
-        src: "/we-explore-earth/admin-home.png",
-        label: "Admin home",
-        caption:
-          "The same home screen for an admin account: no \"Brewing next\" section, and New Event and Notify in place of the tabs a user sees.",
       },
     ],
     features: [

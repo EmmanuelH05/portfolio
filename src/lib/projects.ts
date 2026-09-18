@@ -395,4 +395,89 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "we-explore-earth",
+    name: "We Explore Earth",
+    number: "05",
+    period: "Dec 2025 → June 2026",
+    headline: "We Explore Earth: the RSVP app behind a 20,000-person outdoor community",
+    blurb:
+      "A real-time event platform for RSVPs and volunteer coordination. I worked on the React Native app, mostly the event and RSVP APIs behind it.",
+    chips: ["15-person team", "React Native, Redux, Firebase, AWS S3", "20,000+ users"],
+    cta: "Read the case study",
+    tint: "sand",
+    intro: [
+      "We Explore Earth runs a real-time event platform for a community of 20,000+ users: browsing events, RSVPing, and coordinating volunteers for outdoor trips.",
+      "I joined through LA Blueprint as a Software Engineer Intern on a 15-member agile team with 5 designers, working mostly on the React Native app and the event and RSVP APIs behind it. I designed and built 10+ REST endpoints for event creation and RSVP workflows, consolidating sequential reads to cut redundant queries by 20%, and built 20+ reusable React Native components from Figma hi-fis. My own merged pull requests cover the event card and home screen redesign, the RSVP modal's cancel flow, and admin-only event deletion end to end, frontend and backend.",
+    ],
+    facts: [
+      { label: "Role", value: "Software Engineer Intern" },
+      { label: "Team", value: "15-member agile team, 5 designers" },
+      { label: "Stack", value: "React Native, Redux, Firebase, AWS S3" },
+      { label: "Scale", value: "20,000+ users" },
+    ],
+    links: [],
+    screenSize: { width: 390, height: 818 },
+    screensNote: "Screenshots from my own merged pull requests, May 2026.",
+    screens: [
+      {
+        src: "/we-explore-earth/your-events.png",
+        label: "Event cards",
+        caption:
+          "Reworked the event card: dropped the gradient and gloss overlay, and restyled the date to match the Figma spec.",
+      },
+      {
+        src: "/we-explore-earth/rsvp-modal-cancel.png",
+        label: "RSVP flow",
+        caption:
+          "The RSVP modal grew a Cancel RSVP option that only shows once you're already registered; canceling clears both the event's attendee list and the user's RSVP list.",
+      },
+      {
+        src: "/we-explore-earth/event-detail-admin.png",
+        label: "Admin delete",
+        caption: "A delete option on the event detail screen, visible only to admin accounts.",
+      },
+      {
+        src: "/we-explore-earth/confirm-delete-modal.png",
+        label: "Confirm delete",
+        caption:
+          "Deleting asks for confirmation first. On confirm, the backend walks every attendee's RSVP before removing the event from Firestore.",
+      },
+      {
+        src: "/we-explore-earth/user-home.png",
+        label: "User home",
+        caption: "The user home screen's \"Brewing next\" section, showing events they've RSVPed yes or maybe to.",
+      },
+      {
+        src: "/we-explore-earth/admin-home.png",
+        label: "Admin home",
+        caption:
+          "The same home screen for an admin account: no \"Brewing next\" section, and New Event and Notify in place of the tabs a user sees.",
+      },
+    ],
+    features: [
+      {
+        title: "Event browsing and RSVPs",
+        body: "Browse upcoming outdoor events, RSVP yes or maybe, and update or cancel an existing RSVP from the same modal.",
+      },
+      {
+        title: "Volunteer coordination",
+        body: "Event organizers track attendees and manage who's signed up for a trip.",
+      },
+      {
+        title: "Admin controls",
+        body: "Admin accounts get event management tools regular users don't, including deleting an event and cleaning up every attendee's RSVP when it's removed.",
+      },
+      {
+        title: "Personalized home screen",
+        body: "A \"Brewing next\" section surfaces the events a user is already RSVPed to, ahead of the full event list.",
+      },
+    ],
+    contributions: [
+      "Designed and built 10+ REST endpoints for event creation and RSVP workflows, consolidating sequential reads to cut redundant queries by 20%.",
+      "Built 20+ reusable React Native components with standardized props from Figma hi-fis, working with 5 designers on a 15-member agile team.",
+      "Shipped admin-only event deletion end to end: the trash-can UI and confirmation modal on the frontend, and the deleteEvent controller and DELETE /events/:id route on the backend, which also cleans up every attendee's RSVP before removing the event.",
+      "Added the RSVP modal's cancel flow, redesigned the event card and home screen, and used AWS S3 and Firebase-backed infrastructure to support scalable, real-time event management.",
+    ],
+  },
 ];

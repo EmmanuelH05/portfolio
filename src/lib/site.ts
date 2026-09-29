@@ -9,7 +9,7 @@ const RESUME_FILE = '/resume.pdf';
 export const siteUrl = 'https://manniehernandez.com';
 
 /** "Read my resume" opens public/resume.pdf once it exists, otherwise it jumps to the Experience section. */
-export const resumeHref = fs.existsSync(path.join(PUBLIC_DIR, RESUME_FILE)) ? RESUME_FILE : '/#experience';
+export const resumeHref = fs.existsSync(path.join(PUBLIC_DIR, RESUME_FILE)) ? RESUME_FILE : '/experience';
 
 /** Human-readable size of a file in public/, like "6.2 MB". Throws if the file is missing. */
 export function fileSize(publicPath: string): string {

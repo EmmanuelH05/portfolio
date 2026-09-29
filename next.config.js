@@ -1,10 +1,8 @@
-// The old standalone pages are sections of the home page now.
+// About, Research and Experience are pages of their own. Work lives on the home page and contact in
+// the footer, so these two still point there.
 const sectionRedirects = [
-  ['/about', '/#about'],
   ['/contact', '/#contact'],
   ['/projects', '/#work'],
-  ['/experience', '/#experience'],
-  ['/research', '/#research'],
 ];
 
 /** @type {import('next').NextConfig} */

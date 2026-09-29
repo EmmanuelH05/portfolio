@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Fragment } from 'react';
 import { awards, clubExperience, education, technicalSkills, workExperience } from '@/lib/data';
 import * as styles from '@/styles/components/ExperienceList';
@@ -5,13 +6,14 @@ import * as styles from '@/styles/components/ExperienceList';
 interface RowProps {
   heading: string;
   subheading: string;
-  summary: string;
   when: string;
+  /** A project page to link from the opened row. */
+  projectSlug?: string;
   children: React.ReactNode;
 }
 
 /** One line of the Experience list. Clicking it opens the details underneath. */
-function Row({ heading, subheading, summary, when, children }: RowProps) {
+function Row({ heading, subheading, when, projectSlug, children }: RowProps) {
   return (
     <li>
       <details className={styles.row}>
@@ -21,7 +23,6 @@ function Row({ heading, subheading, summary, when, children }: RowProps) {
             <span className={styles.rowHeading}>
               {heading} <span className={styles.rowSubheading}>· {subheading}</span>
             </span>
-            <span className={styles.rowNote}>{summary}</span>
           </span>
           <span className={styles.rowWhen}>
             {when}
@@ -30,7 +31,14 @@ function Row({ heading, subheading, summary, when, children }: RowProps) {
             </span>
           </span>
         </summary>
-        <div className={styles.rowBody}>{children}</div>
+        <div className={styles.rowBody}>
+          {children}
+          {projectSlug && (
+            <Link href={`/projects/${projectSlug}`} className={styles.caseStudyLink}>
+              Read the case study <span aria-hidden>→</span>
+            </Link>
+          )}
+        </div>
       </details>
     </li>
   );
@@ -47,8 +55,8 @@ export default function ExperienceList() {
             key={role.company}
             heading={role.company}
             subheading={role.title}
-            summary={role.summary}
             when={`${role.startDate} → ${role.endDate}`}
+            projectSlug={role.projectSlug}
           >
             <ul className={styles.bullets}>
               {role.responsibilities.map((line) => (
@@ -60,7 +68,6 @@ export default function ExperienceList() {
         <Row
           heading={education.school}
           subheading={education.degree}
-          summary={education.summary}
           when={education.graduation}
         >
           <p className={styles.coursework}>Coursework: {education.coursework.join(', ')}.</p>

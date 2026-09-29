@@ -10,10 +10,10 @@ interface PageFooterNavProps {
 export default function PageFooterNav({ back, next }: PageFooterNavProps) {
   return (
     <nav aria-label="More pages" className={styles.nav}>
-      <Link href={back.href} className={styles.link}>
+      <Link href={back.href} className={styles.backLink}>
         <span aria-hidden>←</span> {back.label}
       </Link>
-      <Link href={next.href} className={styles.link}>
+      <Link href={next.href} className={styles.nextLink}>
         {next.label} <span aria-hidden>→</span>
       </Link>
     </nav>

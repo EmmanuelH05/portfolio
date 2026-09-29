@@ -86,7 +86,7 @@ export default function PaperPage({ params }: PaperPageProps) {
     <main>
       <PageShell>
         <div className={styles.header}>
-          <Link href="/#research" className={styles.backLink}>
+          <Link href="/research" className={styles.backLink}>
             <span aria-hidden>←</span> Research
           </Link>
           <p className={styles.meta}>
@@ -145,7 +145,7 @@ export default function PaperPage({ params }: PaperPageProps) {
       </article>
 
       <PageFooterNav
-        back={{ href: '/#research', label: 'Research' }}
+        back={{ href: '/research', label: 'Research' }}
         next={{ href: `/research/${next.slug}`, label: `Next: ${next.shortTitle}` }}
       />
     </main>

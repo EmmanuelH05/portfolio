@@ -9,7 +9,7 @@ import NumberedList from '@/components/NumberedList';
 import PageFooterNav from '@/components/PageFooterNav';
 import PageShell from '@/components/PageShell';
 import ScreenTour from '@/components/ScreenTour';
-import SwipeStack from '@/components/motion/SwipeStack';
+import SectionNav, { type NavSection } from '@/components/SectionNav';
 import { external } from '@/components/links';
 import { projects, type Project } from '@/lib/projects';
 import { findBySlug, nextAfter } from '@/lib/slugs';
@@ -42,50 +42,75 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
   };
 }
 
-interface VideoFanProps {
-  video: NonNullable<Project['video']>;
-  name: string;
-  screenSize: Project['screenSize'];
+// Section titles, in page order. The nav down the left lists the ones a project has.
+const TITLES = {
+  overview: 'Overview',
+  screens: 'Screens',
+  features: 'What it does',
+  build: "How it's built",
+  roadmap: "What I'm building next",
+  contributions: 'What I built',
+} as const;
+
+function sectionsFor(project: Project): NavSection[] {
+  const has: Record<keyof typeof TITLES, boolean> = {
+    overview: true,
+    screens: true,
+    features: true,
+    build: Boolean(project.build),
+    roadmap: Boolean(project.roadmap),
+    contributions: Boolean(project.contributions),
+  };
+  return (Object.keys(TITLES) as (keyof typeof TITLES)[])
+    .filter((id) => has[id])
+    .map((id) => ({ id, label: TITLES[id] }));
 }
 
-/** The demo video, with two screens fanned out behind it so it doesn't sit alone in the panel. */
-function VideoFan({ video, name, screenSize }: VideoFanProps) {
-  const [left, right] = video.flanks;
-  return (
-    <figure className={styles.videoFigure}>
-      <div className={styles.videoStage}>
-        <Image src={left} alt="" {...screenSize} sizes={styles.flankSizes} className={styles.leftFlank} />
-        <Image src={right} alt="" {...screenSize} sizes={styles.flankSizes} className={styles.rightFlank} />
-        <DemoVideo src={video.src} poster={video.poster} label={`${name} demo`} className={styles.video} />
-      </div>
-      <figcaption className={styles.videoCaption}>{video.note}</figcaption>
-    </figure>
-  );
-}
-
-/**
- * A project with a demo video plays it up top; SwipeBite gets its swipe stack. Returns null
- * for a project with neither, and the caller then skips the panel rather than rendering an
- * empty tinted box beside the text.
- */
-function headerMedia(project: Project) {
-  if (project.video) {
-    return <VideoFan video={project.video} name={project.name} screenSize={project.screenSize} />;
+/** What sits on the backdrop at the top of the page: the demo video if there is one, otherwise the cover screen. */
+function heroMedia({ video, name, cover }: Project) {
+  if (video) {
+    const kind = video.kind ?? 'phone';
+    return <DemoVideo src={video.src} poster={video.poster} label={`${name} demo`} className={styles.video(kind)} />;
   }
-  // The large size fills the panel, which stretches to the height of the text beside it.
-  return project.slug === 'swipebite' ? <SwipeStack fromTop={styles.HEADER_STACK_SCROLL} size="large" /> : null;
+  const { screen } = cover;
+  return (
+    <Image
+      src={screen.src}
+      alt={screen.alt}
+      width={screen.width}
+      height={screen.height}
+      sizes={styles.heroScreenSizes(screen.kind)}
+      className={styles.heroScreen(screen.kind)}
+    />
+  );
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
   const project = findBySlug(projects, params.slug);
   if (!project) notFound();
   const next = nextAfter(projects, project.slug);
-  const media = headerMedia(project);
+  const heroKind = project.video ? (project.video.kind ?? 'phone') : project.cover.screen.kind;
+  const isWindowHero = heroKind === 'window';
 
   return (
     <main>
       <PageShell>
-        <div className={styles.header(Boolean(media))}>
+        <figure className={styles.hero}>
+          <div className={styles.heroFrame(isWindowHero)}>
+            <Image
+              src={project.cover.backdrop}
+              alt=""
+              fill
+              priority
+              sizes={styles.backdropSizes}
+              className={styles.backdrop}
+            />
+            <div className={styles.heroStage}>{heroMedia(project)}</div>
+          </div>
+          {project.video && <figcaption className={styles.videoCaption}>{project.video.note}</figcaption>}
+        </figure>
+
+        <div id="overview" className={styles.header}>
           <div>
             <Link href="/#work" className={styles.backLink}>
               <span aria-hidden>←</span> All work
@@ -99,6 +124,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+          </div>
+          <div className={styles.aboutColumn}>
             <dl className={styles.facts}>
               {project.facts.map((fact) => (
                 <Fragment key={fact.label}>
@@ -115,50 +142,52 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </div>
           </div>
-          {media && <div className={styles.panel(project.tint)}>{media}</div>}
         </div>
       </PageShell>
 
       <div className={styles.article}>
-        <ArticleSection title="Screens" note={project.screensNote}>
-          <ScreenTour screens={project.screens} size={project.screenSize} />
-        </ArticleSection>
+        <SectionNav sections={sectionsFor(project)} back={{ href: '/#work', label: 'All work' }} />
+        <div className={styles.sections}>
+          <ArticleSection id="screens" title={TITLES.screens} note={project.screensNote}>
+            <ScreenTour screens={project.screens} size={project.screenSize} />
+          </ArticleSection>
 
-        <ArticleSection title="What it does">
-          <dl className={styles.featureGrid}>
-            {project.features.map((feature) => (
-              <div key={feature.title} className={styles.feature}>
-                <dt className={styles.featureTitle}>{feature.title}</dt>
-                <dd className={styles.featureBody}>{feature.body}</dd>
-              </div>
-            ))}
-          </dl>
-        </ArticleSection>
-
-        {project.build && (
-          <ArticleSection title="How it's built">
-            <dl className={styles.buildList}>
-              {project.build.map((row) => (
-                <div key={row.layer} className={styles.buildRow}>
-                  <dt className={styles.buildLayer}>{row.layer}</dt>
-                  <dd className={styles.buildDetail}>{row.detail}</dd>
+          <ArticleSection id="features" title={TITLES.features}>
+            <dl className={styles.featureGrid}>
+              {project.features.map((feature) => (
+                <div key={feature.title} className={styles.feature}>
+                  <dt className={styles.featureTitle}>{feature.title}</dt>
+                  <dd className={styles.featureBody}>{feature.body}</dd>
                 </div>
               ))}
             </dl>
           </ArticleSection>
-        )}
 
-        {project.roadmap && (
-          <ArticleSection title="What I'm building next">
-            <NumberedList items={project.roadmap} />
-          </ArticleSection>
-        )}
+          {project.build && (
+            <ArticleSection id="build" title={TITLES.build}>
+              <dl className={styles.buildList}>
+                {project.build.map((row) => (
+                  <div key={row.layer} className={styles.buildRow}>
+                    <dt className={styles.buildLayer}>{row.layer}</dt>
+                    <dd className={styles.buildDetail}>{row.detail}</dd>
+                  </div>
+                ))}
+              </dl>
+            </ArticleSection>
+          )}
 
-        {project.contributions && (
-          <ArticleSection title="What I built">
-            <NumberedList items={project.contributions} />
-          </ArticleSection>
-        )}
+          {project.roadmap && (
+            <ArticleSection id="roadmap" title={TITLES.roadmap}>
+              <NumberedList items={project.roadmap} />
+            </ArticleSection>
+          )}
+
+          {project.contributions && (
+            <ArticleSection id="contributions" title={TITLES.contributions}>
+              <NumberedList items={project.contributions} />
+            </ArticleSection>
+          )}
+        </div>
       </div>
 
       <PageFooterNav

@@ -1,7 +1,9 @@
-export const shell = 'rounded-[1.75rem] bg-shell px-5 pb-10 pt-5 sm:px-10 sm:pb-14 sm:pt-[1.375rem]';
+/** No panel behind the nav and page header: they sit on the page, lined up with the cards below. */
+export const shell = 'px-1 pb-8 pt-4 sm:pb-12 sm:pt-6';
 export const header = 'flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between';
 export const name = 'font-serif text-[1.625rem] leading-none tracking-[-0.01em]';
-export const navList = 'flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted';
-export const navLink = 'transition-colors hover:text-ink';
-/** On phones GitHub would wrap onto a line of its own; the footer links it too. */
-export const wideOnly = 'hidden sm:block';
+/** Smaller text and gaps on phones so all five links fit on one line at 375px. */
+export const navList = 'flex flex-wrap gap-x-3 gap-y-1 text-[0.8125rem] sm:gap-x-7 sm:text-base md:text-[1.0625rem]';
+export const navLink = 'transition-colors hover:text-accent';
+/** Below lg, GitHub and LinkedIn would wrap the nav onto a second line; the footer links both. */
+export const wideOnly = 'hidden lg:block';

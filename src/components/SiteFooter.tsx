@@ -14,7 +14,7 @@ export default function SiteFooter() {
     <footer id="contact" className={styles.footer}>
       <div className={styles.panel}>
         <a href={`mailto:${personalInfo.email}`} className={styles.emailButton}>
-          {personalInfo.email}
+          Let&rsquo;s Connect!
         </a>
       </div>
       <div className={styles.meta}>

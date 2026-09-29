@@ -11,17 +11,37 @@ export interface Feature {
   body: string;
 }
 
+/** One screenshot, shown straight and whole on the backdrop. */
+export interface CoverScreen {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** A phone screen stands tall in the middle; a window screenshot spans most of the width. */
+  kind: "phone" | "window";
+}
+
+export type ScreenKind = CoverScreen["kind"];
+
+/** The big picture for a project: on its home card and again at the top of its page. */
+export interface Cover {
+  /** A painted backdrop that the screen sits on. */
+  backdrop: string;
+  screen: CoverScreen;
+}
+
 export interface Project {
   slug: string;
   name: string;
   number: string;
   period: string;
-  /** Panel title and paragraph on the home page. */
+  /** Card title and paragraph under Selected work on the home page. */
   headline: string;
   blurb: string;
   chips: string[];
   cta: string;
   tint: Tint;
+  cover: Cover;
   intro: string[];
   facts: { label: string; value: string }[];
   links: { label: string; href: string }[];
@@ -33,8 +53,11 @@ export interface Project {
   build?: { layer: string; detail: string }[];
   roadmap?: string[];
   contributions?: string[];
-  /** `flanks` are two screenshots fanned out behind the video in the page header. */
-  video?: { src: string; poster: string; flanks: [string, string]; note: string };
+  /**
+   * Plays on the backdrop at the top of the page, in place of the cover screen. `kind` is its shape:
+   * a phone recording (the default) or a landscape one.
+   */
+  video?: { src: string; poster: string; note: string; kind?: ScreenKind };
 }
 
 export const projects: Project[] = [
@@ -49,6 +72,16 @@ export const projects: Project[] = [
     chips: ["Solo, full stack", "Next.js, Express, Postgres, Prisma", "Google Places API"],
     cta: "Read the case study",
     tint: "sand",
+    cover: {
+      backdrop: "/covers/swipebite.jpg",
+      screen: {
+        src: "/swipebite/feed.png",
+        alt: "SwipeBite's swipe feed showing Warehouse 72",
+        width: 390,
+        height: 844,
+        kind: "phone",
+      },
+    },
     intro: [
       "Tinder for restaurants. Enter a city, get a stack of nearby places, and swipe right on what looks good. Every swipe trains a taste profile that makes the next batch smarter.",
       "It runs against a real backend: Express and PostgreSQL through Prisma, JWT auth with refresh tokens, and restaurant data from the Google Places API.",
@@ -158,16 +191,20 @@ export const projects: Project[] = [
     period: "Jan → May 2026",
     headline: "DIDUC: one shared photo album for everyone at the party",
     blurb:
-      "Make an event, share a code, and everybody's photos land in the same feed. I led the team and wrote the backend.",
-    chips: ["Led a team of 5", "React Native, Express, MongoDB, Firebase"],
+      "Make an event, share a code, and everybody's photos land in the same feed. I wrote the largest share of the backend.",
+    chips: ["Team of 5 engineers", "React Native, Express, MongoDB, Firebase"],
     cta: "Watch the demo",
     tint: "mist",
+    cover: {
+      backdrop: "/covers/diduc.jpg",
+      screen: { src: "/diduc/home.png", alt: "DIDUC's events feed", width: 1206, height: 2622, kind: "phone" },
+    },
     intro: [
       "A shared photo album app for events. You create an event, share a code, and everyone who joins can upload photos that live in one place.",
-      "Built as a class project for UCLA CS 35L by five of us on the code and a designer working in Figma. I led the team and wrote the backend.",
+      "Built as a class project for UCLA CS 35L by five of us on the code and a designer working in Figma. I wrote the largest share of the backend.",
     ],
     facts: [
-      { label: "Role", value: "Team lead, backend" },
+      { label: "Role", value: "Full-stack engineer" },
       { label: "Team", value: "5 engineers and a designer" },
       { label: "Class", value: "UCLA CS 35L, Winter 2026" },
       { label: "Stack", value: "React Native, Expo, TypeScript, Express, MongoDB, Firebase" },
@@ -177,7 +214,6 @@ export const projects: Project[] = [
     video: {
       src: "/diduc/demo.mp4",
       poster: "/diduc/demo-poster.jpg",
-      flanks: ["/diduc/event-detail.png", "/diduc/profile.png"],
       note: "Recorded live on the iPhone 17 Pro simulator: events feed, event detail, the create flow, and profile.",
     },
     screensNote: "Captured from an iPhone 17 Pro simulator on the demo branch.",
@@ -220,10 +256,10 @@ export const projects: Project[] = [
       },
     ],
     contributions: [
-      "Designed and wired backend API routes for auth, events, photos, and user sessions using Express and MongoDB.",
-      "Built the data models and schemas, then kept them in sync with the frontend as requirements changed mid-project.",
+      "Wrote four of the ten event API routes in Express and MongoDB.",
+      "Built the Mongoose models for users, events, and photos, and extended them as features landed, like event cover photos.",
       "Contributed shared React Native components (cards, forms, layout) so screens stayed visually consistent across the team.",
-      "Migrated key storage to Firebase when our deployment needs shifted later in the quarter.",
+      "Built the Firebase Storage layer the event routes use to upload photos and delete them.",
     ],
   },
   {
@@ -237,6 +273,16 @@ export const projects: Project[] = [
     chips: ["Solo", "C, TypeScript, Bun, Rust, Linux", "10,942 crash states"],
     cta: "Read the case study",
     tint: "sand",
+    cover: {
+      backdrop: "/covers/crash-simulator.jpg",
+      screen: {
+        src: "/crashfuzz/campaign-window.png",
+        alt: "Campaign results for all 20 filesystem and workload combinations, three of them with a finding",
+        width: 2160,
+        height: 1360,
+        kind: "window",
+      },
+    },
     intro: [
       "Databases advertise durability, but that guarantee is rarely tested against the narrow set of on-disk states a real crash can actually produce. I wanted something that enumerated those states instead of guessing at them, so this records a real syscall trace of a database under load, models what each filesystem journaling mode actually guarantees, and replays every legal crash state through the database's own recovery path.",
       "I pointed it at redb, a production Rust embedded database, across 20 combinations of filesystem mode and workload shape. It ran 10,942 crash states in 21 minutes and found a genuine data-loss bug, where recovery permanently lost an intact file after one specific interrupted write. Checking redb's git history and all 75 released tags showed the maintainer had already found and fixed the same bug before I picked the target, so I found it independently rather than first. I packaged the disclosure the way it would have been written and left the credit where it belonged. The fix ships in redb 4.2.0.",
@@ -262,12 +308,6 @@ export const projects: Project[] = [
         label: "The bug",
         caption:
           "The header persisted but the ftruncate that grew the file did not, so the file ends up smaller than the layout its own header describes. redb panics instead of recovering.",
-      },
-      {
-        src: "/crashfuzz/disclosure.png",
-        label: "Disclosure",
-        caption:
-          "The maintainer had already found and fixed it upstream. Nothing was filed, because a duplicate report adds nothing.",
       },
     ],
     features: [
@@ -322,6 +362,16 @@ export const projects: Project[] = [
     chips: ["Solo", "Python, pydantic, pytest, Ollama", "402 items, 3 models"],
     cta: "Read the case study",
     tint: "mist",
+    cover: {
+      backdrop: "/covers/code-switching-benchmark.jpg",
+      screen: {
+        src: "/cswbench/results-window.png",
+        alt: "Repair scores for three models, with the T5 violation type where they break",
+        width: 2160,
+        height: 1360,
+        kind: "window",
+      },
+    },
     intro: [
       "Spanish and English bilinguals mix languages inside a single sentence constantly, and which mixtures sound right is governed by grammar rather than taste. Most evaluations prompt a model with some Spanglish and grade the output on feel, which says nothing about whether the model represents the rule being tested. This grades against the Matrix Language Frame model from linguistics, which makes specific predictions about which language controls the grammar of a mixed sentence, so a violation becomes a gradeable error instead of an awkward phrase.",
       "Version 1.0 is 402 items, hash pinned so any edit fails the suite, balanced across three violation types and four task types. Three local open-weight models each ran the full set. One of them timed out on every item of the language identification task, so that row is unusable and the writeup says so rather than quietly dropping it. The suite is 177 tests at 96% statement coverage. It is the only thing I have built that uses both halves of my major.",
@@ -402,13 +452,24 @@ export const projects: Project[] = [
     period: "Dec 2025 → June 2026",
     headline: "We Explore Earth: the RSVP app behind a 20,000-person outdoor community",
     blurb:
-      "A real-time event platform for RSVPs and volunteer coordination. I worked on the React Native app, mostly the event and RSVP APIs behind it.",
+      "A real-time event platform for RSVPs and volunteer coordination. I worked on the React Native app, mostly the events page and RSVP flow.",
     chips: ["15-person team", "React Native, Redux, Firebase, AWS S3", "20,000+ users"],
     cta: "Read the case study",
     tint: "sand",
+    cover: {
+      backdrop: "/covers/we-explore-earth.jpg",
+      // Cropped to the screen, without the simulator's bezel.
+      screen: {
+        src: "/we-explore-earth/your-events-screen.png",
+        alt: "The Explore events feed with the redesigned event cards",
+        width: 700,
+        height: 1540,
+        kind: "phone",
+      },
+    },
     intro: [
       "We Explore Earth runs a real-time event platform for a community of 20,000+ users: browsing events, RSVPing, and coordinating volunteers for outdoor trips.",
-      "I joined through LA Blueprint as a Software Engineer Intern on a 15-member agile team with 5 designers, working mostly on the React Native app and the event and RSVP APIs behind it. I designed and built 10+ REST endpoints for event creation and RSVP workflows, consolidating sequential reads to cut redundant queries by 20%, and built 20+ reusable React Native components from Figma hi-fis. My own merged pull requests cover the event card and home screen redesign, the RSVP modal's cancel flow, and admin-only event deletion end to end, frontend and backend.",
+      "Our team built the app from zero to one for WEE's 20,000+ users. I joined early in that build through LA Blueprint as a Software Engineer Intern, on a 15-member agile team with 5 designers, and took the events and RSVP flow from its first skeleton to shipped features. I built the calendar, event card, event detail and attendee-summary components in React Native from Figma designs. My own merged pull requests cover the event card and home screen redesign, the RSVP modal's cancel flow, and admin-only event deletion end to end, frontend and backend.",
     ],
     facts: [
       { label: "Role", value: "Software Engineer Intern" },
@@ -421,7 +482,6 @@ export const projects: Project[] = [
     video: {
       src: "/we-explore-earth/flow.mp4",
       poster: "/we-explore-earth/flow-poster.jpg",
-      flanks: ["/we-explore-earth/your-events.png", "/we-explore-earth/rsvp-modal-cancel.png"],
       note:
         "Four stills from my merged pull requests, sequenced into a loop, not a live recording. The app needs the organization's Firebase project to run, which this portfolio doesn't have access to.",
     },
@@ -470,10 +530,218 @@ export const projects: Project[] = [
       },
     ],
     contributions: [
-      "Designed and built 10+ REST endpoints for event creation and RSVP workflows, consolidating sequential reads to cut redundant queries by 20%.",
-      "Built 20+ reusable React Native components with standardized props from Figma hi-fis, working with 5 designers on a 15-member agile team.",
+      "Took the events page and RSVP flow from zero to one: from the page's first skeleton through My Events, RSVP, the event cards and RSVP sheet, the RSVP cancel flow, and hiding past events, to admin-only delete.",
+      "Built the calendar, event card, event detail and attendee-summary components in React Native from Figma designs, working with 5 designers on a 15-member agile team.",
       "Shipped admin-only event deletion end to end: the trash-can UI and confirmation modal on the frontend, and the deleteEvent controller and DELETE /events/:id route on the backend, which also cleans up every attendee's RSVP before removing the event.",
-      "Added the RSVP modal's cancel flow, redesigned the event card and home screen, and used AWS S3 and Firebase-backed infrastructure to support scalable, real-time event management.",
+      "Added the RSVP modal's cancel flow and redesigned the event card and home screen.",
+    ],
+  },
+  {
+    slug: "airwriter",
+    name: "airwriter",
+    number: "06",
+    period: "Aug 2026",
+    headline: "airwriter: write in the air, and a webcam reads it",
+    blurb:
+      "Write a number or a letter in the air and a laptop webcam reads it live. It's built from two published papers, and when I measured their claims, four didn't hold up.",
+    chips: ["Solo", "Python, PyTorch, MediaPipe, ONNX", "396 tests"],
+    cta: "Watch the demo",
+    tint: "mist",
+    cover: {
+      backdrop: "/covers/airwriter.jpg",
+      screen: {
+        src: "/airwriter/write-draw.jpg",
+        alt: "A 2 drawn in the air, traced in green, with the tracked hand in pink",
+        width: 960,
+        height: 720,
+        kind: "window",
+      },
+    },
+    intro: [
+      "airwriter reads characters you write in the air. MediaPipe tracks your fingertip through a Mac's built-in camera, the stroke is rasterized into EMNIST's 28×28 format, and a small CNN exported to ONNX classifies it. It also does webcam cursor control.",
+      "I built it from two published air-writing papers, then measured their claims instead of taking them on faith. Four didn't replicate. The simplest one: they say it runs at 60 FPS, but the built-in camera caps at 30, so 60 isn't reachable on this hardware. The model scores 99.64% on EMNIST digits and 94.40% on EMNIST letters. Those are dataset numbers, not air-writing accuracy, which I haven't measured yet.",
+    ],
+    facts: [
+      { label: "Role", value: "Solo" },
+      { label: "Stack", value: "Python, PyTorch, MediaPipe, ONNX, OpenCV" },
+      { label: "Model", value: "99.64% on EMNIST digits, 94.40% on EMNIST letters" },
+      { label: "Speed", value: "11.76 ms end to end; 0.063 ms per prediction in the isolated model benchmark" },
+      { label: "Tests", value: "396" },
+      { label: "Status", value: "Private, runs locally on macOS" },
+    ],
+    // The repo is private, so there's no GitHub link.
+    links: [],
+    screenSize: { width: 960, height: 720 },
+    video: {
+      src: "/airwriter/demo.mp4",
+      poster: "/airwriter/write-poster.jpg",
+      kind: "window",
+      note:
+        "One take on a Mac's built-in camera, trimmed to a 2 and a 3, each recognized live with its confidence. It's a demo, not an accuracy test. The HUD's capture rate sits just under 30 fps, the camera's cap. Its infer time is the live pipeline, rasterizing the stroke and classifying it while also rendering and recording, so it reads higher than the 0.063 ms isolated model benchmark in the facts below.",
+    },
+    screensNote: "Frames from the same take, recorded in September 2026, with the camera picture taken out so only what airwriter draws is left. The readings are redrawn in place of the app's own corner box.",
+    screens: [
+      {
+        src: "/airwriter/write-draw.jpg",
+        label: "Draw",
+        caption: "Index finger up draws. MediaPipe tracks the fingertip and the stroke builds on screen.",
+      },
+      {
+        src: "/airwriter/write-submit.jpg",
+        label: "Hold to submit",
+        caption: "Index and middle up lifts the pen. Holding it there fills the bar and submits the character.",
+      },
+      {
+        src: "/airwriter/write-result-2.jpg",
+        label: "Recognized",
+        caption: "The stroke is centered in a 28×28 field, the MNIST convention, and the model reads a 2 with 97.1% confidence.",
+      },
+      {
+        src: "/airwriter/write-result-3.jpg",
+        label: "Next character",
+        caption: "A 3, read with 81.0% confidence. An open palm or a fist clears the canvas.",
+      },
+    ],
+    features: [
+      {
+        title: "Write in the air",
+        body: "Index finger up draws, index and middle up lifts the pen, and an open palm or a fist clears. Holding the pen up submits the character.",
+      },
+      {
+        title: "Read live",
+        body: "Each character is recognized as soon as it's submitted, with the model's confidence on screen.",
+      },
+      {
+        title: "Multi-stroke characters",
+        body: "Debouncing, a short grace period for brief occlusion, and predicting on a hover dwell keep one character from splitting into many strokes, so an A or a 4 comes out whole.",
+      },
+      {
+        title: "Corners stay sharp",
+        body: "A One-Euro filter smooths the fingertip without rounding corners off. Round the corner off a 4 and it reads as a 9.",
+      },
+      {
+        title: "Cursor control",
+        body: "Move the cursor with your hand through the webcam.",
+      },
+      {
+        title: "Metrics on screen",
+        body: "A HUD shows capture rate, tracking time, and inference time while you write, so the numbers can be checked as it runs.",
+      },
+    ],
+    build: [
+      {
+        layer: "Capture",
+        detail: "A thread fills a single-slot buffer, so a slow consumer drops stale frames instead of building a backlog.",
+      },
+      { layer: "Tracking", detail: "MediaPipe's hand landmarker, on its own thread." },
+      {
+        layer: "Canvas",
+        detail: "Strokes are scaled into a 20×20 box and centered by center of mass in a 28×28 field, the MNIST convention both papers skip.",
+      },
+      {
+        layer: "Model",
+        detail: "A small CNN trained in PyTorch on EMNIST, exported to ONNX and run on the CPU with ONNX Runtime.",
+      },
+      {
+        layer: "Tests",
+        detail: "396 tests covering the gesture state machine, normalization geometry, the filters, and end-to-end recognition.",
+      },
+    ],
+    roadmap: [
+      "Measure real air-writing accuracy. The collection and scoring script is written but hasn't been run.",
+      "Run the hand-tracking half of the Fitts's-law pointing test, so the cursor can be compared against a trackpad.",
+    ],
+  },
+  {
+    slug: "rise-the-fenua",
+    name: "Rise the Fenua",
+    number: "07",
+    period: "2026",
+    headline: "Rise the Fenua: the inventory dashboard behind a nonprofit's merch drops",
+    blurb:
+      "An admin for a Tahiti school-supply nonprofit's merchandise. It tracks stock for each collab, takes in Google Form orders, and shows what's ready to print.",
+    chips: ["Intern", "Next.js, TypeScript, Supabase", "20+ volunteers"],
+    cta: "Read the case study",
+    tint: "sand",
+    cover: {
+      backdrop: "/covers/swipebite.jpg",
+      screen: {
+        src: "/rise-the-fenua/dashboard.png",
+        alt: "The Rise the Fenua admin dashboard, on demo data: a stats row, ordered versus made by size, and value by item",
+        width: 1440,
+        height: 900,
+        kind: "window",
+      },
+    },
+    intro: [
+      "Rise the Fenua is a nonprofit that gets school supplies to kids in Tahiti. Part of how it raises money is merchandise: shirts, crewnecks, totes and stickers, released in drops with collab partners.",
+      "I built the admin the volunteers run that fulfillment from. It keeps a catalog and stock count for every collab, imports the orders that come in through Google Forms, and turns them into a production board that says which sizes are ready to print and which still need blanks.",
+      "The screens on this page are a September 2026 redesign of that admin, running on demo data. They aren't the volunteers' live dashboard, and none of the numbers are real.",
+    ],
+    facts: [
+      { label: "Role", value: "Software Engineering Intern" },
+      { label: "Stack", value: "Next.js, TypeScript, Tailwind CSS, Supabase (Postgres)" },
+      { label: "Users", value: "20+ volunteers" },
+      { label: "Screens", value: "September 2026 redesign, demo data" },
+    ],
+    // The dashboard is an internal tool for the nonprofit, so there's nothing public to link to.
+    links: [],
+    screenSize: { width: 1440, height: 900 },
+    screensNote: "A September 2026 redesign of the admin on demo data, not the live dashboard. Every number is made up.",
+    screens: [
+      {
+        src: "/rise-the-fenua/in-stock.png",
+        label: "In stock",
+        caption:
+          "Every item in a collab with its price, a stock count you can nudge with + and − or type over, and a badge when it drops below the collab's threshold.",
+      },
+      {
+        src: "/rise-the-fenua/production.png",
+        label: "Production",
+        caption:
+          "Ordered against blanks on hand and shirts made, per size, with a status on each row: done, ready to print, needs more blanks, or no blanks.",
+      },
+      {
+        src: "/rise-the-fenua/orders.png",
+        label: "Orders",
+        caption: "Each Google Form import is kept as its own batch, so a bad one can be deleted without touching the rest.",
+      },
+      {
+        src: "/rise-the-fenua/collabs.png",
+        label: "Collabs",
+        caption: "One row per collab, each with its own low-stock threshold and item count.",
+      },
+    ],
+    features: [
+      {
+        title: "Collabs and a catalog",
+        body: "Each drop is a collab with its own items. A default catalog of six items comes pre-priced, and custom items cover anything it doesn't.",
+      },
+      {
+        title: "Stock and low-stock warnings",
+        body: "Adjust a count with + and − or type an exact number. Each collab sets its own threshold, and anything below it is flagged across the admin.",
+      },
+      {
+        title: "Order import",
+        body: "Google Form responses come in as CSV, with columns excluded or renamed on the way in. Every import stays a separate batch you can review or delete.",
+      },
+      {
+        title: "Production tracking",
+        body: "Ordered, blanks on hand, made and ready to print, per size, with a print list you can export.",
+      },
+    ],
+    build: [
+      { layer: "Frontend", detail: "Next.js App Router in TypeScript, with Tailwind CSS." },
+      {
+        layer: "Data",
+        detail: "Supabase Postgres, with collabs, items, order entries and production items as tables. Six SQL migrations, including auth and row-level security.",
+      },
+      { layer: "Import", detail: "A CSV parser that normalizes Google Form responses before they reach the database." },
+    ],
+    contributions: [
+      "Built the production dashboard that 20+ volunteers use for merchandise fulfillment and coordination.",
+      "Wrote the SQL migrations and the import that normalizes Google Form responses, which cut manual processing time by 40%.",
+      "Redesigned the admin in September 2026, working with Claude, and rebuilt the screens on demo data for this page.",
     ],
   },
 ];

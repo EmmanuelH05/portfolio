@@ -15,6 +15,8 @@ export interface WorkExperience {
   /** One plain sentence shown on the home page; the full bullets open underneath. */
   summary: string;
   responsibilities: string[];
+  /** Slug of the project page that tells the longer story, if there is one. */
+  projectSlug?: string;
 }
 
 export interface PersonalInfo {
@@ -68,12 +70,12 @@ export const workExperience: WorkExperience[] = [
     startDate: "Dec 2025",
     endDate: "June 2026",
     summary:
-      "I worked on the React Native app for an event platform with 20,000+ users, mostly the event and RSVP APIs behind it.",
+      "I worked on the React Native app for an event platform built for 20,000+ users, mostly the events page and RSVP flow.",
     responsibilities: [
-      "Developed features for a real-time event platform used by 20,000+ users for event management, RSVPs, and volunteer coordination.",
-      "Designed and implemented 10+ RESTful APIs for event creation and RSVP workflows, reducing redundant queries by 20%.",
-      "Collaborated with 5 designers using Figma hi-fis and coordinated development through GitHub as part of an agile 15-member team.",
-      "Leveraged AWS S3 and Firebase-backed infrastructure to support scalable event management and real-time platform functionality.",
+      "Developed features for a real-time event platform built for 20,000+ users, on a 15-member team with 5 designers.",
+      "Took the events page and RSVP flow from 0 to 1 across 11 merged PRs, from first skeleton to admin-only delete.",
+      "Built the calendar, event card, event detail and attendee-summary components in React Native from Figma designs.",
+      "Wrote Express/Firestore endpoints for My Events and event deletion, cascading RSVP cleanup to every attendee.",
     ],
   },
   {
@@ -90,6 +92,7 @@ export const workExperience: WorkExperience[] = [
       "Engineered a data pipeline using 6+ SQL migrations to normalize Google Form responses, reducing manual processing time by 40%.",
       "Supported operations across software systems, merchandise logistics, and fundraising workflows that generated $25,000 in donations.",
     ],
+    projectSlug: "rise-the-fenua",
   },
 ];
 
@@ -135,7 +138,7 @@ export const technicalSkills: TechnicalSkill[] = [
   },
   {
     // S3 only. Asked what he actually did on AWS rather than which string to ship, he said
-    // storage for uploads and images, so the bullet above names S3 too and the resume agrees.
+    // storage for uploads and images, so the skill names S3 and nothing broader.
     category: "Tools",
     skills: [
       "Git",
@@ -173,7 +176,7 @@ export const awards: string[] = [
 ];
 
 /**
- * "My story" on the home page. The first and last paragraphs are Emmanuel's own writing,
+ * The About page. The first and last paragraphs are Emmanuel's own writing,
  * spelling fixed and wording left alone. The middle one bridges them and is drawn only
  * from facts already on the site, so it stays checkable against workExperience above.
  */

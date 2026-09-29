@@ -6,12 +6,13 @@ import * as styles from '@/styles/components/PageShell';
 
 const sectionLinks = [
   { href: '/#work', label: 'Work' },
-  { href: '/#research', label: 'Research' },
-  { href: '/#experience', label: 'Experience' },
+  { href: '/research', label: 'Research' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/about', label: 'About' },
 ];
 
 interface PageShellProps {
-  /** On the home page the name is the h1; everywhere else it links home. */
+  /** On the home page the name is plain text, since the greeting is the h1; everywhere else it links home. */
   home?: boolean;
   children: React.ReactNode;
 }
@@ -23,7 +24,7 @@ export default function PageShell({ home = false, children }: PageShellProps) {
   return (
     <div className={styles.shell}>
       <header className={styles.header}>
-        {home ? <h1>{name}</h1> : <Link href="/">{name}</Link>}
+        {home ? <p>{name}</p> : <Link href="/">{name}</Link>}
         <nav aria-label="Main">
           <ul className={styles.navList}>
             {sectionLinks.map((link) => (
@@ -41,6 +42,11 @@ export default function PageShell({ home = false, children }: PageShellProps) {
             <li className={styles.wideOnly}>
               <a href={profileUrl(personalInfo.github)} {...external} className={styles.navLink}>
                 GitHub
+              </a>
+            </li>
+            <li className={styles.wideOnly}>
+              <a href={profileUrl(personalInfo.linkedin)} {...external} className={styles.navLink}>
+                LinkedIn
               </a>
             </li>
           </ul>

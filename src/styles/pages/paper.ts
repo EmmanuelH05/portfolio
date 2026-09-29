@@ -2,7 +2,7 @@ import type { Tint } from '@/lib/projects';
 import { tintClass } from '@/styles/tint';
 
 export const header = 'max-w-[50rem] pt-10 md:pt-14';
-export const backLink = 'font-mono text-xs text-muted transition-colors hover:text-ink';
+export { pillLink as backLink } from '@/styles/buttons';
 export const meta = 'mt-8 font-mono text-xs uppercase tracking-[0.02em] text-muted';
 export const title = 'mt-2 font-serif text-[2.125rem] leading-[1.1] tracking-[-0.01em] sm:text-[2.75rem]';
 export const authors = 'mt-5 max-w-[38.75rem] text-[1.0625rem] leading-relaxed text-muted';

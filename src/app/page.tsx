@@ -53,8 +53,6 @@ export default function Home() {
         </div>
       </PageShell>
 
-      <AirWriter />
-
       <section id="work" aria-label="Selected work" className={styles.section}>
         <div className={styles.workGrid}>
           {projects.map((project) => (
@@ -62,6 +60,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <AirWriter />
     </main>
   );
 }

@@ -99,7 +99,7 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
                 key={screen.src}
                 screen={screen}
                 alt={i === active ? screen.label : ''}
-                className={styles.stickyShot(i === active)}
+                className={styles.stickyShot(i === active, Boolean(screen.video))}
                 reducedMotion={reducedMotion}
                 playing={i === active}
                 image={{ fill: true, sizes: styles.stickyShotSizes }}

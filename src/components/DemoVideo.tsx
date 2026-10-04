@@ -9,7 +9,7 @@ interface DemoVideoProps {
   className?: string;
 }
 
-/** Plays muted on a loop unless the visitor prefers reduced motion. The controls are always there. */
+/** Plays on a loop like a GIF, with no controls. Visitors who prefer reduced motion get the poster as a still. */
 export default function DemoVideo({ src, poster, label, className }: DemoVideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -18,7 +18,7 @@ export default function DemoVideo({ src, poster, label, className }: DemoVideoPr
     if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     video.muted = true;
     video.play().catch(() => {
-      // Autoplay was refused (Low Power Mode, browser policy). The poster and controls still work.
+      // Autoplay was refused (Low Power Mode, browser policy). The poster stays up.
     });
   }, []);
 
@@ -31,7 +31,7 @@ export default function DemoVideo({ src, poster, label, className }: DemoVideoPr
       muted
       loop
       playsInline
-      controls
+      disablePictureInPicture
       preload="metadata"
       className={className}
     />

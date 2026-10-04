@@ -99,10 +99,9 @@ export const projects: Project[] = [
     links: [],
     screenSize: { width: 390, height: 818 },
     video: {
-      src: "/we-explore-earth/flow.mp4",
-      poster: "/we-explore-earth/flow-poster.jpg",
-      note:
-        "Four stills from my merged pull requests, sequenced into a loop, not a live recording. The app needs the organization's Firebase project to run, which this portfolio doesn't have access to.",
+      src: "/we-explore-earth/hero.mp4",
+      poster: "/we-explore-earth/hero-poster.jpg",
+      note: "A real recording from the iPhone simulator: browsing events, opening one, and RSVPing.",
     },
     screensNote: "Screenshots from my own merged pull requests, May 2026.",
     screens: [

@@ -222,8 +222,7 @@ export const projects: Project[] = [
     screensNote: "Captured from an iPhone 17 Pro simulator on the demo branch.",
     screens: [
       {
-        src: "/diduc/my-events-poster.jpg",
-        video: "/diduc/my-events.mp4",
+        src: "/diduc/home.png",
         label: "Events feed",
         caption: "Your events in one place. Search, browse, and see who's attending at a glance.",
       },
@@ -233,8 +232,7 @@ export const projects: Project[] = [
         caption: "Every photo, every member, and every moment from the event all in one screen.",
       },
       {
-        src: "/diduc/create-event-poster.jpg",
-        video: "/diduc/create-event.mp4",
+        src: "/diduc/create.png",
         label: "Create event",
         caption: "Name it, describe it, drop a pin, pick a date. Share the join code and you're done.",
       },

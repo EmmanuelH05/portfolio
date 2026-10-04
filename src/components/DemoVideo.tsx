@@ -9,13 +9,13 @@ interface DemoVideoProps {
   className?: string;
 }
 
-/** Plays on a loop like a GIF, with no controls. Visitors who prefer reduced motion get the poster as a still. */
+/** Plays on a loop like a GIF, with no controls. It ignores prefers-reduced-motion on purpose: it is a silent loop, not an animation. */
 export default function DemoVideo({ src, poster, label, className }: DemoVideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = ref.current;
-    if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!video) return;
     video.muted = true;
     video.play().catch(() => {
       // Autoplay was refused (Low Power Mode, browser policy). The poster stays up.
@@ -28,6 +28,7 @@ export default function DemoVideo({ src, poster, label, className }: DemoVideoPr
       src={src}
       poster={poster}
       aria-label={label}
+      autoPlay
       muted
       loop
       playsInline

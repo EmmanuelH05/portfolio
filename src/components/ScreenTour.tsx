@@ -10,32 +10,19 @@ interface ScreenTourProps {
   size: { width: number; height: number };
 }
 
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(query.matches);
-    const onChange = (event: MediaQueryListEvent) => setReduced(event.matches);
-    query.addEventListener('change', onChange);
-    return () => query.removeEventListener('change', onChange);
-  }, []);
-  return reduced;
-}
-
 interface ScreenMediaProps {
   screen: Screen;
   alt: string;
   className: string;
-  reducedMotion: boolean;
   /** Only the pinned phone passes this; a clip that isn't the active one holds still. */
   playing?: boolean;
   image: Omit<ImageProps, 'src' | 'alt' | 'className'>;
 }
 
 /** A still, or, for a screen with a clip, a muted loop that behaves like a GIF. */
-function ScreenMedia({ screen, alt, className, reducedMotion, playing = true, image }: ScreenMediaProps) {
+function ScreenMedia({ screen, alt, className, playing = true, image }: ScreenMediaProps) {
   const ref = useRef<HTMLVideoElement>(null);
-  const isVideo = Boolean(screen.video) && !reducedMotion;
+  const isVideo = Boolean(screen.video);
 
   useEffect(() => {
     const video = ref.current;
@@ -72,7 +59,6 @@ const counter = (n: number) => String(n).padStart(2, '0');
  */
 export default function ScreenTour({ screens, size }: ScreenTourProps) {
   const [active, setActive] = useState(0);
-  const reducedMotion = usePrefersReducedMotion();
   const steps = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
@@ -100,7 +86,6 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
                 screen={screen}
                 alt={i === active ? screen.label : ''}
                 className={styles.stickyShot(i === active, Boolean(screen.video))}
-                reducedMotion={reducedMotion}
                 playing={i === active}
                 image={{ fill: true, sizes: styles.stickyShotSizes }}
               />
@@ -129,7 +114,6 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
               screen={screen}
               alt={screen.label}
               className={styles.inlineShot}
-              reducedMotion={reducedMotion}
               image={{ width: size.width, height: size.height, sizes: styles.inlineShotSizes }}
             />
           </li>

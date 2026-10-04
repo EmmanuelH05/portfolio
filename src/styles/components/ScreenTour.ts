@@ -21,6 +21,8 @@ export const stickyShot = (isActive: boolean) =>
  * screenshots, so the browser fetched a soft, too-small source and stretched it.
  */
 export const stickyShotSizes = '600px';
+/** A clip in the pinned phone fills the stage the way a `fill` image does. */
+export const video = (fill: boolean, className: string) => (fill ? `absolute inset-0 h-full w-full ${className}` : className);
 export const counter = 'mt-5 font-mono text-xs uppercase text-muted';
 
 /**

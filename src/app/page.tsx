@@ -52,7 +52,10 @@ export default function Home() {
         </div>
       </PageShell>
 
-      <section id="work" aria-label="Selected work" className={styles.section}>
+      <section id="work" aria-labelledby="featured-work" className={styles.section}>
+        <h2 id="featured-work" className={styles.sectionHeading}>
+          Featured work
+        </h2>
         <div className={styles.workGrid}>
           {projects.map((project) => (
             <WorkCard key={project.slug} project={project} />

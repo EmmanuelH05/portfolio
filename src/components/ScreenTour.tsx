@@ -44,7 +44,7 @@ function ScreenMedia({ screen, alt, className, image }: ScreenMediaProps) {
       muted
       playsInline
       preload="auto"
-      className={image.fill ? `absolute inset-0 h-full w-full ${className}` : className}
+      className={styles.video(Boolean(image.fill), className)}
     />
   );
 }

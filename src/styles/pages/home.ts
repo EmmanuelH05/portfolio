@@ -11,6 +11,7 @@ export const availability = 'flex items-center gap-2 pt-1 text-[0.875rem]';
 export const actions = 'mt-8 flex flex-wrap items-center gap-3 md:mt-9';
 export { connectButton, liveDot, nowrap, resumeButton } from '@/styles/buttons';
 
-/** No heading over the cards: they follow the hero directly. */
+/** The cards sit under a short heading right after the hero. */
 export const section = 'mt-12 scroll-mt-6 md:mt-20';
-export const workGrid = 'grid gap-x-8 gap-y-14 md:grid-cols-2 md:gap-y-16';
+export const sectionHeading = 'text-[1.5rem] font-normal leading-[1.15] tracking-[-0.02em] sm:text-[1.875rem]';
+export const workGrid = 'mt-6 grid gap-x-8 gap-y-14 md:mt-8 md:grid-cols-2 md:gap-y-16';

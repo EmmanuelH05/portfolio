@@ -33,7 +33,7 @@ export default function DemoVideo({ src, poster, label, className }: DemoVideoPr
       loop
       playsInline
       disablePictureInPicture
-      preload="metadata"
+      preload="auto"
       className={className}
     />
   );

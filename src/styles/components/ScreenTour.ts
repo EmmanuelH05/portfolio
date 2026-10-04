@@ -12,11 +12,9 @@ export const stageRatio = (size: { width: number; height: number }) => ({
   width: `min(100%, calc(min(72vh, 40rem) * ${size.width / size.height}))`,
   height: 'auto',
 });
-/** Stills crossfade; a clip cuts straight to the next screen so it plays as recorded. */
-export const stickyShot = (isActive: boolean, isVideo = false) =>
-  `rounded-[1.875rem] object-cover shadow-shot ${
-    isVideo ? '' : 'transition-opacity duration-300 motion-reduce:transition-none'
-  } ${isActive ? 'opacity-100' : 'opacity-0'}`;
+/** Screens swap instantly: no fade, no scale, nothing between one screen and the next. */
+export const stickyShot = (isActive: boolean) =>
+  `rounded-[1.875rem] object-cover shadow-shot ${isActive ? 'opacity-100' : 'opacity-0'}`;
 /**
  * The widest the sticky frame ever actually renders is a landscape screenshot at the page's own
  * max column width (~590px); a portrait one stays well under that. 380px under-hinted landscape

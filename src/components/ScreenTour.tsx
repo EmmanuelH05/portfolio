@@ -14,22 +14,21 @@ interface ScreenMediaProps {
   screen: Screen;
   alt: string;
   className: string;
-  /** Only the pinned phone passes this; a clip that isn't the active one holds still. */
-  playing?: boolean;
   image: Omit<ImageProps, 'src' | 'alt' | 'className'>;
 }
 
-/** A still, or, for a screen with a clip, a muted loop that behaves like a GIF. */
-function ScreenMedia({ screen, alt, className, playing = true, image }: ScreenMediaProps) {
+/** A still, or, for a screen with a clip, a muted loop that plays from page load like a GIF in a Figma frame. */
+function ScreenMedia({ screen, alt, className, image }: ScreenMediaProps) {
   const ref = useRef<HTMLVideoElement>(null);
   const isVideo = Boolean(screen.video);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
-    if (playing) video.play().catch(() => {});
-    else video.pause();
-  }, [playing, isVideo]);
+    video.play().catch(() => {
+      // Autoplay was refused (Low Power Mode, browser policy). The poster stays up.
+    });
+  }, [isVideo]);
 
   if (!isVideo) return <Image src={screen.src} alt={alt} className={className} {...image} />;
 
@@ -44,7 +43,7 @@ function ScreenMedia({ screen, alt, className, playing = true, image }: ScreenMe
       loop
       muted
       playsInline
-      preload="metadata"
+      preload="auto"
       className={image.fill ? `absolute inset-0 h-full w-full ${className}` : className}
     />
   );
@@ -85,8 +84,7 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
                 key={screen.src}
                 screen={screen}
                 alt={i === active ? screen.label : ''}
-                className={styles.stickyShot(i === active, Boolean(screen.video))}
-                playing={i === active}
+                className={styles.stickyShot(i === active)}
                 image={{ fill: true, sizes: styles.stickyShotSizes }}
               />
             ))}

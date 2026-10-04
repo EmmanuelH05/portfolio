@@ -107,10 +107,23 @@ export const projects: Project[] = [
     screensNote: "Screenshots from my own merged pull requests, May 2026.",
     screens: [
       {
-        src: "/we-explore-earth/your-events.png",
+        src: "/we-explore-earth/explore-events-poster.jpg",
+        video: "/we-explore-earth/explore-events.mp4",
         label: "Event cards",
         caption:
           "Reworked the event card: dropped the gradient and gloss overlay, and restyled the date to match the Figma spec.",
+      },
+      {
+        src: "/we-explore-earth/event-detail-poster.jpg",
+        video: "/we-explore-earth/event-detail.mp4",
+        label: "Event detail",
+        caption: "Tap an event card to open its photo, dates, location and how many people are on the list.",
+      },
+      {
+        src: "/we-explore-earth/rsvp-poster.jpg",
+        video: "/we-explore-earth/rsvp.mp4",
+        label: "RSVP",
+        caption: "Pick Yes or Maybe, accept the terms, and RSVP. The event shows up in your list with a Going badge.",
       },
       {
         src: "/we-explore-earth/rsvp-modal-cancel.png",

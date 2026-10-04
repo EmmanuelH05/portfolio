@@ -741,7 +741,6 @@ export const projects: Project[] = [
     contributions: [
       "Built the production dashboard that 20+ volunteers use for merchandise fulfillment and coordination.",
       "Wrote the SQL migrations and the import that normalizes Google Form responses, which cut manual processing time by 40%.",
-      "Redesigned the admin in September 2026, working with Claude, and rebuilt the screens on demo data for this page.",
     ],
   },
 ];

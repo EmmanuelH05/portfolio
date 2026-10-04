@@ -75,7 +75,7 @@ export default function ScreenTour({ screens, size }: ScreenTourProps) {
   }, []);
 
   return (
-    <div className={styles.layout}>
+    <div className={styles.layout(size.width > size.height)}>
       <div className={styles.stickyColumn}>
         <div className={styles.sticky}>
           <div className={styles.stage} style={styles.stageRatio(size)}>

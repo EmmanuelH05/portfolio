@@ -1,4 +1,6 @@
-export const layout = 'grid gap-10 lg:grid-cols-2 lg:gap-16';
+/** A landscape screen gets most of the width, so a desktop recording is big enough to read. */
+export const layout = (isLandscape: boolean) =>
+  `grid gap-10 ${isLandscape ? 'lg:grid-cols-[minmax(0,2.2fr)_minmax(0,1fr)] lg:gap-12' : 'lg:grid-cols-2 lg:gap-16'}`;
 export const stickyColumn = 'hidden lg:block';
 export const sticky = 'sticky top-[10vh] flex flex-col items-center';
 export const stage = 'relative max-w-full';
@@ -20,7 +22,7 @@ export const stickyShot = (isActive: boolean) =>
  * max column width (~590px); a portrait one stays well under that. 380px under-hinted landscape
  * screenshots, so the browser fetched a soft, too-small source and stretched it.
  */
-export const stickyShotSizes = '600px';
+export const stickyShotSizes = '900px';
 /** A clip in the pinned phone fills the stage the way a `fill` image does. */
 export const video = (fill: boolean, className: string) => (fill ? `absolute inset-0 h-full w-full ${className}` : className);
 export const counter = 'mt-5 font-mono text-xs uppercase text-muted';

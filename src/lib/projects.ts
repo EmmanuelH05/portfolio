@@ -267,7 +267,7 @@ export const projects: Project[] = [
     name: "Database Crash Simulator",
     number: "03",
     period: "Aug 2026",
-    headline: "A crash simulator that found a real data-loss bug in a production database",
+    headline: "A crash simulator that independently found a real data-loss bug in a production database",
     blurb:
       "Databases promise that once a write comes back, your data survives a crash. This traces every write one makes, works out which on-disk states a crash could legally leave behind, and replays each one to see whether the promise holds.",
     chips: ["Solo", "C, TypeScript, Bun, Rust, Linux", "10,942 crash states"],
@@ -285,15 +285,15 @@ export const projects: Project[] = [
     },
     intro: [
       "Databases advertise durability, but that guarantee is rarely tested against the narrow set of on-disk states a real crash can actually produce. I wanted something that enumerated those states instead of guessing at them, so this records a real syscall trace of a database under load, models what each filesystem journaling mode actually guarantees, and replays every legal crash state through the database's own recovery path.",
-      "I pointed it at redb, a production Rust embedded database, across 20 combinations of filesystem mode and workload shape. It ran 10,942 crash states in 21 minutes and found a genuine data-loss bug, where recovery permanently lost an intact file after one specific interrupted write. Checking redb's git history and all 75 released tags showed the maintainer had already found and fixed the same bug before I picked the target, so I found it independently rather than first. I packaged the disclosure the way it would have been written and left the credit where it belonged. The fix ships in redb 4.2.0.",
+      "I pointed it at redb, a production Rust embedded database, across 20 combinations of filesystem mode and workload shape. It ran 10,942 crash states in 21 minutes and found a genuine data-loss bug, where recovery permanently lost an intact file after one specific interrupted write. Checking redb's git history and all 75 released tags showed the maintainer had already found and fixed the same bug before I picked the target, so I found it independently rather than first. I packaged the disclosure the way it would have been written and left the credit where it belonged. The fix ships in redb 4.2.0. Getting to zero false positives meant triaging every one of the 9 flags: 7 were bugs in my own tool, 1 was the bug planted in the positive control, and 1 was the real redb bug.",
     ],
     facts: [
       { label: "Role", value: "Solo" },
       { label: "Stack", value: "C, TypeScript on Bun, Rust, Linux" },
       { label: "Scale", value: "10,942 crash states in 21 minutes, 77 tests" },
-      { label: "Status", value: "Local only, not published" },
+      { label: "Status", value: "Public on GitHub" },
     ],
-    links: [],
+    links: [{ label: "Code on GitHub", href: "https://github.com/EmmanuelH05/crashFuzz" }],
     screenSize: { width: 1200, height: 800 },
     screensNote: "Output from the committed campaign run, not a mock-up.",
     screens: [

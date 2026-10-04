@@ -181,11 +181,11 @@ export const projects: Project[] = [
     cover: {
       backdrop: "/covers/swipebite.jpg",
       screen: {
-        src: "/swipebite/feed.png",
-        alt: "SwipeBite's swipe feed showing Warehouse 72",
-        width: 390,
-        height: 844,
-        kind: "phone",
+        src: "/swipebite/swiping-poster.jpg",
+        alt: "SwipeBite's swipe feed showing Double Take",
+        width: 1440,
+        height: 972,
+        kind: "window",
       },
     },
     intro: [
@@ -202,7 +202,13 @@ export const projects: Project[] = [
       { label: "Try the live demo", href: "https://frontend-livid-ten-37.vercel.app" },
       { label: "Code on GitHub", href: "https://github.com/EmmanuelH05/SwipeBite" },
     ],
-    screenSize: { width: 1280, height: 1024 },
+    video: {
+      src: "/swipebite/swiping.mp4",
+      poster: "/swipebite/swiping-poster.jpg",
+      kind: "window",
+      note: "One unedited take of the web app running locally: swiping through restaurants near Westwood.",
+    },
+    screenSize: { width: 1440, height: 972 },
     screensNote: "One unedited take of the web app running locally against a real PostgreSQL database.",
     screens: [
       {

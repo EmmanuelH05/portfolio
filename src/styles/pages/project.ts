@@ -38,7 +38,7 @@ export { primaryButton as linkButton } from '@/styles/buttons';
 export const video = (kind: ScreenKind) =>
   kind === 'phone'
     ? 'relative aspect-[390/844] h-[23rem] w-auto rounded-[1.75rem] bg-ink object-cover shadow-shot sm:h-[28rem]'
-    : 'relative aspect-video h-auto w-[78%] max-w-[44rem] rounded-xl bg-ink shadow-shot sm:rounded-2xl';
+    : 'relative h-auto max-h-[30rem] w-auto max-w-[min(44rem,78%)] rounded-xl bg-ink shadow-shot sm:rounded-2xl';
 export const videoCaption = 'mx-auto mt-4 max-w-[36rem] text-center font-mono text-xs leading-relaxed text-muted';
 
 /** The section nav down the left from lg up; below that the sections run full width. */

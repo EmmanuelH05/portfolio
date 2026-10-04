@@ -51,15 +51,12 @@ export default function About() {
           <h2 id="off-the-clock" className={styles.sectionHeading}>
             Outside of the workplace…
           </h2>
-          <p className={styles.sectionCopy}>I play double bass, which is where the patience comes from.</p>
+          <p className={styles.sectionCopy}>I play Double Bass!!</p>
           <ConcertClip
             zoom={{ src: '/concert/zoom.mp4', poster: '/concert/zoom-poster.jpg' }}
             wide={{ src: '/concert/wide.mp4', poster: '/concert/wide-poster.jpg' }}
             label="The SCSBOA 2022 High School Wind Ensemble, with the camera on the double bass"
-          >
-            The SCSBOA 2022 High School Wind Ensemble playing El Zape and 3 Latin American Dances by Giovanni Santos. I am
-            on double bass, standing at the back on the right.
-          </ConcertClip>
+          />
         </section>
       </PageShell>
     </main>

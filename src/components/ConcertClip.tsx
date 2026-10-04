@@ -13,7 +13,7 @@ interface ConcertClipProps {
   zoom: Clip;
   wide: Clip;
   label: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function ConcertClip({ zoom, wide, label, children }: ConcertClipProps) {
@@ -60,7 +60,7 @@ export default function ConcertClip({ zoom, wide, label, children }: ConcertClip
           {isZoomed ? 'Show the whole stage' : 'Zoom in on me'}
         </button>
       </div>
-      <figcaption className={styles.caption}>{children}</figcaption>
+      {children && <figcaption className={styles.caption}>{children}</figcaption>}
     </figure>
   );
 }

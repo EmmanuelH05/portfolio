@@ -203,34 +203,34 @@ export const projects: Project[] = [
       { label: "Try the live demo", href: "https://frontend-livid-ten-37.vercel.app" },
       { label: "Code on GitHub", href: "https://github.com/EmmanuelH05/SwipeBite" },
     ],
-    screenSize: { width: 390, height: 844 },
-    screensNote: "Captured from a running local instance connected to a real PostgreSQL database.",
+    screenSize: { width: 1280, height: 1024 },
+    screensNote: "One unedited take of the web app running locally against a real PostgreSQL database.",
     screens: [
-      { src: "/swipebite/auth.png", label: "Sign up", caption: "An email and a password, and you're in." },
       {
-        src: "/swipebite/login.png",
-        label: "Sign in",
-        caption: "Returning users get straight back to their personalized feed.",
+        src: "/swipebite/sign-up-poster.jpg",
+        video: "/swipebite/sign-up.mp4",
+        label: "Sign up",
+        caption: "A name, an email and a password. The form checks each field as you type.",
       },
       {
-        src: "/swipebite/onboarding.png",
+        src: "/swipebite/preferences-poster.jpg",
+        video: "/swipebite/preferences.mp4",
         label: "Taste setup",
-        caption: "Pick your cuisines upfront. SwipeBite uses these to weight your initial recommendations.",
+        caption:
+          "Set a location, pick the cuisines you like, then a price range. SwipeBite uses these to weight your first recommendations.",
       },
       {
-        src: "/swipebite/feed.png",
+        src: "/swipebite/swiping-poster.jpg",
+        video: "/swipebite/swiping.mp4",
         label: "Swipe feed",
-        caption: "One restaurant at a time. Swipe right to save, left to skip. Each swipe trains your taste profile.",
+        caption:
+          "One restaurant at a time, with its hours and a match score. Like or pass, and every swipe trains your taste profile.",
       },
       {
-        src: "/swipebite/feed2.png",
-        label: "Restaurant card",
-        caption: "Name, cuisine, price range, match score, open status, and address, all before you swipe.",
-      },
-      {
-        src: "/swipebite/saved.png",
+        src: "/swipebite/saved-poster.jpg",
+        video: "/swipebite/saved.mp4",
         label: "Saved",
-        caption: "Every restaurant you liked in one place. Your personal shortlist.",
+        caption: "Every restaurant you liked in one list. Mark a place as visited and leave a short review.",
       },
     ],
     features: [

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 import WorkCard from '@/components/WorkCard';
-import AirWriter from '@/components/airwriter/AirWriter';
 import { personalInfo } from '@/lib/data';
 import { projects } from '@/lib/projects';
 import { resumeHref } from '@/lib/site';
@@ -60,8 +59,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      <AirWriter />
     </main>
   );
 }

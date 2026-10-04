@@ -217,7 +217,7 @@ export const projects: Project[] = [
     video: {
       src: "/diduc/demo.mp4",
       poster: "/diduc/demo-poster.jpg",
-      note: "Recorded live on the iPhone 17 Pro simulator: events feed, event detail, the create flow, and profile.",
+      note: "Recorded live on the iPhone 17 Pro simulator: events feed, the create flow, profile, and settings.",
     },
     screensNote: "Captured from an iPhone 17 Pro simulator on the demo branch.",
     screens: [

@@ -72,31 +72,31 @@ export const projects: Project[] = [
     headline: "Hangover: a free Mac app that turns the notch into a small control surface",
     blurb:
       "Music, calendar, to-dos, notes, weather, a timer, a mirror and a file tray, all in the island at the top of the screen. It is built on Open Island, an open-source app by Octane0411, and I added the widgets page and most of what you see here.",
-    chips: ["Open source, GPL-3.0", "Swift, SwiftUI, AppKit", "2,263 tests"],
+    chips: ["Open source, GPL-3.0", "Swift, SwiftUI, AppKit", "2,272 tests"],
     cta: "Read the case study",
     tint: "mist",
     cover: {
       backdrop: "/covers/hangover.jpg",
       screen: {
-        src: "/hangover/cover-nook.png",
-        alt: "Hangover's open island: a music player with a progress bar, a focus timer at 24:59 and a file tray holding eight files",
-        width: 1380,
-        height: 576,
+        src: "/hangover/cover.jpg",
+        alt: "Hangover's open island in a frame from a screen recording of the app: music, a week calendar, to-dos, notes, a file tray and a timer",
+        width: 1280,
+        height: 960,
         kind: "window",
       },
     },
     intro: [
       "Hangover is a free, open-source Mac app (GPL-3.0) that turns the MacBook notch into a small control surface. It needs macOS 14 or later and an Apple silicon Mac. The black pill at the top of the screen is the closed island, and it opens into a page of widgets when you point at it.",
       "It is built on Open Island, an open-source app by Octane0411 that shows coding agents such as Claude Code and Codex in the notch. I forked it in October 2026. The agent features are theirs. What I added is everything about the island as a place for your day: the widgets page, the layouts, what the closed island shows, the glow, the welcome tour, and the new name, icon, download page and releases.",
-      "The pictures on this page are drawn by the app's own views, the same code that runs in the notch, with sample content in place of anyone's music or calendar.",
+      "The clips on this page are screen recordings of the real app, with sample content in place of anyone's music or calendar.",
     ],
     facts: [
       { label: "Built on", value: "Open Island by Octane0411, which I forked in October 2026" },
       { label: "Role", value: "I designed, built and shipped the additions on top of it" },
       { label: "Stack", value: "Swift 6.2, SwiftUI, AppKit, EventKit, Swift Testing, Sparkle" },
       { label: "Platform", value: "macOS 14 or later, Apple silicon" },
-      { label: "Tests", value: "2,263 automated tests, 451 of them from the original" },
-      { label: "Releases", value: "Seven, 1.0.0 to 1.0.6, on Oct 9 and 10, 2026" },
+      { label: "Tests", value: "2,272 automated tests, 451 of them from the original" },
+      { label: "Releases", value: "Eight, 1.0.0 to 1.0.7, on Oct 9 and 10, 2026" },
       { label: "License", value: "GPL-3.0, free" },
     ],
     links: [
@@ -105,87 +105,96 @@ export const projects: Project[] = [
       { label: "Releases", href: "https://github.com/EmmanuelH05/hangover/releases" },
       { label: "Open Island, the original", href: "https://github.com/Octane0411/open-vibe-island" },
     ],
-    screenSize: { width: 1500, height: 1000 },
+    video: {
+      src: "/hangover/hero.mp4",
+      poster: "/hangover/hero-poster.jpg",
+      kind: "window",
+      note: "A recording of the real app with sample content: the island opens from the closed pill and plays music. A script inside the app drove it, which is why no pointer shows.",
+    },
+    screenSize: { width: 1240, height: 1080 },
     screensNote:
-      "Drawn by the app's own views, the same code that runs in the notch, with sample content. They are renders, not photos of a screen. The widgets page, weather card, charging pill and photo booth strips come from the app's README pictures.",
+      "These are screen recordings of the app itself, running with sample content instead of my own music, calendar or tasks. A script inside the app drove it, which is why no pointer shows. The mirror and photo booth need a camera and are not recorded. The last picture is a still of sample strips.",
     screens: [
       {
-        src: "/hangover/welcome.png",
-        label: "Meet Hangover",
+        src: "/hangover/welcome-tour-poster.jpg",
+        video: "/hangover/welcome-tour.mp4",
+        label: "The welcome tour opens",
         caption:
-          "The first step of the welcome tour: it lives in the notch, you point at it, and it opens. The tour runs on the real island and lets you try each thing as it explains it.",
+          "The tour opens in its own window under the closed island. It says the island lives in the notch, then asks what you want it for, how it should open and what the closed island should show.",
       },
       {
-        src: "/hangover/closed-picker.png",
+        src: "/hangover/widget-walk-poster.jpg",
+        video: "/hangover/widget-walk.mp4",
+        label: "Try each widget on the real island",
+        caption:
+          "A middle page of the tour sits beside the real island and walks the widgets with Try it buttons: play and skip a track, switch the calendar between its looks, then start and stop a one minute timer.",
+      },
+      {
+        src: "/hangover/layout-move-poster.jpg",
+        video: "/hangover/layout-move.mp4",
+        label: "Pick a layout, move a widget",
+        caption:
+          "The island changes as you choose a starting layout, Day planner and then Focus session. The next page has you pick a widget, drag it to a new spot and shows how to change its size.",
+      },
+      {
+        src: "/hangover/tour-last-poster.jpg",
+        video: "/hangover/tour-last.mp4",
+        label: "The last pages",
+        caption:
+          "The glow, which permissions Hangover asks for and when, what it connects to, a few tricks worth knowing, and a summary of what you picked.",
+      },
+      {
+        src: "/hangover/calendar-looks-poster.jpg",
+        video: "/hangover/calendar-looks.mp4",
+        label: "The calendar's five looks",
+        caption: "The calendar widget switched through its five looks: day strip, agenda, timeline, hero and month.",
+      },
+      {
+        src: "/hangover/weather-layouts-poster.jpg",
+        video: "/hangover/weather-layouts.mp4",
+        label: "Weather and layout templates",
+        caption:
+          "The weather card goes from the next hours to the next seven days. Then three layout templates replace the page in turn: Day planner, Study day and Now playing.",
+      },
+      {
+        src: "/hangover/closed-island-poster.jpg",
+        video: "/hangover/closed-island.mp4",
         label: "What the closed island shows",
         caption:
-          "A step in the tour. Each side of the closed island can show something small, such as the date, battery, next event, weather, timer or open to-dos, and there is a separate choice for what shows while music plays.",
+          "While music plays the closed island shows the album art and moving bars. Then a timer counts down, a charging notice comes in, and a notice for the next calendar event follows.",
       },
       {
-        src: "/hangover/closed-music.jpg",
-        label: "Music, closed",
-        caption: "Music is playing. The album art sits on the left of the closed island and the glow takes the album's color.",
-      },
-      {
-        src: "/hangover/glow-approval.png",
-        label: "The status glow",
+        src: "/hangover/sides-glow-poster.jpg",
+        video: "/hangover/sides-glow.mp4",
+        label: "The sides and the glow",
         caption:
-          "A soft light around the closed island that tells you something is happening, with no banner in the way. Here it is a vivid orange while an agent waits for approval.",
+          "Each side of the closed island can show something different. Here the right side goes through the date, battery, weather and open to-dos. After that music plays with the glow set to Vivid, and the next track changes the album art.",
       },
       {
-        src: "/hangover/charging.png",
-        label: "Charging",
-        caption: "Plug in the charger and the closed island shows a lightning bolt on the left and a battery ring on the right.",
+        src: "/hangover/use-play-poster.jpg",
+        video: "/hangover/use-play.mp4",
+        label: "Play, pause and skip",
+        caption: "The open island with its music widget: pause, play again and skip to the next track.",
       },
       {
-        src: "/hangover/nook-open.png",
-        label: "The Nook",
-        caption: "Open the island and the widgets page appears. This one has music with playback controls, a focus timer and a file tray.",
+        src: "/hangover/use-todos-timer-poster.jpg",
+        video: "/hangover/use-todos-timer.mp4",
+        label: "To-dos and a timer",
+        caption:
+          "Check off a to-do, add a new one and start a 25 minute timer. Closing the island leaves the pill showing the time left.",
       },
       {
-        src: "/hangover/layout-planner.png",
-        label: "Layout: Day planner",
-        caption: "A starting layout from the template gallery, shown in a preview: a month calendar with the day's events above a to-do list.",
-      },
-      {
-        src: "/hangover/layout-now-playing.jpg",
-        label: "Layout: Now playing",
-        caption: "A music player across the top, with a focus timer and quick notes below it.",
-      },
-      {
-        src: "/hangover/layout-study.png",
-        label: "Layout: Study day",
-        caption: "A day timeline across the top, then to-dos, a focus timer and notes.",
-      },
-      {
-        src: "/hangover/weather.png",
-        label: "Weather",
-        caption: "The weather card in its 7-day view, with today's high and low and the temperature for each day.",
-      },
-      {
-        src: "/hangover/calendar.png",
-        label: "Calendar",
-        caption: "The calendar widget as a month grid with today circled, the day's events under it and the next ones coming up.",
-      },
-      {
-        src: "/hangover/file-tray.png",
-        label: "File tray and clipboard",
-        caption: "The tray has a Files tab and a Clipboard tab. This is the clipboard list, with a button to clear it.",
+        src: "/hangover/use-edit-poster.jpg",
+        video: "/hangover/use-edit.mp4",
+        label: "Notes, layouts and editing",
+        caption:
+          "Save a quick note, switch to the Focus session layout and undo it. Then press and hold to edit: move the timer to the top and make the to-do widget larger.",
       },
       {
         src: "/hangover/photo-booth.jpg",
-        label: "Photo booth",
-        caption: "The mirror doubles as a photo booth. These are strips in different frames, drawn with cartoon faces in place of a real camera.",
-      },
-      {
-        src: "/hangover/glow-settings.png",
-        label: "Pick a glow",
-        caption: "Off, Subtle or Vivid, a color for each kind of moment, and a set of color palettes. The tour sets it up and Settings changes it later.",
-      },
-      {
-        src: "/hangover/settings-layouts.png",
-        label: "Settings: layouts",
-        caption: "The layout gallery in Settings. Each setup has a preview, and you can apply one or keep your own.",
+        label: "Photo booth strips",
+        caption:
+          "This one is a picture, not a recording: sample strips drawn with cartoon faces. The mirror and photo booth need a camera, which is why they are not recorded.",
       },
     ],
     features: [
@@ -202,8 +211,8 @@ export const projects: Project[] = [
         body: "Each side can show the date, battery, next event, weather, timer or open to-dos, and it has its own look while music plays.",
       },
       {
-        title: "Swipe it away",
-        body: "A two-finger swipe up closes the island. A sideways swipe on the closed island hides what it shows, and another brings it back.",
+        title: "Swipe it away, if you want it",
+        body: "A two-finger swipe up closes the island. A sideways swipe on the closed island hides what it shows, and another brings it back. It is an option that stays off until you turn it on in Settings.",
       },
       {
         title: "A status glow",
@@ -221,7 +230,12 @@ export const projects: Project[] = [
     build: [
       { layer: "App", detail: "Swift 6.2 with SwiftUI and AppKit." },
       { layer: "Calendar and reminders", detail: "EventKit." },
-      { layer: "Tests", detail: "Swift Testing, 2,263 tests in all. 451 of them came with the original." },
+      { layer: "Tests", detail: "Swift Testing, 2,272 tests in all. 451 of them came with the original." },
+      {
+        layer: "Performance",
+        detail:
+          "A GIF on the closed island used about 10% of a processor core because every frame was decoded again on every loop. It now decodes once and uses about 0.2%, measured on my Mac in the development build.",
+      },
       {
         layer: "Updates",
         detail: "The app updates itself through Sparkle, from a signed update feed with an EdDSA signature.",
@@ -233,7 +247,7 @@ export const projects: Project[] = [
       "A send-feedback button.",
     ],
     contributions: [
-      "Forked Open Island in October 2026 and shipped it as Hangover: the new name, icon, download page and seven releases.",
+      "Forked Open Island in October 2026 and shipped it as Hangover: the new name, icon, download page and eight releases.",
       "Designed and built the Nook, its widgets, the layout templates and the press, hold and drag editor.",
       "Designed what the closed island shows on each side and while music plays, and the status glow.",
       "Built the welcome tour and the switch that turns the agent features off.",

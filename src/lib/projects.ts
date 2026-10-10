@@ -76,7 +76,7 @@ export const projects: Project[] = [
     cta: "Read the case study",
     tint: "mist",
     cover: {
-      backdrop: "/covers/diduc.jpg",
+      backdrop: "/covers/hangover.jpg",
       screen: {
         src: "/hangover/cover-nook.png",
         alt: "Hangover's open island: a music player with a progress bar, a focus timer at 24:59 and a file tray holding eight files",
@@ -130,7 +130,7 @@ export const projects: Project[] = [
         src: "/hangover/glow-approval.png",
         label: "The status glow",
         caption:
-          "A soft light around the closed island that tells you something is happening, with no banner in the way. Here it is a vivid orange while something waits for an answer.",
+          "A soft light around the closed island that tells you something is happening, with no banner in the way. Here it is a vivid orange while an agent waits for approval.",
       },
       {
         src: "/hangover/charging.png",
@@ -173,11 +173,6 @@ export const projects: Project[] = [
         caption: "The tray has a Files tab and a Clipboard tab. This is the clipboard list, with a button to clear it.",
       },
       {
-        src: "/hangover/mirror.png",
-        label: "Mirror",
-        caption: "The mirror tile. It shows above your widgets until you turn it off.",
-      },
-      {
         src: "/hangover/photo-booth.jpg",
         label: "Photo booth",
         caption: "The mirror doubles as a photo booth. These are strips in different frames, drawn with cartoon faces in place of a real camera.",
@@ -208,7 +203,7 @@ export const projects: Project[] = [
       },
       {
         title: "A status glow",
-        body: "A soft light around the closed island for the moments that matter, with no banner needed.",
+        body: "A soft light around the closed island when music plays, an agent needs you or a notice comes in.",
       },
       {
         title: "A welcome tour on the real island",
@@ -226,10 +221,6 @@ export const projects: Project[] = [
       {
         layer: "Updates",
         detail: "The app updates itself through Sparkle, from a signed update feed with an EdDSA signature.",
-      },
-      {
-        layer: "Decisions",
-        detail: "Design rulings are written down and numbered in the repo's DECISIONS.md, D1 to D45 as of 1.0.5.",
       },
     ],
     roadmap: [

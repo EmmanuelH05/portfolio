@@ -72,7 +72,7 @@ export const projects: Project[] = [
     headline: "Hangover: a free Mac app that turns the notch into a small control surface",
     blurb:
       "Music, calendar, to-dos, notes, weather, a timer, a mirror and a file tray, all in the island at the top of the screen. It is built on Open Island, an open-source app by Octane0411, and I added the widgets page and most of what you see here.",
-    chips: ["Open source, GPL-3.0", "Swift, SwiftUI, AppKit", "2,163 tests"],
+    chips: ["Open source, GPL-3.0", "Swift, SwiftUI, AppKit", "2,263 tests"],
     cta: "Read the case study",
     tint: "mist",
     cover: {
@@ -95,8 +95,8 @@ export const projects: Project[] = [
       { label: "Role", value: "I designed, built and shipped the additions on top of it" },
       { label: "Stack", value: "Swift 6.2, SwiftUI, AppKit, EventKit, Swift Testing, Sparkle" },
       { label: "Platform", value: "macOS 14 or later, Apple silicon" },
-      { label: "Tests", value: "2,163 automated tests, 451 of them from the original" },
-      { label: "Releases", value: "Six, 1.0.0 to 1.0.5, all on Oct 9, 2026" },
+      { label: "Tests", value: "2,263 automated tests, 451 of them from the original" },
+      { label: "Releases", value: "Seven, 1.0.0 to 1.0.6, on Oct 9 and 10, 2026" },
       { label: "License", value: "GPL-3.0, free" },
     ],
     links: [
@@ -202,12 +202,16 @@ export const projects: Project[] = [
         body: "Each side can show the date, battery, next event, weather, timer or open to-dos, and it has its own look while music plays.",
       },
       {
+        title: "Swipe it away",
+        body: "A two-finger swipe up closes the island. A sideways swipe on the closed island hides what it shows, and another brings it back.",
+      },
+      {
         title: "A status glow",
         body: "A soft light around the closed island when music plays, an agent needs you or a notice comes in.",
       },
       {
         title: "A welcome tour on the real island",
-        body: "It sets up Notion, TickTick or Reminders for to-dos, a Markdown file or Apple Notes for quick notes, and a city for weather.",
+        body: "It sets up Notion, TickTick or Reminders for to-dos, a Markdown file or Apple Notes for quick notes, and a city for weather. One page walks each widget with buttons to try it, the mirror and the photo booth included.",
       },
       {
         title: "Agent features can be switched off",
@@ -217,7 +221,7 @@ export const projects: Project[] = [
     build: [
       { layer: "App", detail: "Swift 6.2 with SwiftUI and AppKit." },
       { layer: "Calendar and reminders", detail: "EventKit." },
-      { layer: "Tests", detail: "Swift Testing, 2,163 tests in all. 451 of them came with the original." },
+      { layer: "Tests", detail: "Swift Testing, 2,263 tests in all. 451 of them came with the original." },
       {
         layer: "Updates",
         detail: "The app updates itself through Sparkle, from a signed update feed with an EdDSA signature.",
@@ -227,10 +231,9 @@ export const projects: Project[] = [
       "Spanish.",
       "A search bar in Settings.",
       "A send-feedback button.",
-      "Swiping the island away with two fingers.",
     ],
     contributions: [
-      "Forked Open Island in October 2026 and shipped it as Hangover: the new name, icon, download page and six releases.",
+      "Forked Open Island in October 2026 and shipped it as Hangover: the new name, icon, download page and seven releases.",
       "Designed and built the Nook, its widgets, the layout templates and the press, hold and drag editor.",
       "Designed what the closed island shows on each side and while music plays, and the status glow.",
       "Built the welcome tour and the switch that turns the agent features off.",

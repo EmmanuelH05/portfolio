@@ -79,7 +79,7 @@ describe('styling lives in src/styles, never in a tsx', () => {
 });
 
 describe('files referenced by the site exist in public/', () => {
-  const PUBLIC_PATH = /^\/(images|covers|swipebite|diduc|research|crashfuzz|cswbench|we-explore-earth|airwriter|concert)\/[\w.-]+$/;
+  const PUBLIC_PATH = /^\/(images|covers|swipebite|diduc|research|crashfuzz|cswbench|we-explore-earth|airwriter|concert|hangover)\/[\w.-]+$/;
 
   test('content data', () => {
     const referenced = stringsIn([projects, papers]).filter((value) => PUBLIC_PATH.test(value));
@@ -92,7 +92,7 @@ describe('files referenced by the site exist in public/', () => {
       [
         ...fs
           .readFileSync(file, 'utf8')
-          .matchAll(/["'](\/(?:images|covers|swipebite|diduc|research|crashfuzz|cswbench|we-explore-earth|airwriter|concert)\/[\w.-]+)["']/g),
+          .matchAll(/["'](\/(?:images|covers|swipebite|diduc|research|crashfuzz|cswbench|we-explore-earth|airwriter|concert|hangover)\/[\w.-]+)["']/g),
       ].map(
         (match) => match[1],
       ),

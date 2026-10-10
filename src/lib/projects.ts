@@ -65,9 +65,190 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "hangover",
+    name: "Hangover",
+    number: "01",
+    period: "Oct 2026 → Present",
+    headline: "Hangover: a free Mac app that turns the notch into a small control surface",
+    blurb:
+      "Music, calendar, to-dos, notes, weather, a timer, a mirror and a file tray, all in the island at the top of the screen. It is built on Open Island, an open-source app by Octane0411, and I added the widgets page and most of what you see here.",
+    chips: ["Open source, GPL-3.0", "Swift, SwiftUI, AppKit", "2,163 tests"],
+    cta: "Read the case study",
+    tint: "mist",
+    cover: {
+      backdrop: "/covers/diduc.jpg",
+      screen: {
+        src: "/hangover/cover-nook.png",
+        alt: "Hangover's open island: a music player with a progress bar, a focus timer at 24:59 and a file tray holding eight files",
+        width: 1380,
+        height: 576,
+        kind: "window",
+      },
+    },
+    intro: [
+      "Hangover is a free, open-source Mac app (GPL-3.0) that turns the MacBook notch into a small control surface. It needs macOS 14 or later and an Apple silicon Mac. The black pill at the top of the screen is the closed island, and it opens into a page of widgets when you point at it.",
+      "It is built on Open Island, an open-source app by Octane0411 that shows coding agents such as Claude Code and Codex in the notch. I forked it in October 2026. The agent features are theirs. What I added is everything about the island as a place for your day: the widgets page, the layouts, what the closed island shows, the glow, the welcome tour, and the new name, icon, download page and releases.",
+      "The pictures on this page are drawn by the app's own views, the same code that runs in the notch, with sample content in place of anyone's music or calendar.",
+    ],
+    facts: [
+      { label: "Built on", value: "Open Island by Octane0411, which I forked in October 2026" },
+      { label: "Role", value: "I designed, built and shipped the additions on top of it" },
+      { label: "Stack", value: "Swift 6.2, SwiftUI, AppKit, EventKit, Swift Testing, Sparkle" },
+      { label: "Platform", value: "macOS 14 or later, Apple silicon" },
+      { label: "Tests", value: "2,163 automated tests, 451 of them from the original" },
+      { label: "Releases", value: "Six, 1.0.0 to 1.0.5, all on Oct 9, 2026" },
+      { label: "License", value: "GPL-3.0, free" },
+    ],
+    links: [
+      { label: "Download page", href: "https://emmanuelh05.github.io/hangover/" },
+      { label: "Code on GitHub", href: "https://github.com/EmmanuelH05/hangover" },
+      { label: "Releases", href: "https://github.com/EmmanuelH05/hangover/releases" },
+      { label: "Open Island, the original", href: "https://github.com/Octane0411/open-vibe-island" },
+    ],
+    screenSize: { width: 1500, height: 1000 },
+    screensNote:
+      "Drawn by the app's own views, the same code that runs in the notch, with sample content. They are renders, not photos of a screen. The widgets page, weather card, charging pill and photo booth strips come from the app's README pictures.",
+    screens: [
+      {
+        src: "/hangover/welcome.png",
+        label: "Meet Hangover",
+        caption:
+          "The first step of the welcome tour: it lives in the notch, you point at it, and it opens. The tour runs on the real island and lets you try each thing as it explains it.",
+      },
+      {
+        src: "/hangover/closed-picker.png",
+        label: "What the closed island shows",
+        caption:
+          "A step in the tour. Each side of the closed island can show something small, such as the date, battery, next event, weather, timer or open to-dos, and there is a separate choice for what shows while music plays.",
+      },
+      {
+        src: "/hangover/closed-music.jpg",
+        label: "Music, closed",
+        caption: "Music is playing. The album art sits on the left of the closed island and the glow takes the album's color.",
+      },
+      {
+        src: "/hangover/glow-approval.png",
+        label: "The status glow",
+        caption:
+          "A soft light around the closed island that tells you something is happening, with no banner in the way. Here it is a vivid orange while something waits for an answer.",
+      },
+      {
+        src: "/hangover/charging.png",
+        label: "Charging",
+        caption: "Plug in the charger and the closed island shows a lightning bolt on the left and a battery ring on the right.",
+      },
+      {
+        src: "/hangover/nook-open.png",
+        label: "The Nook",
+        caption: "Open the island and the widgets page appears. This one has music with playback controls, a focus timer and a file tray.",
+      },
+      {
+        src: "/hangover/layout-planner.png",
+        label: "Layout: Day planner",
+        caption: "A starting layout from the template gallery, shown in a preview: a month calendar with the day's events above a to-do list.",
+      },
+      {
+        src: "/hangover/layout-now-playing.jpg",
+        label: "Layout: Now playing",
+        caption: "A music player across the top, with a focus timer and quick notes below it.",
+      },
+      {
+        src: "/hangover/layout-study.png",
+        label: "Layout: Study day",
+        caption: "A day timeline across the top, then to-dos, a focus timer and notes.",
+      },
+      {
+        src: "/hangover/weather.png",
+        label: "Weather",
+        caption: "The weather card in its 7-day view, with today's high and low and the temperature for each day.",
+      },
+      {
+        src: "/hangover/calendar.png",
+        label: "Calendar",
+        caption: "The calendar widget as a month grid with today circled, the day's events under it and the next ones coming up.",
+      },
+      {
+        src: "/hangover/file-tray.png",
+        label: "File tray and clipboard",
+        caption: "The tray has a Files tab and a Clipboard tab. This is the clipboard list, with a button to clear it.",
+      },
+      {
+        src: "/hangover/mirror.png",
+        label: "Mirror",
+        caption: "The mirror tile. It shows above your widgets until you turn it off.",
+      },
+      {
+        src: "/hangover/photo-booth.jpg",
+        label: "Photo booth",
+        caption: "The mirror doubles as a photo booth. These are strips in different frames, drawn with cartoon faces in place of a real camera.",
+      },
+      {
+        src: "/hangover/glow-settings.png",
+        label: "Pick a glow",
+        caption: "Off, Subtle or Vivid, a color for each kind of moment, and a set of color palettes. The tour sets it up and Settings changes it later.",
+      },
+      {
+        src: "/hangover/settings-layouts.png",
+        label: "Settings: layouts",
+        caption: "The layout gallery in Settings. Each setup has a preview, and you can apply one or keep your own.",
+      },
+    ],
+    features: [
+      {
+        title: "The Nook",
+        body: "A widgets page inside the island: music, calendar, to-dos, notes, weather, a timer, a mirror that doubles as a photo booth, and a file tray.",
+      },
+      {
+        title: "Layouts and an editor",
+        body: "Start from a layout template, then press, hold and drag to move and resize widgets until the page fits your day.",
+      },
+      {
+        title: "A closed island with something to say",
+        body: "Each side can show the date, battery, next event, weather, timer or open to-dos, and it has its own look while music plays.",
+      },
+      {
+        title: "A status glow",
+        body: "A soft light around the closed island for the moments that matter, with no banner needed.",
+      },
+      {
+        title: "A welcome tour on the real island",
+        body: "It sets up Notion, TickTick or Reminders for to-dos, a Markdown file or Apple Notes for quick notes, and a city for weather.",
+      },
+      {
+        title: "Agent features can be switched off",
+        body: "The coding agent features come from Open Island. I added a switch that turns them off for people who do not use them.",
+      },
+    ],
+    build: [
+      { layer: "App", detail: "Swift 6.2 with SwiftUI and AppKit." },
+      { layer: "Calendar and reminders", detail: "EventKit." },
+      { layer: "Tests", detail: "Swift Testing, 2,163 tests in all. 451 of them came with the original." },
+      {
+        layer: "Updates",
+        detail: "The app updates itself through Sparkle, from a signed update feed with an EdDSA signature.",
+      },
+      {
+        layer: "Decisions",
+        detail: "Design rulings are written down and numbered in the repo's DECISIONS.md, D1 to D45 as of 1.0.5.",
+      },
+    ],
+    roadmap: [
+      "Spanish.",
+      "A search bar in Settings.",
+      "A send-feedback button.",
+      "Swiping the island away with two fingers.",
+    ],
+    contributions: [
+      "Forked Open Island in October 2026 and shipped it as Hangover: the new name, icon, download page and six releases.",
+      "Designed and built the Nook, its widgets, the layout templates and the press, hold and drag editor.",
+      "Designed what the closed island shows on each side and while music plays, and the status glow.",
+      "Built the welcome tour and the switch that turns the agent features off.",
+    ],
+  },
+  {
     slug: "we-explore-earth",
     name: "We Explore Earth",
-    number: "01",
+    number: "02",
     period: "Dec 2025 → June 2026",
     headline: "We Explore Earth: the RSVP app behind a 20,000-person outdoor community",
     blurb:
@@ -170,7 +351,7 @@ export const projects: Project[] = [
   {
     slug: "swipebite",
     name: "SwipeBite",
-    number: "02",
+    number: "03",
     period: "Feb 2026 → now",
     headline: "SwipeBite: a restaurant finder you swipe through",
     blurb:
@@ -299,7 +480,7 @@ export const projects: Project[] = [
   {
     slug: "diduc",
     name: "DIDUC",
-    number: "03",
+    number: "04",
     period: "Jan → May 2026",
     headline: "DIDUC: one shared photo album for everyone at the party",
     blurb:
@@ -377,7 +558,7 @@ export const projects: Project[] = [
   {
     slug: "crash-simulator",
     name: "Database Crash Simulator",
-    number: "04",
+    number: "05",
     period: "Aug 2026",
     headline: "A crash simulator that independently found a real data-loss bug in a production database",
     blurb:
@@ -466,7 +647,7 @@ export const projects: Project[] = [
   {
     slug: "code-switching-benchmark",
     name: "LLM Code-Switching Benchmark",
-    number: "05",
+    number: "06",
     period: "Aug 2026 → now",
     headline: "A benchmark for whether language models actually handle Spanglish",
     blurb:
@@ -560,7 +741,7 @@ export const projects: Project[] = [
   {
     slug: "airwriter",
     name: "airwriter",
-    number: "06",
+    number: "07",
     period: "Aug 2026",
     headline: "airwriter: write in the air, and a webcam reads it",
     blurb:
@@ -676,7 +857,7 @@ export const projects: Project[] = [
   {
     slug: "rise-the-fenua",
     name: "Rise the Fenua",
-    number: "07",
+    number: "08",
     period: "2026",
     headline: "Rise the Fenua: the inventory dashboard behind a nonprofit's merch drops",
     blurb:

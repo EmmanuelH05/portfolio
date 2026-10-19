@@ -71,8 +71,8 @@ export const projects: Project[] = [
     period: "Oct 2026 → Present",
     headline: "Hangover: a free Mac app that turns the notch into a small control surface",
     blurb:
-      "Music, calendar, to-dos, notes, weather, a timer, a mirror and a file tray, all in the island at the top of the screen. It is built on Open Island, an open-source app by Octane0411, and I added the widgets page and most of what you see here.",
-    chips: ["Open source, GPL-3.0", "Swift, SwiftUI, AppKit", "2,493 tests"],
+      "Music, calendar, to-dos, notes, weather, a timer, a mirror, a screen recorder, a design kit and a file tray, all in the island at the top of the screen. It is built on Open Island, an open-source app by Octane0411, and I added the widgets page and most of what you see here.",
+    chips: ["Open source, GPL-3.0", "Swift, SwiftUI, AppKit", "2,500+ tests"],
     cta: "Read the case study",
     tint: "mist",
     cover: {
@@ -93,10 +93,10 @@ export const projects: Project[] = [
     facts: [
       { label: "Built on", value: "Open Island by Octane0411, which I forked in October 2026" },
       { label: "Role", value: "I designed, built and shipped the additions on top of it" },
-      { label: "Stack", value: "Swift 6.2, SwiftUI, AppKit, EventKit, Swift Testing, Sparkle" },
+      { label: "Stack", value: "Swift 6.2, SwiftUI, AppKit, EventKit, ScreenCaptureKit, Core Audio, Swift Testing, Sparkle" },
       { label: "Platform", value: "macOS 14 or later, Apple silicon" },
-      { label: "Tests", value: "2,493 automated tests, 451 of them from the original" },
-      { label: "Releases", value: "Nine, 1.0.0 to 1.0.8, on Oct 9 and 10, 2026" },
+      { label: "Tests", value: "Over 2,500 automated tests" },
+      { label: "Releases", value: "Fifteen, 1.0.0 to 1.0.14, from Oct 9 to 18, 2026" },
       { label: "License", value: "GPL-3.0, free" },
     ],
     links: [
@@ -200,7 +200,19 @@ export const projects: Project[] = [
     features: [
       {
         title: "The Nook",
-        body: "A widgets page inside the island: music, calendar, to-dos, notes, weather, a timer, a mirror that doubles as a photo booth, and a file tray.",
+        body: "A widgets page inside the island: music, calendar, to-dos, notes, weather, a timer, a mirror that doubles as a photo booth, a screen recorder, a design kit with an eyedropper, and a file tray.",
+      },
+      {
+        title: "To-dos from the apps you already use",
+        body: "Notion, TickTick, Apple Reminders, Asana, monday and Canvas, every one you turn on in one list. A to-do can carry a due date, and the closed island reminds you the morning it is due.",
+      },
+      {
+        title: "Record your screen",
+        body: "Record the whole screen or one window, with your face in a floating bubble if you want it. The clip lands in the file tray, where it can become a GIF.",
+      },
+      {
+        title: "Convert files in the tray",
+        body: "Drop in an image, a video or a PDF and turn it into another format without leaving the island.",
       },
       {
         title: "Layouts and an editor",
@@ -216,11 +228,11 @@ export const projects: Project[] = [
       },
       {
         title: "A status glow",
-        body: "A soft light around the closed island when music plays, an agent needs you or a notice comes in.",
+        body: "A soft light around the closed island when music plays, an agent needs you or a notice comes in. It can also pulse with the beat of whatever is playing.",
       },
       {
         title: "A welcome tour on the real island",
-        body: "It sets up Notion, TickTick or Reminders for to-dos, a Markdown file or Apple Notes for quick notes, and a city for weather. One page walks each widget with buttons to try it, the mirror and the photo booth included.",
+        body: "It connects your to-do apps, a notes folder or Apple Notes, and a city for weather. One page walks each widget with buttons to try it, the mirror and the photo booth included.",
       },
       {
         title: "Agent features can be switched off",
@@ -230,7 +242,12 @@ export const projects: Project[] = [
     build: [
       { layer: "App", detail: "Swift 6.2 with SwiftUI and AppKit." },
       { layer: "Calendar and reminders", detail: "EventKit." },
-      { layer: "Tests", detail: "Swift Testing, 2,493 tests in all. 451 of them came with the original." },
+      { layer: "Recording", detail: "ScreenCaptureKit and AVAssetWriter, with no outside tools." },
+      {
+        layer: "Lights",
+        detail: "A Core Audio tap on the Mac's sound output, split into three frequency bands to catch the kick, the snare and the hats.",
+      },
+      { layer: "Tests", detail: "Swift Testing, over 2,500 tests." },
       {
         layer: "Performance",
         detail:
@@ -243,11 +260,11 @@ export const projects: Project[] = [
     ],
     roadmap: [
       "Spanish.",
-      "A search bar in Settings.",
-      "A send-feedback button.",
     ],
     contributions: [
-      "Forked Open Island in October 2026 and shipped it as Hangover: the new name, icon, download page and nine releases.",
+      "Forked Open Island in October 2026 and shipped it as Hangover: the new name, icon, download page and fifteen releases.",
+      "Built the screen recorder, the file converter and GIF maker in the tray, and to-dos from six apps in one list.",
+      "Built the lights that follow the beat, a search bar in Settings and a send-feedback button.",
       "Designed and built the Nook, its widgets, the layout templates and the press, hold and drag editor.",
       "Designed what the closed island shows on each side and while music plays, and the status glow.",
       "Built the welcome tour and the switch that turns the agent features off.",

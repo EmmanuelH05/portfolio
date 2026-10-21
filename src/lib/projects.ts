@@ -992,7 +992,7 @@ export const projects: Project[] = [
       },
     },
     intro: [
-      "geekbeats is a side project I built for fun: a swipe feed for YouTube type beats that a friend and I both use. We collect beats in one sound, and geekbeats replaces clicking video after video from hit-or-miss producers. One beat plays at a time. A right swipe keeps it and a left swipe skips it.",
+      "geekbeats is a side project I built for fun. My friend and I are just two people who like to make music, and the most time-consuming part was always finding a beat we both liked: clicking video after video from hit-or-miss producers. geekbeats turns that into a swipe feed of YouTube type beats. One beat plays at a time. A right swipe keeps it and a left swipe skips it.",
       "Every keep lands in my Google Drive as a tagged 320 kbps mp3 with cover art, named for the producer, the beat and the artists it is styled after, in a folder for the day it was kept. The feed learns each person's taste from their own swipes.",
       "It is a web app on our phones and Macs, served from my own computer over Tailscale. Nobody else can sign up, which is why this page has no link to try it. The pictures are the approved design frames from Figma, drawn before any code.",
     ],

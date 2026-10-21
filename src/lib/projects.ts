@@ -998,7 +998,7 @@ export const projects: Project[] = [
     ],
     facts: [
       { label: "Started", value: "October 20, 2026" },
-      { label: "Users", value: "Two: me and a friend" },
+      { label: "Users", value: "Built for two: me and a friend" },
       { label: "Stack", value: "TypeScript, Bun, Preact with signals, yt-dlp, ffmpeg, Google Drive API, Tailscale" },
       { label: "Design", value: "18 screens approved in Figma before they were built" },
       { label: "Tests", value: "159 automated tests, all passing" },
@@ -1097,7 +1097,7 @@ export const projects: Project[] = [
       {
         layer: "Two hosts",
         detail:
-          "Both computers keep one append-only event log and pull each other's events every 2 seconds. The backup takes over after 90 seconds without hearing from the main host.",
+          "Built for two computers: each keeps one append-only event log and pulls the other's events every 2 seconds, and the backup takes over Drive saves after 90 seconds without hearing from the main host. The second computer isn't set up yet.",
       },
       { layer: "Tests", detail: "159 tests with bun test, all passing." },
     ],

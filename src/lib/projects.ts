@@ -970,4 +970,141 @@ export const projects: Project[] = [
       "Wrote the SQL migrations and the import that normalizes Google Form responses, which cut manual processing time by 40%.",
     ],
   },
+  {
+    slug: "geekbeats",
+    name: "geekbeats",
+    number: "09",
+    period: "Oct 2026 → now",
+    headline: "geekbeats: a dating-app feed for type beats, built for two friends",
+    blurb:
+      "One beat plays at a time. Swipe right and it lands in Google Drive as a tagged mp3, in a folder for the day. Swipe left and it never comes back.",
+    chips: ["Side project for two people", "TypeScript, Bun, Preact", "159 tests"],
+    cta: "See the screens",
+    tint: "mist",
+    cover: {
+      backdrop: "/covers/geekbeats.jpg",
+      screen: {
+        src: "/geekbeats/cover.jpg",
+        alt: "The approved design frame for geekbeats on a Mac: the beat card in the middle, the tabs in a sidebar and today's keeps on the right",
+        width: 1440,
+        height: 895,
+        kind: "window",
+      },
+    },
+    intro: [
+      "geekbeats is a swipe feed for YouTube type beats, built for exactly two people: me and a friend. We collect beats in one sound, and geekbeats replaces clicking video after video from hit-or-miss producers. One beat plays at a time. A right swipe keeps it and a left swipe skips it.",
+      "Every keep lands in my Google Drive as a tagged 320 kbps mp3 with cover art, named for the producer, the beat and the artists it is styled after, in a folder for the day it was kept. The feed learns each person's taste from their own swipes.",
+      "It is a web app on our phones and Macs, served from my own computer over Tailscale. Nobody else can sign up, which is why this page has no link to try it. The pictures are the approved design frames from Figma, drawn before any code.",
+    ],
+    facts: [
+      { label: "Started", value: "October 20, 2026" },
+      { label: "Users", value: "Two: me and a friend" },
+      { label: "Stack", value: "TypeScript, Bun, Preact with signals, yt-dlp, ffmpeg, Google Drive API, Tailscale" },
+      { label: "Design", value: "18 screens approved in Figma before they were built" },
+      { label: "Tests", value: "159 automated tests, all passing" },
+      { label: "Status", value: "Running on my Mac. Moving the main host to a friend's PC is in progress" },
+    ],
+    links: [],
+    screenSize: { width: 390, height: 844 },
+    screensNote:
+      "Approved design frames from the project's Figma file, not screenshots of the running app. The beat names are real public titles. The cover art is a placeholder gradient where the app shows the YouTube thumbnail.",
+    screens: [
+      {
+        src: "/geekbeats/feed-kept.png",
+        label: "Keep a beat",
+        caption:
+          "Right after a keep. The toast names the day folder the mp3 went to, and Undo takes it back out of Drive. A minute of real listening keeps a beat on its own, and a tap skips ahead 10 seconds.",
+      },
+      {
+        src: "/geekbeats/search-results.png",
+        label: "Search an artist",
+        caption: "Type an artist and swipe through their type beats with the same rules. Beats you already swiped on are left out.",
+      },
+      {
+        src: "/geekbeats/feed-sent-to-you.png",
+        label: "Sent by a friend",
+        caption:
+          "A beat the other person sent jumps to the front of your feed with their reaction on top: fire, hard, crazy, vibe or lol.",
+      },
+      {
+        src: "/geekbeats/matches.png",
+        label: "Matches",
+        caption: "A beat we both keep is a match. The page keeps score of who found each one first.",
+      },
+      {
+        src: "/geekbeats/history.png",
+        label: "History",
+        caption:
+          "Every swipe, newest first. Flip a keep or a skip and the Drive file follows. A match can be deleted for both of us.",
+      },
+      {
+        src: "/geekbeats/status.png",
+        label: "Status",
+        caption:
+          "Which computer is serving right now, the backup standing by, yt-dlp, Drive and the last save, with a button that restarts the server.",
+      },
+    ],
+    features: [
+      {
+        title: "Swipe, keep, skip",
+        body: "One beat at a time. Right keeps and left skips, and on a Mac the arrow keys do the same. After one tap to start, every card plays on its own.",
+      },
+      {
+        title: "Every keep lands in Drive",
+        body: "A tagged mp3 with the beat's cover art, named for the producer, the beat and its artist tags, in a folder for the day. A failed upload is retried until it lands.",
+      },
+      {
+        title: "No dead air",
+        body: "The server keeps three beats ready ahead of you, and a beat starts playing while it is still downloading. In a test of ten swipes a second apart, the longest wait was 2 ms.",
+      },
+      {
+        title: "It learns your taste",
+        body: "A keep adds a point to the producer and every tagged artist, and a skip takes away a quarter point. No producer gets more than 2 of any 8 cards in a row, and about 1 in 5 picks come from a producer with no keeps yet.",
+      },
+      {
+        title: "Built for two",
+        body: "Send a beat with a reaction, see the beats you both kept and who found them first, and mute a producer or an artist from your own feed.",
+      },
+      {
+        title: "History you can change",
+        body: "Flip any keep or skip later and the Drive file is saved or removed to match, unless the other person kept it too.",
+      },
+    ],
+    build: [
+      { layer: "App", detail: "A web app in Preact with signals and TypeScript, installable to the home screen." },
+      {
+        layer: "Streaming",
+        detail:
+          "yt-dlp pulls each beat. A full pull takes about 20 seconds under YouTube's throttle, but the first byte arrives in 0.3 seconds, which is why playback starts while the pull is still running.",
+      },
+      {
+        layer: "Audio server",
+        detail:
+          "Audio comes from a small node:http server beside the Bun API, because Bun.serve sent every streamed body with no Content-Length and Safari needs the exact length.",
+      },
+      {
+        layer: "iPhone",
+        detail: "One audio element, unlocked by the first tap, plays every later card. On my iPhone it started 8 of 8 swaps with no extra tap.",
+      },
+      {
+        layer: "Drive",
+        detail: "The drive.file scope plus a one-time pick of my existing folder in Google's picker, instead of access to my whole Drive.",
+      },
+      {
+        layer: "Cover art",
+        detail: "The YouTube thumbnail, cropped to a square (720 by 720 at full size) with any near-black bars trimmed off.",
+      },
+      {
+        layer: "Two hosts",
+        detail:
+          "Both computers keep one append-only event log and pull each other's events every 2 seconds. The backup takes over after 90 seconds without hearing from the main host.",
+      },
+      { layer: "Tests", detail: "159 tests with bun test, all passing." },
+    ],
+    roadmap: [
+      "A friend's PC as the main host, with my Mac as the backup.",
+      "Roses: one top beat a day, copied to a best folder.",
+      "A weekly wrapped: a Sunday card with the week's saves, top producer, top artist and matches.",
+    ],
+  },
 ];

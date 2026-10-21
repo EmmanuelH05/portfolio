@@ -1020,7 +1020,7 @@ export const projects: Project[] = [
         video: "/geekbeats/feed.mp4",
         label: "Swipe the feed",
         caption:
-          "The first card is one my friend sent, with the reaction on top. Tap to start, skip ahead 10 seconds, skip twice and keep one. The next beat is already playing after every swipe, and the toast names the day folder the mp3 went to.",
+          "Skip one beat and keep the next. The next beat is already playing after every swipe, and the toast names the day folder the mp3 went to.",
       },
       {
         src: "/geekbeats/search-poster.jpg",
@@ -1028,13 +1028,6 @@ export const projects: Project[] = [
         label: "Search an artist",
         caption:
           "Typing an artist searches YouTube for their type beats. The results play like the feed, with the same swipes, and beats you already swiped on are left out.",
-      },
-      {
-        src: "/geekbeats/sent-poster.jpg",
-        video: "/geekbeats/sent.mp4",
-        label: "Sent and matches",
-        caption:
-          "Beats my friend sent, with the reaction or note and what I did with each. Matches counts the beats we both kept and who found each one first. We have none yet.",
       },
       {
         src: "/geekbeats/history-poster.jpg",

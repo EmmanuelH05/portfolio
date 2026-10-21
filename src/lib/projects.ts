@@ -978,7 +978,7 @@ export const projects: Project[] = [
     headline: "geekbeats: a dating-app feed for type beats, built for two friends",
     blurb:
       "One beat plays at a time. Swipe right and it lands in Google Drive as a tagged mp3, in a folder for the day. Swipe left and it never comes back.",
-    chips: ["Side project for two people", "TypeScript, Bun, Preact", "159 tests"],
+    chips: ["Side project, built for fun", "TypeScript, Bun, Preact", "159 tests"],
     cta: "See the screens",
     tint: "mist",
     cover: {
@@ -992,13 +992,13 @@ export const projects: Project[] = [
       },
     },
     intro: [
-      "geekbeats is a swipe feed for YouTube type beats, built for exactly two people: me and a friend. We collect beats in one sound, and geekbeats replaces clicking video after video from hit-or-miss producers. One beat plays at a time. A right swipe keeps it and a left swipe skips it.",
+      "geekbeats is a side project I built for fun: a swipe feed for YouTube type beats that a friend and I both use. We collect beats in one sound, and geekbeats replaces clicking video after video from hit-or-miss producers. One beat plays at a time. A right swipe keeps it and a left swipe skips it.",
       "Every keep lands in my Google Drive as a tagged 320 kbps mp3 with cover art, named for the producer, the beat and the artists it is styled after, in a folder for the day it was kept. The feed learns each person's taste from their own swipes.",
       "It is a web app on our phones and Macs, served from my own computer over Tailscale. Nobody else can sign up, which is why this page has no link to try it. The pictures are the approved design frames from Figma, drawn before any code.",
     ],
     facts: [
       { label: "Started", value: "October 20, 2026" },
-      { label: "Users", value: "Built for two: me and a friend" },
+      { label: "Users", value: "Two: me and a friend" },
       { label: "Stack", value: "TypeScript, Bun, Preact with signals, yt-dlp, ffmpeg, Google Drive API, Tailscale" },
       { label: "Design", value: "18 screens approved in Figma before they were built" },
       { label: "Tests", value: "159 automated tests, all passing" },

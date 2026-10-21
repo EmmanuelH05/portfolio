@@ -985,16 +985,16 @@ export const projects: Project[] = [
       backdrop: "/covers/geekbeats.jpg",
       screen: {
         src: "/geekbeats/cover.jpg",
-        alt: "The approved design frame for geekbeats on a Mac: the beat card in the middle, the tabs in a sidebar and today's keeps on the right",
+        alt: "geekbeats on a Mac in a frame from a screen recording of the app: a beat card playing in the middle, the tabs in a sidebar and today's two keeps on the right",
         width: 1440,
-        height: 895,
+        height: 894,
         kind: "window",
       },
     },
     intro: [
       "geekbeats is a side project I built for fun. My friend and I are just two people who like to make music, and the most time-consuming part was always finding a beat we both liked: clicking video after video from hit-or-miss producers. geekbeats turns that into a swipe feed of YouTube type beats. One beat plays at a time. A right swipe keeps it and a left swipe skips it.",
       "Every keep lands in my Google Drive as a tagged 320 kbps mp3 with cover art, named for the producer, the beat and the artists it is styled after, in a folder for the day it was kept. The feed learns each person's taste from their own swipes.",
-      "It is a web app on our phones and Macs, served from my own computer over Tailscale. Nobody else can sign up, which is why this page has no link to try it. The pictures are the approved design frames from Figma, drawn before any code.",
+      "It is a web app on our phones and Macs, served from my own computer over Tailscale. Nobody else can sign up, which is why this page has no link to try it. The clips on this page are screen recordings of the real app with my own feed.",
     ],
     facts: [
       { label: "Started", value: "October 20, 2026" },
@@ -1005,43 +1005,50 @@ export const projects: Project[] = [
       { label: "Status", value: "Running on my Mac. Moving the main host to a friend's PC is in progress" },
     ],
     links: [],
-    screenSize: { width: 390, height: 844 },
+    video: {
+      src: "/geekbeats/hero.mp4",
+      poster: "/geekbeats/hero-poster.jpg",
+      kind: "window",
+      note: "A recording of the real app at laptop size: two skips with the arrow keys, then a keep, which lands in today's list on the right. A script drove it, which is why no pointer shows.",
+    },
+    screenSize: { width: 780, height: 1688 },
     screensNote:
-      "Approved design frames from the project's Figma file, not screenshots of the running app. The beat names are real public titles. The cover art is a placeholder gradient where the app shows the YouTube thumbnail.",
+      "Screen recordings of the real app with my own feed, at phone size in a browser. A script drove each take, which is why no finger shows.",
     screens: [
       {
-        src: "/geekbeats/feed-kept.png",
-        label: "Keep a beat",
+        src: "/geekbeats/feed-poster.jpg",
+        video: "/geekbeats/feed.mp4",
+        label: "Swipe the feed",
         caption:
-          "Right after a keep. The toast names the day folder the mp3 went to, and Undo takes it back out of Drive. A minute of real listening keeps a beat on its own, and a tap skips ahead 10 seconds.",
+          "The first card is one my friend sent, with the reaction on top. Tap to start, skip ahead 10 seconds, skip twice and keep one. The next beat is already playing after every swipe, and the toast names the day folder the mp3 went to.",
       },
       {
-        src: "/geekbeats/search-results.png",
+        src: "/geekbeats/search-poster.jpg",
+        video: "/geekbeats/search.mp4",
         label: "Search an artist",
-        caption: "Type an artist and swipe through their type beats with the same rules. Beats you already swiped on are left out.",
-      },
-      {
-        src: "/geekbeats/feed-sent-to-you.png",
-        label: "Sent by a friend",
         caption:
-          "A beat the other person sent jumps to the front of your feed with their reaction on top: fire, hard, crazy, vibe or lol.",
+          "Typing an artist searches YouTube for their type beats. The results play like the feed, with the same swipes, and beats you already swiped on are left out.",
       },
       {
-        src: "/geekbeats/matches.png",
-        label: "Matches",
-        caption: "A beat we both keep is a match. The page keeps score of who found each one first.",
+        src: "/geekbeats/sent-poster.jpg",
+        video: "/geekbeats/sent.mp4",
+        label: "Sent and matches",
+        caption:
+          "Beats my friend sent, with the reaction or note and what I did with each. Matches counts the beats we both kept and who found each one first. We have none yet.",
       },
       {
-        src: "/geekbeats/history.png",
+        src: "/geekbeats/history-poster.jpg",
+        video: "/geekbeats/history.mp4",
         label: "History",
         caption:
-          "Every swipe, newest first. Flip a keep or a skip and the Drive file follows. A match can be deleted for both of us.",
+          "Every swipe, newest first, filtered to keeps and then to skips. Flipping a keep or a skip makes the Drive file follow.",
       },
       {
-        src: "/geekbeats/status.png",
-        label: "Status",
+        src: "/geekbeats/status-poster.jpg",
+        video: "/geekbeats/status.mp4",
+        label: "My page and the status page",
         caption:
-          "Which computer is serving right now, the backup standing by, yt-dlp, Drive and the last save, with a button that restarts the server.",
+          "Tapping my initial shows the Drive folder and today's folder. The status page shows which computer is serving, yt-dlp, Drive, the last file saved and the beats ready for each of us.",
       },
     ],
     features: [

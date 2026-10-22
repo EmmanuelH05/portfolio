@@ -1,4 +1,11 @@
-import type { ScreenKind } from '@/lib/projects';
+import { Syne } from 'next/font/google';
+import type { Brand, ScreenKind } from '@/lib/projects';
+
+/** geekbeats' own wordmark face. Not preloaded: only the geekbeats page uses it. */
+const syne = Syne({ subsets: ['latin'], weight: '800', display: 'swap', preload: false });
+const wordmarks: Record<Brand, string> = {
+  geekbeats: `${syne.className} pb-1 text-[2.75rem] leading-none tracking-[-0.03em] sm:text-[3.25rem]`,
+};
 
 /** The painted backdrop right under the nav, with the project's screen or demo video on it. */
 export const hero = 'mt-8 sm:mt-10';
@@ -28,10 +35,23 @@ export const header = 'grid gap-8 pt-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,
 export const aboutColumn = 'lg:pt-12';
 export { pillLink as backLink } from '@/styles/buttons';
 export const meta = 'mt-8 font-mono text-xs uppercase tracking-[0.02em] text-muted';
-export const title = 'mt-2 font-serif text-[2.5rem] leading-[1.05] tracking-[-0.01em] sm:text-[2.75rem]';
+/** The serif title, or the app's own wordmark for a project that has one. */
+export const title = (brand?: Brand) =>
+  `mt-2 ${brand ? wordmarks[brand] : 'font-serif text-[2.5rem] leading-[1.05] tracking-[-0.01em] sm:text-[2.75rem]'}`;
 export const intro = 'mt-4 max-w-[33.75rem] space-y-4 text-[1.0625rem] leading-relaxed text-muted sm:text-[1.1875rem]';
 export const facts = 'grid max-w-[33.75rem] grid-cols-[5rem_1fr] gap-x-4 gap-y-2.5 text-[0.9375rem] leading-6';
 export const factLabel = 'font-mono text-xs uppercase leading-6 text-muted';
+/** Lines up with the facts above it: the same label column, then the keycaps. */
+export const keysRow = 'mt-2.5 grid max-w-[33.75rem] grid-cols-[5rem_1fr] gap-x-4 text-[0.9375rem]';
+export const keys = 'flex flex-wrap gap-x-3 gap-y-2.5';
+export const keyItem = 'inline-flex items-center gap-1.5 leading-6';
+/** A small keycap with a pressed bottom edge. The keep key takes geekbeats' cobalt, like its keep button. */
+export const keycap = (keep?: boolean) =>
+  `inline-grid h-6 min-w-6 place-items-center rounded-md px-1.5 font-mono text-xs ring-1 ring-inset ${
+    keep
+      ? 'bg-cobalt text-white ring-cobalt shadow-[inset_0_-2px_0_rgba(0,0,0,0.25)]'
+      : 'bg-white text-ink ring-ink/15 shadow-[inset_0_-2px_0_rgba(23,32,25,0.12)]'
+  }`;
 export const links = 'mt-8 flex flex-wrap gap-3';
 export { primaryButton as linkButton } from '@/styles/buttons';
 /** A phone recording stands tall like the phone screens; a landscape one spans the width like a window. */

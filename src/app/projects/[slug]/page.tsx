@@ -108,7 +108,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             />
             <div className={styles.heroStage}>{heroMedia(project)}</div>
           </div>
-          {project.video && <figcaption className={styles.videoCaption}>{project.video.note}</figcaption>}
+          {project.video?.note && <figcaption className={styles.videoCaption}>{project.video.note}</figcaption>}
         </figure>
 
         <div id="overview" className={styles.header}>
@@ -119,7 +119,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <p className={styles.meta}>
               {project.number} <span aria-hidden>/</span> {project.period}
             </p>
-            <h1 className={styles.title}>{project.name}</h1>
+            <h1 className={styles.title(project.brand)}>{project.name}</h1>
             <div className={styles.intro}>
               {project.intro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -135,6 +135,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </Fragment>
               ))}
             </dl>
+            {project.keys && (
+              <div className={styles.keysRow}>
+                <p className={styles.factLabel}>Keys</p>
+                <ul className={styles.keys}>
+                  {project.keys.map(({ key, action, keep }) => (
+                    <li key={key} className={styles.keyItem}>
+                      <kbd className={styles.keycap(keep)}>{key}</kbd>
+                      {action}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className={styles.links}>
               {project.links.map((link) => (
                 <a key={link.href} href={link.href} {...external} className={styles.linkButton}>

@@ -17,6 +17,8 @@ module.exports = {
         mist: '#DCE6E1',
         dots: '#B3BCB0',
         live: '#3F9A5A',
+        // geekbeats' own accent, used only on its page.
+        cobalt: '#2B59FF',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],

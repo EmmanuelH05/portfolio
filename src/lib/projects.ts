@@ -68,8 +68,14 @@ export interface Project {
    * Plays on the backdrop at the top of the page, in place of the cover screen. `kind` is its shape:
    * a phone recording (the default) or a landscape one.
    */
-  video?: { src: string; poster: string; note: string; kind?: ScreenKind };
+  video?: { src: string; poster: string; note?: string; kind?: ScreenKind };
+  /** Sets the page title in the app's own wordmark. */
+  brand?: Brand;
+  /** The app's keyboard controls, shown as keycaps under the facts. `keep` marks the one in the app's color. */
+  keys?: { key: string; action: string; keep?: boolean }[];
 }
+
+export type Brand = "geekbeats";
 
 export const projects: Project[] = [
   {
@@ -1017,8 +1023,15 @@ export const projects: Project[] = [
       src: "/geekbeats/hero.mp4",
       poster: "/geekbeats/hero-poster.jpg",
       kind: "window",
-      note: "A recording of the real app at laptop size: two skips with the arrow keys, then a keep, which lands in today's list on the right. A script drove it, which is why no pointer shows.",
     },
+    brand: "geekbeats",
+    keys: [
+      { key: "←", action: "skip" },
+      { key: "→", action: "keep", keep: true },
+      { key: "space", action: "pause" },
+      { key: "U", action: "undo" },
+      { key: "S", action: "send" },
+    ],
     screenSize: { width: 780, height: 1688 },
     screensNote:
       "Screen recordings of the real app with my own feed, at phone size in a browser. A script drove each take, which is why no finger shows.",

@@ -9,6 +9,7 @@ import NumberedList from '@/components/NumberedList';
 import PageFooterNav from '@/components/PageFooterNav';
 import PageShell from '@/components/PageShell';
 import ScreenTour from '@/components/ScreenTour';
+import ScreenViews from '@/components/ScreenViews';
 import SectionNav, { type NavSection } from '@/components/SectionNav';
 import { external } from '@/components/links';
 import { projects, type Project } from '@/lib/projects';
@@ -148,8 +149,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <div className={styles.article}>
         <SectionNav sections={sectionsFor(project)} back={{ href: '/#work', label: 'All work' }} />
         <div className={styles.sections}>
-          <ArticleSection id="screens" title={TITLES.screens} note={project.screensNote}>
-            <ScreenTour screens={project.screens} size={project.screenSize} />
+          <ArticleSection id="screens" title={TITLES.screens} note={project.webScreens ? undefined : project.screensNote}>
+            {project.webScreens ? (
+              <ScreenViews
+                web={project.webScreens}
+                mobile={{ size: project.screenSize, note: project.screensNote, screens: project.screens }}
+              />
+            ) : (
+              <ScreenTour screens={project.screens} size={project.screenSize} />
+            )}
           </ArticleSection>
 
           <ArticleSection id="features" title={TITLES.features}>

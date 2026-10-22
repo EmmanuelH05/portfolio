@@ -9,6 +9,12 @@ export interface Screen {
   caption: string;
 }
 
+export interface ScreenSet {
+  size: { width: number; height: number };
+  note: string;
+  screens: Screen[];
+}
+
 export interface Feature {
   title: string;
   body: string;
@@ -52,6 +58,8 @@ export interface Project {
   screenSize: { width: number; height: number };
   screensNote: string;
   screens: Screen[];
+  /** The same app at laptop size, behind a Web / Mobile switch over the screens. */
+  webScreens?: ScreenSet;
   features: Feature[];
   build?: { layer: string; detail: string }[];
   roadmap?: string[];
@@ -1044,6 +1052,37 @@ export const projects: Project[] = [
           "Tapping my initial shows the Drive folder and today's folder. The status page shows which computer is serving, yt-dlp, Drive, the last file saved and the beats ready for each of us.",
       },
     ],
+    webScreens: {
+      size: { width: 1440, height: 894 },
+      note: "Screen recordings of the real app with my own feed, at laptop size in a browser. A script drove each take, which is why no pointer shows.",
+      screens: [
+        {
+          src: "/geekbeats/web-feed-poster.jpg",
+          video: "/geekbeats/web-feed.mp4",
+          label: "The feed",
+          caption:
+            "On a Mac the card sits in the middle, the tabs in a sidebar, and today's keeps and the Drive folder they go to on the right. One click starts the first beat, and the keys under the card skip, keep, pause, undo and send.",
+        },
+        {
+          src: "/geekbeats/web-search-poster.jpg",
+          video: "/geekbeats/web-search.mp4",
+          label: "Search an artist",
+          caption: "Typing an artist searches YouTube for their type beats. The results play like the feed, with the same keys.",
+        },
+        {
+          src: "/geekbeats/web-history-poster.jpg",
+          video: "/geekbeats/web-history.mp4",
+          label: "History",
+          caption: "Every swipe, newest first, filtered to keeps and then to skips. Any row can be flipped later, and the Drive file follows.",
+        },
+        {
+          src: "/geekbeats/web-profile-poster.jpg",
+          video: "/geekbeats/web-profile.mp4",
+          label: "My page",
+          caption: "Clicking my name opens my page: how many beats I kept, my top artists and my newest keeps.",
+        },
+      ],
+    },
     features: [
       {
         title: "Swipe, keep, skip",

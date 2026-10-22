@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 import WorkCard from '@/components/WorkCard';
-import { personalInfo } from '@/lib/data';
+import { currentWork, personalInfo } from '@/lib/data';
 import { projects } from '@/lib/projects';
 import { resumeHref } from '@/lib/site';
 import * as styles from '@/styles/pages/home';
@@ -59,6 +59,30 @@ export default function Home() {
         <div className={styles.workGrid}>
           {projects.map((project) => (
             <WorkCard key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
+
+      <section id="now" aria-labelledby="currently-working-on" className={styles.section}>
+        <h2 id="currently-working-on" className={styles.sectionHeading}>
+          Currently working on
+        </h2>
+        <div className={styles.nowList}>
+          {currentWork.map((work) => (
+            <article key={work.name} className={styles.nowItem}>
+              <p className={styles.nowMeta}>
+                In progress <span aria-hidden>/</span> {work.period}
+              </p>
+              <h3 className={styles.nowHeadline}>{work.headline}</h3>
+              <p className={styles.nowBlurb}>{work.blurb}</p>
+              <ul className={styles.nowChips}>
+                {work.chips.map((chip) => (
+                  <li key={chip} className={styles.nowChip}>
+                    {chip}
+                  </li>
+                ))}
+              </ul>
+            </article>
           ))}
         </div>
       </section>

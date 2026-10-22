@@ -989,10 +989,10 @@ export const projects: Project[] = [
     name: "geekbeats",
     number: "09",
     period: "Oct 2026 → now",
-    headline: "geekbeats: a dating-app feed for type beats, built for two friends",
+    headline: "geekbeats: a dating app, but for type beats",
     blurb:
-      "One beat plays at a time. Swipe right and it lands in Google Drive as a tagged mp3, in a folder for the day. Swipe left and it never comes back.",
-    chips: ["Side project, built for fun", "TypeScript, Bun, Preact", "159 tests"],
+      "My friend and I make music, and finding a beat we both liked took forever. Now one beat plays at a time. Swipe right and it lands in my Google Drive as a tagged mp3. Swipe left and it's gone for good.",
+    chips: ["Passion project", "TypeScript, Bun, Preact", "159 tests"],
     cta: "See the screens",
     tint: "mist",
     cover: {
@@ -1006,17 +1006,17 @@ export const projects: Project[] = [
       },
     },
     intro: [
-      "geekbeats is a side project I built for fun. My friend and I are just two people who like to make music, and the most time-consuming part was always finding a beat we both liked: clicking video after video from hit-or-miss producers. geekbeats turns that into a swipe feed of YouTube type beats. One beat plays at a time. A right swipe keeps it and a left swipe skips it.",
-      "Every keep lands in my Google Drive as a tagged 320 kbps mp3 with cover art, named for the producer, the beat and the artists it is styled after, in a folder for the day it was kept. The feed learns each person's taste from their own swipes.",
-      "It is a web app on our phones and Macs, served from my own computer over Tailscale. Nobody else can sign up, which is why this page has no link to try it. The clips on this page are screen recordings of the real app with my own feed.",
+      "geekbeats is a passion project I built for me and my friend. We're just two people who like to make music, and for us the most time-consuming part was always finding a beat we both liked, which meant clicking video after video from hit-or-miss producers until something finally stuck. I ended up turning that into a dating app, but for YouTube type beats. One beat plays at a time, swipe right to keep it and swipe left to skip it.",
+      "Every keep lands in my Google Drive as a tagged 320 kbps mp3 with cover art, named after the producer, the beat and the artists it's styled after, sorted into a folder for the day it was kept. The feed also picks up on each of our tastes from our own swipes.",
+      "It runs as a web app on our phones and Macs, served straight from my own computer over Tailscale. Nobody else can sign up, which is why there's no link to try it here. Everything on this page is a screen recording of the real app with my own feed.",
     ],
     facts: [
       { label: "Started", value: "October 20, 2026" },
-      { label: "Users", value: "Two: me and a friend" },
+      { label: "Users", value: "Two: me and my friend" },
       { label: "Stack", value: "TypeScript, Bun, Preact with signals, yt-dlp, ffmpeg, Google Drive API, Tailscale" },
-      { label: "Design", value: "18 screens approved in Figma before they were built" },
+      { label: "Design", value: "18 screens approved in Figma before I built them" },
       { label: "Tests", value: "159 automated tests, all passing" },
-      { label: "Status", value: "Running on my Mac. Moving the main host to a friend's PC is in progress" },
+      { label: "Status", value: "Running on my Mac for now, with the main host moving to a friend's PC" },
     ],
     links: [],
     video: {
@@ -1034,113 +1034,113 @@ export const projects: Project[] = [
     ],
     screenSize: { width: 780, height: 1688 },
     screensNote:
-      "Screen recordings of the real app with my own feed, at phone size in a browser. A script drove each take, which is why no finger shows.",
+      "Recorded from the real app with my own feed, at phone size in a browser. A script did the swiping, which is why you won't see a finger.",
     screens: [
       {
         src: "/geekbeats/feed-poster.jpg",
         video: "/geekbeats/feed.mp4",
         label: "Swipe the feed",
         caption:
-          "Skip one beat and keep the next. The next beat is already playing after every swipe, and the toast names the day folder the mp3 went to.",
+          "Skip one, keep the next. The next beat is already playing after every swipe, and the little toast tells you which day folder the mp3 went to.",
       },
       {
         src: "/geekbeats/search-poster.jpg",
         video: "/geekbeats/search.mp4",
         label: "Search an artist",
         caption:
-          "Typing an artist searches YouTube for their type beats. The results play like the feed, with the same swipes, and beats you already swiped on are left out.",
+          "Type in an artist and it searches YouTube for their type beats. The results play just like the feed with the same swipes, and anything you already swiped on stays out.",
       },
       {
         src: "/geekbeats/history-poster.jpg",
         video: "/geekbeats/history.mp4",
         label: "History",
         caption:
-          "Every swipe, newest first, filtered to keeps and then to skips. Flipping a keep or a skip makes the Drive file follow.",
+          "Every swipe, newest first, filtered down to keeps and then skips. Flip a keep or a skip and the Drive file follows.",
       },
       {
         src: "/geekbeats/status-poster.jpg",
         video: "/geekbeats/status.mp4",
         label: "My page and the status page",
         caption:
-          "Tapping my initial shows the Drive folder and today's folder. The status page shows which computer is serving, yt-dlp, Drive, the last file saved and the beats ready for each of us.",
+          "Tapping my initial pulls up my Drive folder and today's folder. The status page shows which computer is serving, how yt-dlp and Drive are doing, the last file saved and the beats ready for each of us.",
       },
     ],
     webScreens: {
       size: { width: 1440, height: 894 },
-      note: "Screen recordings of the real app with my own feed, at laptop size in a browser. A script drove each take, which is why no pointer shows.",
+      note: "The same app on a laptop, recorded with my own feed. A script did the clicking, which is why you won't see a pointer.",
       screens: [
         {
           src: "/geekbeats/web-feed-poster.jpg",
           video: "/geekbeats/web-feed.mp4",
           label: "The feed",
           caption:
-            "On a Mac the card sits in the middle, the tabs in a sidebar, and today's keeps and the Drive folder they go to on the right. One click starts the first beat, and the keys under the card skip, keep, pause, undo and send.",
+            "On a Mac the card sits in the middle with the tabs in a sidebar, and today's keeps sit on the right next to the Drive folder they go to. One click starts the first beat, and the keys under the card skip, keep, pause, undo and send.",
         },
         {
           src: "/geekbeats/web-search-poster.jpg",
           video: "/geekbeats/web-search.mp4",
           label: "Search an artist",
-          caption: "Typing an artist searches YouTube for their type beats. The results play like the feed, with the same keys.",
+          caption: "Type in an artist and it searches YouTube for their type beats. The results play just like the feed, with the same keys.",
         },
         {
           src: "/geekbeats/web-history-poster.jpg",
           video: "/geekbeats/web-history.mp4",
           label: "History",
-          caption: "Every swipe, newest first, filtered to keeps and then to skips. Any row can be flipped later, and the Drive file follows.",
+          caption: "Every swipe, newest first, filtered down to keeps and then skips. You can flip any row later and the Drive file follows.",
         },
         {
           src: "/geekbeats/web-profile-poster.jpg",
           video: "/geekbeats/web-profile.mp4",
           label: "My page",
-          caption: "Clicking my name opens my page: how many beats I kept, my top artists and my newest keeps.",
+          caption: "Clicking my name opens my page: how many beats I've kept, my top artists and my newest keeps.",
         },
       ],
     },
     features: [
       {
         title: "Swipe, keep, skip",
-        body: "One beat at a time. Right keeps and left skips, and on a Mac the arrow keys do the same. After one tap to start, every card plays on its own.",
+        body: "One beat at a time. Right keeps, left skips, and on a Mac the arrow keys do the same thing. After one tap to start, every card plays on its own.",
       },
       {
         title: "Every keep lands in Drive",
-        body: "A tagged mp3 with the beat's cover art, named for the producer, the beat and its artist tags, in a folder for the day. A failed upload is retried until it lands.",
+        body: "Each keep turns into a tagged mp3 with the beat's cover art, named after the producer, the beat and its artist tags, in a folder for that day. If an upload fails, it keeps retrying until it lands.",
       },
       {
         title: "No dead air",
-        body: "The server keeps three beats ready ahead of you, and a beat starts playing while it is still downloading. In a test of ten swipes a second apart, the longest wait was 2 ms.",
+        body: "The server always has three beats ready ahead of you, and a beat starts playing while it's still downloading. In a test with ten swipes a second apart, the longest wait was 2 ms.",
       },
       {
         title: "It learns your taste",
-        body: "A keep adds a point to the producer and every tagged artist, and a skip takes away a quarter point. No producer gets more than 2 of any 8 cards in a row, and about 1 in 5 picks come from a producer with no keeps yet.",
+        body: "A keep adds a point to the producer and every tagged artist, and a skip takes away a quarter point. No producer gets more than 2 of any 8 cards in a row, and about 1 in 5 picks come from a producer with no keeps yet, which keeps new names coming through.",
       },
       {
         title: "Built for two",
-        body: "Send a beat with a reaction, see the beats you both kept and who found them first, and mute a producer or an artist from your own feed.",
+        body: "Send your friend a beat with a reaction, see the beats you both kept and who found them first, and mute a producer or an artist from just your own feed.",
       },
       {
         title: "History you can change",
-        body: "Flip any keep or skip later and the Drive file is saved or removed to match, unless the other person kept it too.",
+        body: "Flip any keep or skip later and the Drive file gets saved or removed to match, unless the other person kept it too.",
       },
     ],
     build: [
-      { layer: "App", detail: "A web app in Preact with signals and TypeScript, installable to the home screen." },
+      { layer: "App", detail: "A web app in Preact with signals and TypeScript that you can add to your home screen." },
       {
         layer: "Streaming",
         detail:
-          "yt-dlp pulls each beat. A full pull takes about 20 seconds under YouTube's throttle, but the first byte arrives in 0.3 seconds, which is why playback starts while the pull is still running.",
+          "yt-dlp pulls each beat. A full pull takes about 20 seconds with YouTube throttling it, but the first byte shows up in 0.3 seconds, which is why playback starts while the pull is still running.",
       },
       {
         layer: "Audio server",
         detail:
-          "Audio comes from a small node:http server beside the Bun API, because Bun.serve sent every streamed body with no Content-Length and Safari needs the exact length.",
+          "Audio comes from a small node:http server next to the Bun API. Bun.serve sent every streamed body without a Content-Length, and Safari needs the exact length.",
       },
       {
         layer: "iPhone",
-        detail: "One audio element, unlocked by the first tap, plays every later card. On my iPhone it started 8 of 8 swaps with no extra tap.",
+        detail: "One audio element gets unlocked by the first tap and then plays every card after it. On my iPhone it started 8 out of 8 swaps without another tap.",
       },
       {
         layer: "Drive",
-        detail: "The drive.file scope plus a one-time pick of my existing folder in Google's picker, instead of access to my whole Drive.",
+        detail: "It only asks for the drive.file scope plus a one-time pick of my existing folder in Google's picker, instead of access to my whole Drive.",
       },
       {
         layer: "Cover art",
@@ -1149,14 +1149,14 @@ export const projects: Project[] = [
       {
         layer: "Two hosts",
         detail:
-          "Built for two computers: each keeps one append-only event log and pulls the other's events every 2 seconds, and the backup takes over Drive saves after 90 seconds without hearing from the main host. The second computer isn't set up yet.",
+          "Built to run on two computers: each one keeps an append-only event log and pulls the other's events every 2 seconds, and if the backup doesn't hear from the main host for 90 seconds, it takes over saving to Drive. The second computer isn't set up yet.",
       },
       { layer: "Tests", detail: "159 tests with bun test, all passing." },
     ],
     roadmap: [
-      "A friend's PC as the main host, with my Mac as the backup.",
-      "Roses: one top beat a day, copied to a best folder.",
-      "A weekly wrapped: a Sunday card with the week's saves, top producer, top artist and matches.",
+      "Moving the main host to a friend's PC, with my Mac as the backup.",
+      "Roses: one top beat a day, copied into a best-of folder.",
+      "A weekly wrapped: a card every Sunday with the week's saves, top producer, top artist and matches.",
     ],
   },
 ];

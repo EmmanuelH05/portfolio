@@ -1,8 +1,21 @@
-import { Fragment_Mono, Instrument_Sans, Instrument_Serif } from 'next/font/google';
+import localFont from 'next/font/local';
 
-const sans = Instrument_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', variable: '--font-serif', display: 'swap' });
-const mono = Fragment_Mono({ subsets: ['latin'], weight: '400', variable: '--font-mono', display: 'swap' });
+// Self-hosted latin files, the same ones Google Fonts serves. With next/font/google, Vercel's build gave
+// the html tag different class names than the stylesheet, and the whole site fell back to Times.
+const sans = localFont({
+  src: '../fonts/instrument-sans-latin.woff2',
+  weight: '400 700',
+  variable: '--font-sans',
+  display: 'swap',
+});
+const serif = localFont({
+  src: '../fonts/instrument-serif-latin.woff2',
+  weight: '400',
+  variable: '--font-serif',
+  display: 'swap',
+  adjustFontFallback: 'Times New Roman',
+});
+const mono = localFont({ src: '../fonts/fragment-mono-latin.woff2', weight: '400', variable: '--font-mono', display: 'swap' });
 
 /** The three font custom properties the Tailwind families read. */
 export const fontVariables = `${sans.variable} ${serif.variable} ${mono.variable}`;

@@ -5,11 +5,12 @@ import { notFound } from 'next/navigation';
 import { Fragment } from 'react';
 import ArticleSection from '@/components/ArticleSection';
 import DemoVideo from '@/components/DemoVideo';
+import DesignViews from '@/components/DesignViews';
 import NumberedList from '@/components/NumberedList';
 import PageFooterNav from '@/components/PageFooterNav';
 import PageShell from '@/components/PageShell';
 import ScreenTour from '@/components/ScreenTour';
-import ScreenViews from '@/components/ScreenViews';
+import ScreenViews, { type ScreenView } from '@/components/ScreenViews';
 import SectionNav, { type NavSection } from '@/components/SectionNav';
 import { external } from '@/components/links';
 import { projects, type Project } from '@/lib/projects';
@@ -47,6 +48,7 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
 const TITLES = {
   overview: 'Overview',
   screens: 'Screens',
+  design: 'Design',
   features: 'What it does',
   build: "How it's built",
   roadmap: "What I'm building next",
@@ -57,7 +59,8 @@ function sectionsFor(project: Project): NavSection[] {
   const has: Record<keyof typeof TITLES, boolean> = {
     overview: true,
     screens: true,
-    features: true,
+    design: Boolean(project.design),
+    features: Boolean(project.features),
     build: Boolean(project.build),
     roadmap: Boolean(project.roadmap),
     contributions: Boolean(project.contributions),
@@ -65,6 +68,26 @@ function sectionsFor(project: Project): NavSection[] {
   return (Object.keys(TITLES) as (keyof typeof TITLES)[])
     .filter((id) => has[id])
     .map((id) => ({ id, label: TITLES[id] }));
+}
+
+/** The switch over the screens, for a project with a second set of them: laptop size, or the lo-fi design. */
+function screenViews(project: Project) {
+  const main = { size: project.screenSize, note: project.screensNote, screens: project.screens };
+  if (project.webScreens) {
+    const views: ScreenView[] = [
+      { id: 'web', label: 'Web', set: project.webScreens },
+      { id: 'mobile', label: 'Mobile', set: main },
+    ];
+    return { label: 'Screen size', views, initial: 'web' };
+  }
+  if (project.lofiScreens) {
+    const views: ScreenView[] = [
+      { id: 'lofi', label: 'Lo-fi', set: project.lofiScreens },
+      { id: 'hifi', label: 'Hi-fi', set: main },
+    ];
+    return { label: 'Fidelity', views, initial: 'hifi' };
+  }
+  return null;
 }
 
 /** What sits on the backdrop at the top of the page: the demo video if there is one, otherwise the cover screen. */
@@ -90,6 +113,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const project = findBySlug(projects, params.slug);
   if (!project) notFound();
   const next = nextAfter(projects, project.slug);
+  const switcher = screenViews(project);
+  // A project still being built is listed under Currently working on, not in the work grid.
+  const back = { href: project.inProgress ? '/#now' : '/#work', label: 'All work' };
   const heroKind = project.video ? (project.video.kind ?? 'phone') : project.cover.screen.kind;
   const isWindowHero = heroKind === 'window';
 
@@ -113,7 +139,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
         <div id="overview" className={styles.header}>
           <div>
-            <Link href="/#work" className={styles.backLink}>
+            <Link href={back.href} className={styles.backLink}>
               <span aria-hidden>←</span> All work
             </Link>
             <p className={styles.meta}>
@@ -160,29 +186,34 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </PageShell>
 
       <div className={styles.article}>
-        <SectionNav sections={sectionsFor(project)} back={{ href: '/#work', label: 'All work' }} />
+        <SectionNav sections={sectionsFor(project)} />
         <div className={styles.sections}>
-          <ArticleSection id="screens" title={TITLES.screens} note={project.webScreens ? undefined : project.screensNote}>
-            {project.webScreens ? (
-              <ScreenViews
-                web={project.webScreens}
-                mobile={{ size: project.screenSize, note: project.screensNote, screens: project.screens }}
-              />
+          <ArticleSection id="screens" title={TITLES.screens} note={switcher ? undefined : project.screensNote}>
+            {switcher ? (
+              <ScreenViews {...switcher} />
             ) : (
               <ScreenTour screens={project.screens} size={project.screenSize} />
             )}
           </ArticleSection>
 
-          <ArticleSection id="features" title={TITLES.features}>
-            <dl className={styles.featureGrid}>
-              {project.features.map((feature) => (
-                <div key={feature.title} className={styles.feature}>
-                  <dt className={styles.featureTitle}>{feature.title}</dt>
-                  <dd className={styles.featureBody}>{feature.body}</dd>
-                </div>
-              ))}
-            </dl>
-          </ArticleSection>
+          {project.design && (
+            <ArticleSection id="design" title={TITLES.design} note={project.design.note}>
+              <DesignViews design={project.design} />
+            </ArticleSection>
+          )}
+
+          {project.features && (
+            <ArticleSection id="features" title={TITLES.features}>
+              <dl className={styles.featureGrid}>
+                {project.features.map((feature) => (
+                  <div key={feature.title} className={styles.feature}>
+                    <dt className={styles.featureTitle}>{feature.title}</dt>
+                    <dd className={styles.featureBody}>{feature.body}</dd>
+                  </div>
+                ))}
+              </dl>
+            </ArticleSection>
+          )}
 
           {project.build && (
             <ArticleSection id="build" title={TITLES.build}>
@@ -212,7 +243,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </div>
 
       <PageFooterNav
-        back={{ href: '/#work', label: 'All work' }}
+        back={back}
         next={{ href: `/projects/${next.slug}`, label: `Next: ${next.name}` }}
       />
     </main>

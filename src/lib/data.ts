@@ -33,26 +33,6 @@ export interface TechnicalSkill {
   skills: string[];
 }
 
-/** A project still being built, listed under "Currently working on" until it gets its own page. */
-export interface CurrentWork {
-  name: string;
-  period: string;
-  headline: string;
-  blurb: string;
-  chips: string[];
-}
-
-export const currentWork: CurrentWork[] = [
-  {
-    name: "papeles",
-    period: "Oct 2026 → now",
-    headline: "papeles: an iPhone app that explains English letters in Spanish",
-    blurb:
-      "Take a photo of an English letter, like a school notice, a medical bill, a lease or a benefits or immigration letter. papeles reads it on the phone, pulls out the deadlines, amounts and next steps, and explains it in plain Spanish. Nothing leaves the phone: no network calls, no backend, no analytics. The screens are designed and the app is being built now.",
-    chips: ["Swift 6, SwiftUI", "iOS 27 on-device models", "Zero third-party dependencies"],
-  },
-];
-
 export const personalInfo: PersonalInfo = {
   name: "Emmanuel Hernandez",
   email: "eahernandez1@ucla.edu",

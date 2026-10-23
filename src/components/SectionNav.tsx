@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import * as styles from '@/styles/components/SectionNav';
 
@@ -14,7 +13,6 @@ const READING_LINE = 120;
 
 interface SectionNavProps {
   sections: NavSection[];
-  back: { href: string; label: string };
 }
 
 /**
@@ -22,7 +20,7 @@ interface SectionNavProps {
  * marks the one being read: the last whose top has passed the reading line. A short section never
  * reaches the middle of the screen, so a mid-screen band would skip it.
  */
-export default function SectionNav({ sections, back }: SectionNavProps) {
+export default function SectionNav({ sections }: SectionNavProps) {
   const [active, setActive] = useState(sections[0]?.id);
 
   useEffect(() => {
@@ -65,9 +63,6 @@ export default function SectionNav({ sections, back }: SectionNavProps) {
             </li>
           ))}
         </ol>
-        <Link href={back.href} className={styles.back}>
-          <span aria-hidden>←</span> {back.label}
-        </Link>
       </nav>
     </aside>
   );

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import WorkCard from '@/components/WorkCard';
-import { currentWork, personalInfo } from '@/lib/data';
+import { personalInfo } from '@/lib/data';
 import { projects } from '@/lib/projects';
 import { resumeHref } from '@/lib/site';
 import * as styles from '@/styles/pages/home';
@@ -12,6 +13,9 @@ import * as styles from '@/styles/pages/home';
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
+
+const featured = projects.filter((project) => !project.inProgress);
+const inProgress = projects.filter((project) => project.inProgress);
 
 export default function Home() {
   return (
@@ -57,7 +61,7 @@ export default function Home() {
           Featured work
         </h2>
         <div className={styles.workGrid}>
-          {projects.map((project) => (
+          {featured.map((project) => (
             <WorkCard key={project.slug} project={project} />
           ))}
         </div>
@@ -68,22 +72,39 @@ export default function Home() {
           Currently working on
         </h2>
         <div className={styles.nowList}>
-          {currentWork.map((work) => (
-            <article key={work.name} className={styles.nowItem}>
+          {inProgress.map((project) => (
+            <article key={project.slug} className={styles.nowItem}>
               <p className={styles.nowMeta}>
-                In progress <span aria-hidden>/</span> {work.period}
+                In progress <span aria-hidden>/</span> {project.period}
               </p>
-              <h3 className={styles.nowHeadline}>{work.headline}</h3>
-              <p className={styles.nowBlurb}>{work.blurb}</p>
+              <h3 className={styles.nowHeadline}>{project.headline}</h3>
+              <p className={styles.nowBlurb}>{project.blurb}</p>
               <ul className={styles.nowChips}>
-                {work.chips.map((chip) => (
+                {project.chips.map((chip) => (
                   <li key={chip} className={styles.nowChip}>
                     {chip}
                   </li>
                 ))}
               </ul>
+              <Link href={`/projects/${project.slug}`} className={styles.nowLink}>
+                {project.cta} <span aria-hidden>→</span>
+              </Link>
             </article>
           ))}
+          {/* Always last: the next thing I build could be a team's. */}
+          <article className={styles.nowItem}>
+            <p className={styles.nowMeta}>
+              Up next <span aria-hidden>/</span> Summer 2027
+            </p>
+            <h3 className={styles.nowHeadline}>Your feature</h3>
+            <p className={styles.nowBlurb}>
+              I&apos;m looking for a summer 2027 internship or co-op. If your team has a feature that needs
+              building, I&apos;d love to hear about it.
+            </p>
+            <a href={`mailto:${personalInfo.email}`} className={styles.nowLink}>
+              Contact me <span aria-hidden>→</span>
+            </a>
+          </article>
         </div>
       </section>
     </main>

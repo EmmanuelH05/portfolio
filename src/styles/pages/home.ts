@@ -1,3 +1,5 @@
+import { pillLinkEnd } from '@/styles/buttons';
+
 /** A big greeting, a one-line intro with where I am now beside it, then two buttons. */
 export const hero = 'pt-12 md:pt-24';
 export const greeting = 'text-[2.125rem] font-normal leading-[1.15] tracking-[-0.02em] sm:text-[2.75rem]';
@@ -14,9 +16,10 @@ export { connectButton, liveDot, nowrap, resumeButton } from '@/styles/buttons';
 /** The cards sit under a short heading right after the hero. */
 export const section = 'mt-12 scroll-mt-6 md:mt-20';
 export const sectionHeading = 'text-[1.5rem] font-normal leading-[1.15] tracking-[-0.02em] sm:text-[1.875rem]';
-/** Projects still being built: text only, with the same meta line, title and chips as a work card. */
+/** Projects still being built: text only, with the same meta line, title and chips as a work card, then a pill to its page. */
 export const nowList = 'mt-6 grid gap-10 md:mt-8';
 export const nowItem = 'max-w-[44rem] border-l-2 border-forest pl-5';
 export { meta as nowMeta, headline as nowHeadline, chipList as nowChips, chip as nowChip } from '@/styles/components/WorkCard';
 export const nowBlurb = 'mt-2 leading-normal text-muted';
+export const nowLink = `mt-5 ${pillLinkEnd}`;
 export const workGrid ='mt-6 grid gap-x-8 gap-y-14 md:mt-8 md:grid-cols-2 md:gap-y-16';

@@ -20,6 +20,22 @@ export interface Feature {
   body: string;
 }
 
+/** One frame from the project's Figma file, drawn twice: lo-fi for the layout, hi-fi for the look. */
+export interface DesignFrame {
+  label: string;
+  lofi: string;
+  hifi: string;
+}
+
+/** Frames from the Figma file, in a grid behind a Lo-fi / Hi-fi switch. */
+export interface Design {
+  kind: ScreenKind;
+  /** Intrinsic size of every frame, so next/image can reserve space. */
+  size: { width: number; height: number };
+  note: string;
+  frames: DesignFrame[];
+}
+
 /** One screenshot, shown straight and whole on the backdrop. */
 export interface CoverScreen {
   src: string;
@@ -60,7 +76,12 @@ export interface Project {
   screens: Screen[];
   /** The same app at laptop size, behind a Web / Mobile switch over the screens. */
   webScreens?: ScreenSet;
-  features: Feature[];
+  /** For screens that are design frames: the same screens in lo-fi, behind a Lo-fi / Hi-fi switch. */
+  lofiScreens?: ScreenSet;
+  /** Frames from the Figma file, in their own section under the screens. */
+  design?: Design;
+  /** An app still being built has no features to list yet. */
+  features?: Feature[];
   build?: { layer: string; detail: string }[];
   roadmap?: string[];
   contributions?: string[];
@@ -73,9 +94,67 @@ export interface Project {
   brand?: Brand;
   /** The app's keyboard controls, shown as keycaps under the facts. `keep` marks the one in the app's color. */
   keys?: { key: string; action: string; keep?: boolean }[];
+  /** Still being built: listed under Currently working on instead of Featured work. */
+  inProgress?: boolean;
 }
 
 export type Brand = "geekbeats";
+
+/** Every papeles screen on its page, in the order you'd meet it. Frames are in /papeles as <name>-lofi.jpg and <name>-hifi.jpg. */
+const papelesScreens = [
+  {
+    name: "bienvenida",
+    label: "Welcome",
+    caption: "The first screen says what papeles does and that your letters never leave the phone, before it asks for the camera.",
+  },
+  {
+    name: "revisar",
+    label: "Check the pages",
+    caption: "After the photos you see every page before it reads anything. Add a page, retake one, or have it explained.",
+  },
+  {
+    name: "leyendo",
+    label: "Reading",
+    caption: "It reads the English, finds the dates, amounts and steps, and writes the explanation in Spanish, all on the phone.",
+  },
+  {
+    name: "explicacion-evento",
+    label: "The explanation",
+    caption:
+      "A short summary in plain Spanish, then every date in the letter. Ver original takes you back to the English line each one came from.",
+  },
+  {
+    name: "sin-ia",
+    label: "Without Apple Intelligence",
+    caption: "On a phone without Apple Intelligence it still translates the letter on the phone, but it won't pull out dates or amounts.",
+  },
+  {
+    name: "inicio",
+    label: "My letters",
+    caption: "The app opens on Mis cartas, the letters you saved, with whatever is due next at the top.",
+  },
+  {
+    name: "carta-guardada",
+    label: "A saved letter",
+    caption: "A saved letter opens back up from Mis cartas, Siri, Spotlight or a reminder, and each one has its own reminder switch.",
+  },
+  {
+    name: "notificacion",
+    label: "A reminder",
+    caption: "A reminder shows up a week before a deadline, at 9 am. It has the letter's name and the date, never the amount or what the letter says.",
+  },
+  {
+    name: "siri",
+    label: "Ask Siri",
+    caption: "Ask Siri for the school letter and it finds it, with its deadline and amount.",
+  },
+];
+
+const papelesScreensNote =
+  "These are design frames from Figma, not screenshots, because the app isn't built yet. They're in Spanish like the app, and each one is the newest version I approved.";
+
+const papelesFrames = (fidelity: "lofi" | "hifi"): Screen[] =>
+  papelesScreens.map(({ name, label, caption }) => ({ src: `/papeles/${name}-${fidelity}.jpg`, label, caption }));
 
 export const projects: Project[] = [
   {
@@ -118,6 +197,7 @@ export const projects: Project[] = [
       { label: "Code on GitHub", href: "https://github.com/EmmanuelH05/hangover" },
       { label: "Releases", href: "https://github.com/EmmanuelH05/hangover/releases" },
       { label: "Open Island, the original", href: "https://github.com/Octane0411/open-vibe-island" },
+      { label: "Figma file", href: "https://www.figma.com/design/PnCchi3FJ9BlTbVzLCNMpl" },
     ],
     video: {
       src: "/hangover/hero.mp4",
@@ -211,6 +291,19 @@ export const projects: Project[] = [
           "This one is a picture, not a recording: sample strips drawn with cartoon faces. The mirror and photo booth need a camera, which is why they are not recorded.",
       },
     ],
+    design: {
+      kind: "window",
+      size: { width: 2000, height: 1280 },
+      note: "Two of the 1.0.14 features, the update flow and to-dos from more than one app, started in Figma. I planned each screen lo-fi first for the layout, then hi-fi in the app's own look, and built them once they were approved.",
+      frames: [
+        { label: "Asking before an update", lofi: "/hangover/design-open-ask-lofi.jpg", hifi: "/hangover/design-open-ask-hifi.jpg" },
+        { label: "Update ready", lofi: "/hangover/design-open-update-ready-lofi.jpg", hifi: "/hangover/design-open-update-ready-hifi.jpg" },
+        { label: "What's new", lofi: "/hangover/design-open-whats-new-1-lofi.jpg", hifi: "/hangover/design-open-whats-new-1-hifi.jpg" },
+        { label: "The auto-update switch", lofi: "/hangover/design-settings-about-lofi.jpg", hifi: "/hangover/design-settings-about-hifi.jpg" },
+        { label: "To-dos from every app", lofi: "/hangover/design-card-grouped-lofi.jpg", hifi: "/hangover/design-card-grouped-hifi.jpg" },
+        { label: "Turning on to-do apps", lofi: "/hangover/design-settings-toggles-lofi.jpg", hifi: "/hangover/design-settings-toggles-hifi.jpg" },
+      ],
+    },
     features: [
       {
         title: "The Nook",
@@ -1018,7 +1111,7 @@ export const projects: Project[] = [
       { label: "Tests", value: "159 automated tests, all passing" },
       { label: "Status", value: "Running on my Mac for now, with the main host moving to a friend's PC" },
     ],
-    links: [],
+    links: [{ label: "Figma file", href: "https://www.figma.com/design/lvJa1nOVcSBxaR2sXY6QWA" }],
     video: {
       src: "/geekbeats/hero.mp4",
       poster: "/geekbeats/hero-poster.jpg",
@@ -1096,6 +1189,19 @@ export const projects: Project[] = [
         },
       ],
     },
+    design: {
+      kind: "phone",
+      size: { width: 780, height: 1688 },
+      note: "Before writing any code I planned every screen in Figma, lo-fi first for the layout and then hi-fi for the look. Flip the switch to compare the two.",
+      frames: [
+        { label: "Who's swiping", lofi: "/geekbeats/design-pick-name-lofi.jpg", hifi: "/geekbeats/design-pick-name-hifi.jpg" },
+        { label: "The feed after a keep", lofi: "/geekbeats/design-feed-kept-lofi.jpg", hifi: "/geekbeats/design-feed-kept-hifi.jpg" },
+        { label: "Search", lofi: "/geekbeats/design-search-results-lofi.jpg", hifi: "/geekbeats/design-search-results-hifi.jpg" },
+        { label: "Send a beat", lofi: "/geekbeats/design-send-sheet-lofi.jpg", hifi: "/geekbeats/design-send-sheet-hifi.jpg" },
+        { label: "Matches", lofi: "/geekbeats/design-matches-lofi.jpg", hifi: "/geekbeats/design-matches-hifi.jpg" },
+        { label: "History", lofi: "/geekbeats/design-history-lofi.jpg", hifi: "/geekbeats/design-history-hifi.jpg" },
+      ],
+    },
     features: [
       {
         title: "Swipe, keep, skip",
@@ -1157,6 +1263,54 @@ export const projects: Project[] = [
       "Moving the main host to a friend's PC, with my Mac as the backup.",
       "Roses: one top beat a day, copied into a best-of folder.",
       "A weekly wrapped: a card every Sunday with the week's saves, top producer, top artist and matches.",
+    ],
+  },
+  {
+    slug: "papeles",
+    name: "papeles",
+    number: "10",
+    period: "Oct 2026 → now",
+    headline: "papeles: an iPhone app that explains English letters in Spanish",
+    blurb:
+      "Take a photo of an English letter, like a school notice, a medical bill, a lease or a benefits or immigration letter. papeles reads it on the phone, pulls out the deadlines, amounts and next steps, and explains it in plain Spanish. Nothing leaves the phone: no network calls, no backend, no analytics. The screens are designed and the app is being built now.",
+    chips: ["Swift 6, SwiftUI", "iOS 27 on-device models", "Zero third-party dependencies"],
+    cta: "See the screens",
+    tint: "sand",
+    inProgress: true,
+    cover: {
+      backdrop: "/covers/papeles.jpg",
+      screen: {
+        src: "/papeles/explicacion-evento-hifi.jpg",
+        alt: "The papeles design for a school bulletin: a short summary in Spanish, then the event date with a link back to the English line",
+        width: 786,
+        height: 1704,
+        kind: "phone",
+      },
+    },
+    intro: [
+      "papeles is an iPhone app I'm building for families who read Spanish and get their mail in English. You take a photo of a letter, like a school notice, a medical bill, a lease or a benefits or immigration letter. papeles reads it on the phone, pulls out the deadlines, amounts and what you have to do, and explains it in plain Mexican Spanish.",
+      "Nothing leaves the phone. Every date and amount points back to the English line it came from, and anything the app can't find in the letter gets dropped instead of guessed. Missing a field is okay. Getting a date wrong on a medical bill or an immigration letter isn't.",
+      "The screens are designed and approved, and the app is being built now. Everything on this page is a design frame from Figma.",
+    ],
+    facts: [
+      { label: "Started", value: "October 18, 2026" },
+      { label: "Platform", value: "iPhone on iOS 27, with the full app on an iPhone 15 Pro or newer" },
+      { label: "Stack", value: "Swift 6, SwiftUI, Vision, Foundation Models, Translation, App Intents" },
+      { label: "Privacy", value: "No network calls, no backend, no analytics, and a check that fails on any networking code" },
+      { label: "Design", value: "40 screens approved in Figma, each in lo-fi, mid-fi and hi-fi" },
+      { label: "Status", value: "Screens done, the build is on phase 1 of 8" },
+    ],
+    links: [{ label: "Figma file", href: "https://www.figma.com/design/ED5BN1KRlNvbUioFVr04II" }],
+    screenSize: { width: 786, height: 1704 },
+    screensNote: papelesScreensNote,
+    screens: papelesFrames("hifi"),
+    lofiScreens: { size: { width: 786, height: 1704 }, note: papelesScreensNote, screens: papelesFrames("lofi") },
+    roadmap: [
+      "A test set of about 40 made-up letters that I label by hand. TestFlight waits until it gets zero dates or amounts wrong.",
+      "Pulling the dates, amounts and steps out with Apple's on-device model, and dropping any field whose words aren't in the letter.",
+      "Reading a photographed letter end to end on my own iPhone, with blurry pages caught.",
+      "Saved letters, reminders before a deadline, and finding a letter with Siri or Spotlight.",
+      "TestFlight for about 10 family testers.",
     ],
   },
 ];

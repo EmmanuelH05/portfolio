@@ -1,5 +1,3 @@
-import { pillLink } from '@/styles/buttons';
-
 /** Wide screens only; on a phone the sections simply follow one another. */
 export const aside = 'hidden lg:block';
 /** mt matches the first section's top margin, so the list starts level with its title. */
@@ -13,4 +11,3 @@ export const link = (isActive: boolean) =>
       ? 'bg-white/70 text-ink shadow-[0_1px_2px_rgba(23,32,25,0.06)] ring-1 ring-inset ring-ink/10'
       : 'text-muted hover:bg-white/50 hover:text-ink'
   }`;
-export const back = `mt-8 ${pillLink}`;
